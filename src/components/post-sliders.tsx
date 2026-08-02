@@ -42,7 +42,7 @@ const groups = [
 ];
 const LastPost = () => {
   return (
-    <div className=" py-14">
+    <div className=" py-14 px-3">
       <div className="container-wide">
         <TitleSection
           defaultype={true}

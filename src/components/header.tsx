@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-brand text-white shadow-lg">
       <div className="container-wide">
-        <div className="flex items-center justify-between py-5">
+        <div className="flex items-center justify-between p-3">
           <Link
             href="/"
             className="lg:hidden font-sans text-lg font-semibold"

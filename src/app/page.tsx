@@ -24,7 +24,7 @@ export default function page() {
 const Hero = () => {
   return (
     <div className=" mb-20">
-      <div className="relative min-h-[600px] md:h-225 w-full">
+      <div className="relative min-h-150 md:h-225 w-full">
         <Image
           src="/hero.jpg"
           alt="Logo"
@@ -95,7 +95,7 @@ const Hero = () => {
 };
 const Banners = () => {
   return (
-    <div className="my-10 space-y-16">
+    <div className="my-10 px-3 space-y-16">
       <div className="container-wide shadow-[40px_40px_0_-20px_#0B273A]">
         <div className=" h-72 relative p-8">
           <Image
@@ -103,7 +103,6 @@ const Banners = () => {
             alt="Logo"
             fill
             className="z-10 brightness-75"
-            
             style={{ objectPosition: "0% 12%", objectFit: "cover" }}
           />
           <div className="z-20 relative flex w-full h-full justify-between flex-col">
@@ -196,9 +195,7 @@ const Banners = () => {
 const Footer = () => {
   return (
     <footer className="bg-[#071E2E] text-white bg-contain bg-center">
-      <div
-        className=" bg-no-repeat lg:bg-[url(/footer-fond.png)] container-wide space-y-14 py-10 md:py-14 "
-      >
+      <div className=" bg-no-repeat lg:bg-[url(/footer-fond.png)] container-wide space-y-14 py-10 md:py-14 ">
         <div className="flex flex-col items-center lg:flex-row gap-10 lg:gap-0">
           <div className="flex flex-col items-center lg:flex-row gap-8">
             <div>
@@ -222,7 +219,10 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <VerticalSeparator className="mx-12 hidden lg:block" color="#3e4e5a" />
+          <VerticalSeparator
+            className="mx-12 hidden lg:block"
+            color="#3e4e5a"
+          />
           <div className="space-y-4 flex flex-col items-center lg:items-start">
             <div className="text-[14px] font-medium  leading-3.5">
               Retrouvez nos actualités sur
@@ -237,7 +237,10 @@ const Footer = () => {
               />
             </div>
           </div>
-          <VerticalSeparator className="mx-12 hidden lg:block" color="#3e4e5a" />
+          <VerticalSeparator
+            className="mx-12 hidden lg:block"
+            color="#3e4e5a"
+          />
           <div className="space-y-4.5 flex flex-col items-center lg:items-start">
             <div className="text-[18px] font-medium leading-6.75">
               Vous avez une question ?
@@ -262,8 +265,8 @@ const Footer = () => {
 
 const StateContent = () => {
   return (
-    <div className="my-20">
-      <div className="container-wide">
+    <div className="my-20 p-3">
+      <div className="container-wide space-y-4">
         <TitleSection
           defaultype={true}
           first={{
@@ -292,30 +295,47 @@ const StateContent = () => {
             routines rigides.
           </div>
         </div>
-        <div className="flex justify-between">
-          <Stat value="+30">
-            Agences <br /> en Cote d’Ivoire...
-          </Stat>
-          <Stat value="01">
-            Agence <br />à Paris{" "}
-          </Stat>
-          <Stat value="01">
-            Agence <br />à Brazzaville{" "}
-          </Stat>
-          <VerticalSeparator color="#642681" dotted />
-          <Stat value="+40">Véhicules</Stat>
-          <Stat value="+100">
-            Organisations d’Obsèquesde <br />
-            de 2023 à Aujourd’hui
-          </Stat>
-          <Stat value="+100">
-            Rapatriements <br />
-            de corpsde 2023 à Aujourd’hui
-          </Stat>
-          <Stat value="+100">
-            Articles funéraires dans <br />
-            notre boutique en ligne
-          </Stat>
+        <div className="flex flex-col lg:space-y-0  space-y-6 items-center lg:flex-row justify-between gap-x-5">
+          <div className="flex gap-x-5 justify-between items-center">
+            <Stat value="+30">
+              Agences <br /> en Cote d’Ivoire...
+            </Stat>
+            <Stat value="01">
+              Agence <br />à Paris{" "}
+            </Stat>
+            <Stat value="01">
+              Agence <br />à Brazzaville{" "}
+            </Stat>
+          </div>
+
+          <VerticalSeparator
+            orientation="vertical"
+            className="hidden lg:block"
+            color="#642681"
+            dotted
+          />
+          <VerticalSeparator
+            orientation="horizontal"
+            stretch={false}
+            className="lg:hidden w-40"
+            color="#642681"
+            dotted
+          />
+          <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0   flex-1 justify-between items-center">
+            <Stat value="+40">Véhicules</Stat>
+            <Stat value="+100">
+              Organisations d’Obsèquesde <br />
+              de 2023 à Aujourd’hui
+            </Stat>
+            <Stat value="+100">
+              Rapatriements <br />
+              de corpsde 2023 à Aujourd’hui
+            </Stat>
+            <Stat value="+100">
+              Articles funéraires dans <br />
+              notre boutique en ligne
+            </Stat>
+          </div>
         </div>
       </div>
     </div>
