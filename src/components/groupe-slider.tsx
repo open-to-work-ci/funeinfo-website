@@ -39,7 +39,7 @@ const groups = [
 
 export default function GroupeSlider() {
   return (
-    <div className="bg-brand py-14">
+    <div className="bg-brand relative py-14 overflow-hidden">
       <div className="container-wide">
         <TitleSection
           defaultype={false}
@@ -99,6 +99,15 @@ export default function GroupeSlider() {
             ))}
           </Swiper>
         </div>
+      </div>
+      <div className="absolute top-0 -right-1/2  overflow-hidden h-full   w-full  ">
+        <Image
+          src="/min-logo-white.svg"
+          alt="Logo"
+          className="w"
+          fill
+          style={{ objectFit: "cover", objectPosition: "20% 20%", }}
+        />
       </div>
     </div>
   );

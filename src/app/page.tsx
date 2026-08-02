@@ -11,7 +11,7 @@ export default function page() {
     <div>
       <Header />
       <Hero />
-      <StateContent />
+      {/* <StateContent /> */}
       <Banners />
       <LastPost />
       <GroupeSlider />
@@ -94,12 +94,13 @@ const Banners = () => {
   return (
     <div className="my-10 space-y-16">
       <div className="container-wide shadow-[40px_40px_0_-20px_#0B273A]">
-        <div className="h-87.5 relative p-8">
+        <div className=" h-72 relative p-8">
           <Image
             src="/DSC07033.png"
             alt="Logo"
             fill
-            className="z-10"
+            className="z-10 brightness-75"
+            
             style={{ objectPosition: "0% 12%", objectFit: "cover" }}
           />
           <div className="z-20 relative flex w-full h-full justify-between flex-col">
@@ -126,7 +127,7 @@ const Banners = () => {
       </div>
 
       <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
-        <div className="h-87.5 relative p-8">
+        <div className="h-72 relative p-8">
           <Image
             src="/D535030.png"
             alt="Logo"
@@ -156,12 +157,12 @@ const Banners = () => {
         </div>
       </div>
       <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
-        <div className="h-87.5 relative p-8">
+        <div className="h-72 relative p-8">
           <Image
             src="/FORD 1.png"
             alt="Logo"
             fill
-            className="z-10"
+            className="z-10 brightness-50"
             style={{ objectPosition: "center", objectFit: "cover" }}
           />
           <div className="z-20 relative flex w-full h-full justify-between flex-col">
