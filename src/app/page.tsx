@@ -1,4 +1,5 @@
 import GroupeSlider, { TitleSection } from "@/components/groupe-slider";
+import LastPost from "@/components/post-sliders";
 import VerticalSeparator from "@/components/vertical-separator";
 import { Dot, Menu, Phone } from "lucide-react";
 import Image from "next/image";
@@ -12,6 +13,7 @@ export default function page() {
       <Hero />
       <StateContent />
       <Banners />
+      <LastPost />
       <GroupeSlider />
       <Footer />
     </div>
@@ -21,16 +23,16 @@ export default function page() {
 const Hero = () => {
   return (
     <div className=" mb-20">
-      <div className="relative  h-200 w-full">
+      <div className="relative  h-225 w-full">
         <Image
           src="/DSC09764 (3).JPG"
           alt="Logo"
           className="z-10"
           fill
-          style={{ objectPosition: "0% 20%", objectFit: "cover" }}
+          style={{ objectPosition: "0% 40%", objectFit: "cover" }}
         />
-        <div className="w-full bg-amber-0 relative z-20 h-full flex flex-col px-20 py-10 justify-between ">
-          <div className="">
+        <div className="w-full bg-amber-0 relative z-40 h-full flex flex-col px-30 py-10 justify-between ">
+          <div className="space-y-5">
             <div>
               <Image
                 src="/logo-funinfo.svg"
@@ -61,7 +63,7 @@ const Hero = () => {
               </div>
               <div className="text-white flex  ">
                 {/* Contact me  */}
-                <div className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)]">
+                <div className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]">
                   <div className="">
                     <div className="text-[42px] leading-10.5  pl-10">9933</div>
                   </div>
@@ -83,7 +85,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="z-40  absolute top-0 h-full justify-between w-full shadow-[inset_0_160px_160px_-40px_rgba(0,0,0,0.5)]"></div>
+        <div className="z-20  absolute top-0 h-full justify-between w-full shadow-[inset_0_300px_300px_-40px_rgba(0,0,0,0.5)]"></div>
       </div>
     </div>
   );
@@ -259,18 +261,20 @@ const Header = () => {
   return (
     <header className="bg-brand text-white py-5">
       <div className="container-wide">
-        <div className="flex items-center gap-4 ">
-          <Link href="/" className="font-sans text-lg font-semibold">
-            <Image
-              src="/logo-header.svg"
-              alt="Logo"
-              width={25}
-              className="w-auto h-auto"
-              height={25}
-            />
-          </Link>
-          <nav>
-            <ul className="flex justify-between">
+        <div className="">
+          <nav className="font-inter  text-[19px] leading-5">
+            <ul className="flex  justify-center gap-10 items-center">
+              <li>
+                <Link href="/" className="font-sans text-lg font-semibold">
+                  <Image
+                    src="/logo-header.svg"
+                    alt="Logo"
+                    width={25}
+                    className="w-auto h-auto"
+                    height={25}
+                  />
+                </Link>
+              </li>
               {[
                 "Notre groupe",
                 "Nos engagements",
@@ -294,14 +298,12 @@ const Header = () => {
     </header>
   );
 };
+/* a.expertise */
 
-const LastPost = () => {
-  return <div className=""></div>;
-};
 
 const StateContent = () => {
   return (
-    <div className="">
+    <div className="my-20">
       <div className="container-wide">
         <TitleSection
           defaultype={true}
