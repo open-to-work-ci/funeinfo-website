@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: var(--font-montserrat), sans-serif;
+  --font-poppins: var(--font-poppins), sans-serif;
   --color-brand: #BB2282;
   --color-gold: #bd9d7b;
   --color-ink: #706b69;
@@ -13,7 +14,7 @@
 }
 
 @utility container-wide {
-  max-width: 1500px;
+  max-width: 1300px;
   margin-inline: auto;
 }
 
