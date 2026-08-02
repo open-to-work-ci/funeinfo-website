@@ -12,25 +12,25 @@ import { clsx } from "clsx";
 
 const groups = [
   {
-    logo: "Rectangle 2.png",
+    logo: "groupe-1.png",
     keyword: "CONCEVOIR",
     name: "POFCI PFGA",
     description: "des réponses sur mesure pour tous",
   },
   {
-    logo: "Rectangle 3.png",
+    logo: "groupe-2.png",
     keyword: "engagé",
     name: "GLOBAL'YS",
     description: "au service d'une mussion d'intérêt général",
   },
   {
-    logo: "Rectangle 4.png",
+    logo: "groupe-3.png",
     keyword: "donner",
     name: "KAcNI",
     description: "du sens et développer les talents",
   },
   {
-    logo: "Rectangle 4.png",
+    logo: "groupe-3.png",
     keyword: "donner",
     name: "KANI",
     description: "du sens et développer les talents",
@@ -102,7 +102,7 @@ export default function GroupeSlider() {
       </div>
       <div className="absolute top-0 -right-1/2  overflow-hidden h-full   w-full  ">
         <Image
-          src="/min-logo-white.svg"
+          src="/logo-funinfo-white.svg"
           alt="Logo"
           className="w"
           fill
@@ -134,9 +134,9 @@ export const TitleSection = ({
   return (
     <div className={clsx(className, "flex gap-x-4 items-end mb-14 ")}>
       {defaultype ? (
-        <Image src="/min-logo-pink.svg" alt="Logo" width={50} height={10} />
+        <Image src="/logo-funinfo-pink.svg" alt="Logo" width={50} height={10} />
       ) : (
-        <Image src="/min-logo-white.svg" alt="Logo" width={50} height={10} />
+        <Image src="/logo-funinfo-white.svg" alt="Logo" width={50} height={10} />
       )}
       <div className="">
         <span className={clsx(first.className)}>{first.content} </span>

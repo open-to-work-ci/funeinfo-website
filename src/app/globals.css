@@ -16,6 +16,7 @@
 @utility container-wide {
   max-width: 1300px;
   margin-inline: auto;
+  padding : 0 20px; 
 }
 
 @utility underline-gold {

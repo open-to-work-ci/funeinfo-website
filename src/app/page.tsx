@@ -1,7 +1,8 @@
 import GroupeSlider, { TitleSection } from "@/components/groupe-slider";
+import Header from "@/components/header";
 import LastPost from "@/components/post-sliders";
 import VerticalSeparator from "@/components/vertical-separator";
-import { Dot, Menu, Phone } from "lucide-react";
+import { Dot, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,7 +12,7 @@ export default function page() {
     <div>
       <Header />
       <Hero />
-      {/* <StateContent /> */}
+      <StateContent />
       <Banners />
       <LastPost />
       <GroupeSlider />
@@ -23,15 +24,15 @@ export default function page() {
 const Hero = () => {
   return (
     <div className=" mb-20">
-      <div className="relative  h-225 w-full">
+      <div className="relative min-h-[600px] md:h-225 w-full">
         <Image
-          src="/DSC09764 (3).JPG"
+          src="/hero.jpg"
           alt="Logo"
           className="z-10"
           fill
           style={{ objectPosition: "0% 40%", objectFit: "cover" }}
         />
-        <div className="w-full bg-amber-0 relative z-40 h-full flex flex-col px-30 py-10 justify-between ">
+        <div className="w-full relative z-40 h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-30 py-10 justify-between gap-10 lg:gap-0 ">
           <div className="space-y-5">
             <div>
               <Image
@@ -39,13 +40,14 @@ const Hero = () => {
                 alt="Logo"
                 width={280}
                 height={30}
+                className="w-52 md:w-auto"
               />
             </div>
             <div className="tracking-[5%] font-inter text-white">
-              <div className="text-[27px] font-medium leading-[87%]">
+              <div className="text-[24px] md:text-[27px] font-medium leading-[87%]">
                 L’excellence funéraire au service de la dignité humaine.
               </div>
-              <div className="text-[70px]  leading-[87%]  font-bold   ">
+              <div className="text-[34px] sm:text-[46px] lg:text-[70px] leading-[105%] md:leading-[87%] font-bold">
                 un dernier hommage, <br /> un accompagnement sincère.
               </div>
             </div>
@@ -53,34 +55,35 @@ const Hero = () => {
           <div className="flex justify-end">
             <div className="space-y-2">
               <div className="">
-                <div className="text-white font-sans leading-10 font-bold text-[28px]">
+                <div className="text-white font-sans leading-10 font-bold text-[22px] md:text-[28px]">
                   <div>Vous avez</div>
                   <div>une question ?</div>
                 </div>
-                <div className="text-white font-sans leading-5 text-2xl">
+                <div className="text-white font-sans leading-5 text-xl md:text-2xl">
                   Contactez-nous
                 </div>
               </div>
-              <div className="text-white flex  ">
+              <div className="text-white flex">
                 {/* Contact me  */}
                 <div className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]">
                   <div className="">
-                    <div className="text-[42px] leading-10.5  pl-10">9933</div>
+                    <div className="text-[32px] md:text-[42px] leading-10.5 pl-10">
+                      9933
+                    </div>
                   </div>
                   <div>
                     <VerticalSeparator className="h-full" color="#fff" />
                   </div>
-                  <div className="text-[12px] flex flex-col   justify-between h-full  ">
+                  <div className="text-[12px] flex flex-col justify-between h-full">
                     <div>24H /24</div>
                     <div>7J / 7</div>
                   </div>
-                  <div className="border rounded-full absolute h-full top-0 -left-3 px-3.5 bg-[#652681]   border-white flex items-center justify-between">
+                  <div className="border rounded-full absolute h-full top-0 -left-3 px-3.5 bg-[#652681] border-white flex items-center justify-between">
                     <span>
                       <Phone fill="currentColor" strokeWidth={0} />
                     </span>
                   </div>
                 </div>
-                {/* Icons */}
               </div>
             </div>
           </div>
@@ -96,7 +99,7 @@ const Banners = () => {
       <div className="container-wide shadow-[40px_40px_0_-20px_#0B273A]">
         <div className=" h-72 relative p-8">
           <Image
-            src="/DSC07033.png"
+            src="/banner-obseques.png"
             alt="Logo"
             fill
             className="z-10 brightness-75"
@@ -129,7 +132,7 @@ const Banners = () => {
       <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
         <div className="h-72 relative p-8">
           <Image
-            src="/D535030.png"
+            src="/banner-rapatriement.png"
             alt="Logo"
             fill
             className="z-10"
@@ -159,7 +162,7 @@ const Banners = () => {
       <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
         <div className="h-72 relative p-8">
           <Image
-            src="/FORD 1.png"
+            src="/banner-rapatriement-2.png"
             alt="Logo"
             fill
             className="z-10 brightness-50"
@@ -192,23 +195,22 @@ const Banners = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#071E2E] text-white bg-contain  bg-center">
+    <footer className="bg-[#071E2E] text-white bg-contain bg-center">
       <div
-        style={{ backgroundImage: "url(/footer-fond.09e10783.png)" }}
-        className=" bg-no-repeat container-wide space-y-14 py-14 "
+        className=" bg-no-repeat lg:bg-[url(/footer-fond.png)] container-wide space-y-14 py-10 md:py-14 "
       >
-        <div className="flex">
-          <div className="flex gap-8">
+        <div className="flex flex-col items-center lg:flex-row gap-10 lg:gap-0">
+          <div className="flex flex-col items-center lg:flex-row gap-8">
             <div>
               <Image
                 src="/logo-footer.png"
                 alt="Logo"
                 width={159}
                 height={50}
-                className="w-auto h-auto"
+                className=" w-auto h-auto"
               />
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col items-center lg:items-start">
               <div className="text-[16px] font-bold  leading-4 uppercase">
                 siège social
               </div>
@@ -220,8 +222,8 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <VerticalSeparator className="mx-12" color="#3e4e5a" />
-          <div className="space-y-4">
+          <VerticalSeparator className="mx-12 hidden lg:block" color="#3e4e5a" />
+          <div className="space-y-4 flex flex-col items-center lg:items-start">
             <div className="text-[14px] font-medium  leading-3.5">
               Retrouvez nos actualités sur
             </div>
@@ -235,8 +237,8 @@ const Footer = () => {
               />
             </div>
           </div>
-          <VerticalSeparator className="mx-12" color="#3e4e5a" />
-          <div className="space-y-4.5">
+          <VerticalSeparator className="mx-12 hidden lg:block" color="#3e4e5a" />
+          <div className="space-y-4.5 flex flex-col items-center lg:items-start">
             <div className="text-[18px] font-medium leading-6.75">
               Vous avez une question ?
             </div>
@@ -245,7 +247,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="w-full text-[12px] font-light leading-4.5 flex justify-between">
+        <div className="w-full text-[12px] font-light leading-4.5 flex flex-col  items-center  lg:flex-row lg:justify-between gap-10">
           <div className="">© Copyright 2025 - Groupe OGF</div>
           <div className="flex ">
             Mentions légales
@@ -257,50 +259,6 @@ const Footer = () => {
     </footer>
   );
 };
-
-const Header = () => {
-  return (
-    <header className="bg-brand text-white py-5">
-      <div className="container-wide">
-        <div className="">
-          <nav className="font-inter  text-[19px] leading-5">
-            <ul className="flex  justify-center gap-10 items-center">
-              <li>
-                <Link href="/" className="font-sans text-lg font-semibold">
-                  <Image
-                    src="/logo-header.svg"
-                    alt="Logo"
-                    width={25}
-                    className="w-auto h-auto"
-                    height={25}
-                  />
-                </Link>
-              </li>
-              {[
-                "Notre groupe",
-                "Nos engagements",
-                "Nos expertises",
-                "Collectivités & partenaires",
-                "Carrières",
-              ].map((item) => (
-                <li key={item}>
-                  <a href="#" className="uppercase ">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <button className="md:hidden" aria-label="Menu">
-            <Menu className="size-6" />
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-};
-/* a.expertise */
-
 
 const StateContent = () => {
   return (
