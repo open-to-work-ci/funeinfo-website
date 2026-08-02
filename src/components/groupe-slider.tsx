@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/scrollbar";
 import { clsx } from "clsx";
+import Reveal from "@/components/reveal";
 
 const groups = [
   {
@@ -41,17 +42,19 @@ export default function GroupeSlider() {
   return (
     <div className="bg-brand relative py-14 overflow-hidden">
       <div className="container-wide">
-        <TitleSection
-          defaultype={false}
-          first={{
-            content: "FUNE INFO AFRICA, ",
-            className: "text-white text-[25px] font-bold uppercase leading-7.5",
-          }}
-          last={{
-            content: "C’est un ensemble de filiales , des franchises",
-            className: "text-white text-[25px] font-bold uppercase leading-7.5",
-          }}
-        />
+        <Reveal>
+          <TitleSection
+            defaultype={false}
+            first={{
+              content: "FUNE INFO AFRICA, ",
+              className: "text-white text-[25px] font-bold uppercase leading-7.5",
+            }}
+            last={{
+              content: "C’est un ensemble de filiales , des franchises",
+              className: "text-white text-[25px] font-bold uppercase leading-7.5",
+            }}
+          />
+        </Reveal>
         <div className="px-16">
           <Swiper
             modules={[FreeMode, Scrollbar]}

@@ -8,6 +8,7 @@ import "swiper/css/scrollbar";
 import Image from "next/image";
 import Link from "next/link";
 import { TitleSection } from "./groupe-slider";
+import Reveal from "./reveal";
 
 const groups = [
   {
@@ -44,19 +45,21 @@ const LastPost = () => {
   return (
     <div className=" py-14 px-3">
       <div className="container-wide">
-        <TitleSection
-          defaultype={true}
-          first={{
-            content: "FUNE INFO AFRICA, ",
-            className:
-              "text-[#8A1E80] text-[25px] font-extrabold uppercase leading-7.5",
-          }}
-          last={{
-            content: "C’est un ensemble de filiales , des franchises",
-            className:
-              "text-[#C075AE] text-[25px] font-extrabold uppercase leading-7.5",
-          }}
-        />
+        <Reveal>
+          <TitleSection
+            defaultype={true}
+            first={{
+              content: "FUNE INFO AFRICA, ",
+              className:
+                "text-[#8A1E80] text-[25px] font-extrabold uppercase leading-7.5",
+            }}
+            last={{
+              content: "C’est un ensemble de filiales , des franchises",
+              className:
+                "text-[#C075AE] text-[25px] font-extrabold uppercase leading-7.5",
+            }}
+          />
+        </Reveal>
         <div className="px-16">
           <Swiper
             modules={[FreeMode, Scrollbar]}

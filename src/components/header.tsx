@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,7 +18,12 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-brand text-white shadow-lg">
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="sticky top-0 z-50 bg-brand text-white shadow-lg"
+    >
       <div className="container-wide">
         <div className="flex items-center justify-between p-3">
           <Link
@@ -78,6 +84,6 @@ export default function Header() {
           </nav>
         )}
       </div>
-    </header>
+    </motion.header>
   );
 }
