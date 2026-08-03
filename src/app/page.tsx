@@ -10,12 +10,23 @@ import React from "react";
 
 export default function page() {
   return (
-    <div>
+    <div className="">
       <Header />
       <Hero />
-      <StateContent />
-      <Banners />
-      <LastPost />
+      <div className="relative">
+        <StateContent />
+        <Banners />
+        <LastPost />
+        <div className="absolute  top-24 lg:-right-1/2  overflow-hidden h-[1300px]   w-full  ">
+          <Image
+            src="/icone.png"
+            className="opacity-10"
+            alt="Logo"
+            fill
+            style={{ objectFit: "cover", objectPosition: "20% -10%" }}
+          />
+        </div>
+      </div>
       <GroupeSlider />
       <Footer />
     </div>
@@ -102,7 +113,7 @@ const Hero = () => {
 };
 const Banners = () => {
   return (
-    <div className="my-10 px-3 space-y-16">
+    <div className="my-10 px-3  space-y-16">
       <Reveal direction="right">
         <div className="container-wide shadow-[40px_40px_0_-20px_#0B273A]">
           <div className=" h-72 relative p-8">
@@ -211,59 +222,59 @@ const Footer = () => {
     <footer className="bg-[#071E2E] text-white bg-contain bg-center">
       <div className=" bg-no-repeat lg:bg-[url(/footer-fond.png)] container-wide space-y-14 py-10 md:py-14 ">
         <Reveal direction="up">
-        <div className="flex flex-col items-center lg:flex-row gap-10 lg:gap-0">
-          <div className="flex flex-col items-center lg:flex-row gap-8">
-            <div>
-              <Image
-                src="/logo-footer.png"
-                alt="Logo"
-                width={159}
-                height={50}
-                className=" w-auto h-auto"
-              />
+          <div className="flex flex-col items-center lg:flex-row gap-10 lg:gap-0">
+            <div className="flex flex-col items-center lg:flex-row gap-8">
+              <div>
+                <Image
+                  src="/logo-footer.png"
+                  alt="Logo"
+                  width={159}
+                  height={50}
+                  className=" w-auto h-auto"
+                />
+              </div>
+              <div className="space-y-4 flex flex-col items-center lg:items-start">
+                <div className="text-[16px] font-bold  leading-4 uppercase">
+                  siège social
+                </div>
+                <div className="text-[13px] font-light  leading-3.25">
+                  6 rue du général audran | 92400 Courbevoir
+                </div>
+                <div className="text-gold text-[13px] font-bold  leading-3.25">
+                  01 55 26 54 00
+                </div>
+              </div>
             </div>
+            <VerticalSeparator
+              className="mx-12 hidden lg:block"
+              color="#3e4e5a"
+            />
             <div className="space-y-4 flex flex-col items-center lg:items-start">
-              <div className="text-[16px] font-bold  leading-4 uppercase">
-                siège social
+              <div className="text-[14px] font-medium  leading-3.5">
+                Retrouvez nos actualités sur
               </div>
-              <div className="text-[13px] font-light  leading-3.25">
-                6 rue du général audran | 92400 Courbevoir
+              <div className="">
+                <Image
+                  src="/logos/linkedin.svg"
+                  alt="Logo"
+                  width={25}
+                  className="w-auto h-auto"
+                  height={25}
+                />
               </div>
-              <div className="text-gold text-[13px] font-bold  leading-3.25">
-                01 55 26 54 00
+            </div>
+            <VerticalSeparator
+              className="mx-12 hidden lg:block"
+              color="#3e4e5a"
+            />
+            <div className="space-y-4.5 flex flex-col items-center lg:items-start">
+              <div className="text-[18px] font-medium leading-6.75">
+                Vous avez une question ?
+              </div>
+              <div className="text-[11px] font-medium leading-4 uppercase  underline-offset-8 underline-black underline-gold">
+                CONTACTER-NOUS
               </div>
             </div>
-          </div>
-          <VerticalSeparator
-            className="mx-12 hidden lg:block"
-            color="#3e4e5a"
-          />
-          <div className="space-y-4 flex flex-col items-center lg:items-start">
-            <div className="text-[14px] font-medium  leading-3.5">
-              Retrouvez nos actualités sur
-            </div>
-            <div className="">
-              <Image
-                src="/logos/linkedin.svg"
-                alt="Logo"
-                width={25}
-                className="w-auto h-auto"
-                height={25}
-              />
-            </div>
-          </div>
-          <VerticalSeparator
-            className="mx-12 hidden lg:block"
-            color="#3e4e5a"
-          />
-          <div className="space-y-4.5 flex flex-col items-center lg:items-start">
-            <div className="text-[18px] font-medium leading-6.75">
-              Vous avez une question ?
-            </div>
-            <div className="text-[11px] font-medium leading-4 uppercase  underline-offset-8 underline-black underline-gold">
-              CONTACTER-NOUS
-            </div>
-          </div>
           </div>
         </Reveal>
         <div className="w-full text-[12px] font-light leading-4.5 flex flex-col  items-center  lg:flex-row lg:justify-between gap-10">
@@ -301,8 +312,8 @@ const StateContent = () => {
         <Reveal delay={0.15}>
           <div className="text-ink">
             <div className="font-medium leading-6">
-              La qualité de notre travail se définit par la constance, l’intégrité
-              et le respect de chaque famille que nous servons.
+              La qualité de notre travail se définit par la constance,
+              l’intégrité et le respect de chaque famille que nous servons.
             </div>
             <div className="font-medium leading-6">
               Nous savons que la confiance est essentielle dans les moments
@@ -317,46 +328,46 @@ const StateContent = () => {
         </Reveal>
         <Reveal delay={0.25}>
           <div className="flex flex-col lg:space-y-0  space-y-6 items-center lg:flex-row justify-between gap-x-5">
-          <div className="flex gap-x-5 justify-between items-center">
-            <Stat value="+30">
-              Agences <br /> en Cote d’Ivoire...
-            </Stat>
-            <Stat value="01">
-              Agence <br />à Paris{" "}
-            </Stat>
-            <Stat value="01">
-              Agence <br />à Brazzaville{" "}
-            </Stat>
-          </div>
+            <div className="flex gap-x-5 justify-between items-center">
+              <Stat value="+30">
+                Agences <br /> en Cote d’Ivoire...
+              </Stat>
+              <Stat value="01">
+                Agence <br />à Paris{" "}
+              </Stat>
+              <Stat value="01">
+                Agence <br />à Brazzaville{" "}
+              </Stat>
+            </div>
 
-          <VerticalSeparator
-            orientation="vertical"
-            className="hidden lg:block"
-            color="#642681"
-            dotted
-          />
-          <VerticalSeparator
-            orientation="horizontal"
-            stretch={false}
-            className="lg:hidden w-40"
-            color="#642681"
-            dotted
-          />
-          <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0   flex-1 justify-between items-center">
-            <Stat value="+40">Véhicules</Stat>
-            <Stat value="+100">
-              Organisations d’Obsèquesde <br />
-              de 2023 à Aujourd’hui
-            </Stat>
-            <Stat value="+100">
-              Rapatriements <br />
-              de corpsde 2023 à Aujourd’hui
-            </Stat>
-            <Stat value="+100">
-              Articles funéraires dans <br />
-              notre boutique en ligne
-            </Stat>
-          </div>
+            <VerticalSeparator
+              orientation="vertical"
+              className="hidden lg:block"
+              color="#642681"
+              dotted
+            />
+            <VerticalSeparator
+              orientation="horizontal"
+              stretch={false}
+              className="lg:hidden w-40"
+              color="#642681"
+              dotted
+            />
+            <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0   flex-1 justify-between items-center">
+              <Stat value="+40">Véhicules</Stat>
+              <Stat value="+100">
+                Organisations d’Obsèquesde <br />
+                de 2023 à Aujourd’hui
+              </Stat>
+              <Stat value="+100">
+                Rapatriements <br />
+                de corpsde 2023 à Aujourd’hui
+              </Stat>
+              <Stat value="+100">
+                Articles funéraires dans <br />
+                notre boutique en ligne
+              </Stat>
+            </div>
           </div>
         </Reveal>
       </div>

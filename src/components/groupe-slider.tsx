@@ -103,7 +103,7 @@ export default function GroupeSlider() {
           </Swiper>
         </div>
       </div>
-      <div className="absolute top-0 lg:-right-1/2  overflow-hidden h-full   w-full  ">
+      <div className="absolute top-0 lg:-right-1/2  overflow-hidden h-[1300px]  w-full  ">
         <Image
           src="/logo-funinfo-white.svg"
           alt="Logo"
