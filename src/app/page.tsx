@@ -90,13 +90,13 @@ const Hero = () => {
                 <div className="text-white flex">
                   {/* Contact me  */}
                   <a
-                    href="tel:9933"
-                    aria-label="Appeler le 9933, 24h/24 et 7j/7"
+                    href="tel:9930"
+                    aria-label="Appeler le 9930, 24h/24 et 7j/7"
                     className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]"
                   >
                     <div className="">
                       <div className="text-[32px] md:text-[42px] leading-10.5 pl-10">
-                        9933
+                        9930
                       </div>
                     </div>
                     <div>
@@ -198,8 +198,8 @@ const Banners = () => {
         <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
           <div className="min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-rapatriement-2.webp"
-              alt="Rapatriement de corps à l’international par Fune Info Africa"
+              src="/banner-vehicules.webp"
+              alt="Véhicule de la flotte Fune Info Africa"
               fill
               sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10 brightness-50"
@@ -208,11 +208,11 @@ const Banners = () => {
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
                 <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
-                  RAPATRIEMENT
+                  +40 véhicules
                 </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
-                  Perdre un proche à l’étranger est déjà douloureux... <br />
-                  ne laissez pas la logistique vous accabler.
+                  Une flotte à la hauteur de chaque cérémonie, <br />
+                  mobilisable depuis toutes nos agences.
                 </div>
               </div>
               <div className="text-end">
@@ -249,14 +249,18 @@ const Footer = () => {
               </div>
               <div className="space-y-4 flex flex-col items-center lg:items-start">
                 <div className="text-[16px] font-bold  leading-4 uppercase">
-                  siège social
+                  nous joindre
                 </div>
                 <div className="text-[13px] font-light  leading-3.25">
-                  6 rue du général audran | 92400 Courbevoie
+                  24h/24 et 7j/7, partout en Côte d’Ivoire
                 </div>
-                <div className="text-gold text-[13px] font-bold  leading-3.25">
-                  01 55 26 54 00
-                </div>
+                <a
+                  href="tel:9930"
+                  aria-label="Appeler le 9930, 24h/24 et 7j/7"
+                  className="text-gold text-[13px] font-bold  leading-3.25"
+                >
+                  9930
+                </a>
               </div>
             </div>
             <VerticalSeparator
@@ -292,7 +296,7 @@ const Footer = () => {
           </div>
         </Reveal>
         <div className="w-full text-[12px] font-light leading-4.5 flex flex-col  items-center  lg:flex-row lg:justify-between gap-10">
-          <div className="">© Copyright 2025 - Groupe OGF</div>
+          <div className="">© Copyright 2025 - Fune Info Africa</div>
           <div className="flex ">
             Mentions légales
             <Dot className="text-gold" />
