@@ -13,20 +13,25 @@ export default function page() {
     <div className="">
       <Header />
       <Hero />
-      <div className="relative">
+      <main className="relative">
         <StateContent />
         <Banners />
         <LastPost />
-        <div className="absolute  top-24 lg:-right-1/2  overflow-hidden h-[1300px]   w-full  ">
+        <div
+          className="absolute  top-24 lg:-right-1/2  overflow-hidden h-[1300px]   w-full  pointer-events-none"
+          aria-hidden="true"
+        >
           <Image
             src="/icone.png"
             className="opacity-10"
-            alt="Logo"
+            alt=""
+            aria-hidden="true"
             fill
+            sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "20% -10%" }}
           />
         </div>
-      </div>
+      </main>
       <GroupeSlider />
       <Footer />
     </div>
@@ -119,22 +124,23 @@ const Hero = () => {
 };
 const Banners = () => {
   return (
-    <div className="my-10 px-3  space-y-16">
+    <section className="my-10 px-3  space-y-16">
       <Reveal direction="right">
         <div className="container-wide shadow-[40px_40px_0_-20px_#0B273A]">
-          <div className=" h-72 relative p-8">
+          <div className=" min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-obseques.png"
-              alt="Logo"
+              src="/banner-obseques.webp"
+              alt="Cérémonie d’obsèques organisée avec dignité par Fune Info Africa"
               fill
+              sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10 brightness-75"
               style={{ objectPosition: "0% 12%", objectFit: "cover" }}
             />
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
-                <div className="text-white text-[30px] font-bold leading-7.5 uppercase">
-                  Organisation d'OBSEQUE
-                </div>
+                <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
+                  Organisation d’OBSEQUES
+                </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
                   organiser un dernier hommage <br /> Qui reflète la vie et les
                   valeurs <br />
@@ -156,19 +162,20 @@ const Banners = () => {
 
       <Reveal direction="left">
         <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
-          <div className="h-72 relative p-8">
+          <div className="min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-rapatriement.png"
-              alt="Logo"
+              src="/banner-rapatriement.webp"
+              alt="Rapatriement de corps à l’international par Fune Info Africa"
               fill
+              sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10"
               style={{ objectPosition: "center", objectFit: "cover" }}
             />
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
-                <div className="text-white text-[30px] font-bold leading-7.5 uppercase">
+                <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
                   RAPATRIEMENT
-                </div>
+                </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
                   Perdre un proche à l’étranger est déjà douloureux... <br />
                   ne laissez pas la logistique vous accabler.
@@ -189,19 +196,20 @@ const Banners = () => {
 
       <Reveal direction="none">
         <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
-          <div className="h-72 relative p-8">
+          <div className="min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-rapatriement-2.png"
-              alt="Logo"
+              src="/banner-rapatriement-2.webp"
+              alt="Rapatriement de corps à l’international par Fune Info Africa"
               fill
+              sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10 brightness-50"
               style={{ objectPosition: "center", objectFit: "cover" }}
             />
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
-                <div className="text-white text-[30px] font-bold leading-7.5 uppercase">
+                <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
                   RAPATRIEMENT
-                </div>
+                </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
                   Perdre un proche à l’étranger est déjà douloureux... <br />
                   ne laissez pas la logistique vous accabler.
@@ -219,7 +227,7 @@ const Banners = () => {
           </div>
         </div>
       </Reveal>
-    </div>
+    </section>
   );
 };
 
@@ -233,7 +241,7 @@ const Footer = () => {
               <div>
                 <Image
                   src="/logo-footer.png"
-                  alt="Logo"
+                  alt="Fune Info Africa"
                   width={159}
                   height={50}
                   className=" w-auto h-auto"
@@ -244,7 +252,7 @@ const Footer = () => {
                   siège social
                 </div>
                 <div className="text-[13px] font-light  leading-3.25">
-                  6 rue du général audran | 92400 Courbevoir
+                  6 rue du général audran | 92400 Courbevoie
                 </div>
                 <div className="text-gold text-[13px] font-bold  leading-3.25">
                   01 55 26 54 00
@@ -262,7 +270,7 @@ const Footer = () => {
               <div className="">
                 <Image
                   src="/logos/linkedin.svg"
-                  alt="Logo"
+                  alt="LinkedIn"
                   width={25}
                   className="w-auto h-auto"
                   height={25}
@@ -298,7 +306,7 @@ const Footer = () => {
 
 const StateContent = () => {
   return (
-    <div className="my-20 p-3">
+    <section className="my-20 p-3">
       <div className="container-wide space-y-4">
         <Reveal>
           <TitleSection
@@ -362,12 +370,12 @@ const StateContent = () => {
             <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0   flex-1 justify-between items-center">
               <Stat value="+40">Véhicules</Stat>
               <Stat value="+100">
-                Organisations d’Obsèquesde <br />
+                Organisations d’Obsèques <br />
                 de 2023 à Aujourd’hui
               </Stat>
               <Stat value="+100">
                 Rapatriements <br />
-                de corpsde 2023 à Aujourd’hui
+                de corps de 2023 à Aujourd’hui
               </Stat>
               <Stat value="+100">
                 Articles funéraires dans <br />
@@ -377,7 +385,7 @@ const StateContent = () => {
           </div>
         </Reveal>
       </div>
-    </div>
+    </section>
   );
 };
 
