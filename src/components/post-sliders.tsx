@@ -12,32 +12,35 @@ import Reveal from "./reveal";
 
 const groups = [
   {
-    cover: "/post/post-1.png",
+    cover: "/post/post-1.webp",
     keyword: "CONCEVOIR",
     name: "POFCI PFGA",
     description: "des réponses sur mesure pour tous",
-    title: " Rencontre FUN INFO - OGF",
+    title: "Rencontre FUNE INFO - OGF",
     date: "02/07/2026",
   },
   {
-    cover: "/post/post-2.png",
+    cover: "/post/post-2.webp",
     keyword: "engagé",
     name: "GLOBAL'YS",
-    description: "au service d'une mussion d'intérêt général",
+    description: "au service d'une mission d'intérêt général",
+    title: "Comment bien préparer un rapatriement de corps",
     date: "02/07/2026",
   },
   {
-    cover: "/post/post-3.png",
+    cover: "/post/post-3.webp",
     keyword: "donner",
     name: "KAcNI",
     description: "du sens et développer les talents",
+    title: "Nos agences s’engagent pour un accompagnement de proximité",
     date: "02/07/2026",
   },
   {
-    cover: "/post/post-4.png",
+    cover: "/post/post-4.webp",
     keyword: "donner",
     name: "KANI",
     description: "du sens et développer les talents",
+    title: "Cinq conseils pour organiser des obsèques sereinement",
     date: "02/07/2026",
   },
 ];
@@ -49,18 +52,18 @@ const LastPost = () => {
           <TitleSection
             defaultype={true}
             first={{
-              content: "FUNE INFO AFRICA, ",
+              content: "DERNIÈRES ",
               className:
                 "text-[#8A1E80] text-[25px] font-extrabold uppercase leading-7.5",
             }}
             last={{
-              content: "C’est un ensemble de filiales , des franchises",
+              content: "PUBLICATIONS SOCIAL MEDIA",
               className:
                 "text-[#C075AE] text-[25px] font-extrabold uppercase leading-7.5",
             }}
           />
         </Reveal>
-        <div className="px-16">
+        <div className="px-4 md:px-16">
           <Swiper
             modules={[FreeMode, Scrollbar]}
             slidesPerView="auto"
@@ -74,7 +77,6 @@ const LastPost = () => {
                 "--swiper-scrollbar-size": "6px",
               } as CSSProperties
             }
-            className="px-16 "
           >
             {groups.map((group) => (
               <SwiperSlide key={group.name} className="w-auto! pb-6 h-auto!">
@@ -82,7 +84,7 @@ const LastPost = () => {
                   <Image
                     src={group.cover}
                     className="object-cover"
-                    alt="Logo"
+                    alt={group.title}
                     width={300}
                     height={100}
                   />
@@ -95,11 +97,11 @@ const LastPost = () => {
                       5 min de lectures
                     </div>
                   </div>
-                  <div className="text-[14px] text-ink font-medium leading-5.25">
-                    Rencontre FUNE INFO - OGF
-                  </div>
+                  <h3 className="text-[14px] text-ink font-medium leading-5.25">
+                    {group.title}
+                  </h3>
                   <Link href={"#"} className=" p-3 uppercase text-[14px] text-[#0B273A] font-medium leading-5.25">
-                    Lire l'article
+                    Lire l’article
                   </Link>
                 </div>
               </SwiperSlide>
