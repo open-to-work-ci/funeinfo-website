@@ -22,13 +22,7 @@ const groups = [
     logo: "groupe-2.png",
     keyword: "engagé",
     name: "GLOBAL'YS",
-    description: "au service d'une mussion d'intérêt général",
-  },
-  {
-    logo: "groupe-3.png",
-    keyword: "donner",
-    name: "KAcNI",
-    description: "du sens et développer les talents",
+    description: "au service d'une mission d'intérêt général",
   },
   {
     logo: "groupe-3.png",
@@ -55,7 +49,7 @@ export default function GroupeSlider() {
             }}
           />
         </Reveal>
-        <div className="px-16">
+        <div className="px-4 md:px-16">
           <Swiper
             modules={[FreeMode, Scrollbar]}
             slidesPerView="auto"
@@ -69,15 +63,18 @@ export default function GroupeSlider() {
                 "--swiper-scrollbar-size": "6px",
               } as CSSProperties
             }
-            className="px-16 pb-10"
+            className="pb-10"
           >
             {groups.map((group) => (
-              <SwiperSlide key={group.name} className="w-100! pb-10 h-auto!">
+              <SwiperSlide
+                key={group.name}
+                className="w-[min(400px,80vw)]! pb-10 h-auto!"
+              >
                 <div className="space-y-6">
                   <Image
                     src={"/" + group.logo}
                     className="object-cover"
-                    alt="Logo"
+                    alt={group.name}
                     width={900}
                     height={600}
                   />
@@ -103,12 +100,16 @@ export default function GroupeSlider() {
           </Swiper>
         </div>
       </div>
-      <div className="absolute top-0 lg:-right-1/2  overflow-hidden h-[1300px]  w-full  ">
+      <div
+        className="absolute top-0 lg:-right-1/2  overflow-hidden h-[1300px]  w-full  pointer-events-none"
+        aria-hidden="true"
+      >
         <Image
           src="/logo-funinfo-white.svg"
-          alt="Logo"
-          className="w"
+          alt=""
+          aria-hidden="true"
           fill
+          sizes="100vw"
           style={{ objectFit: "cover", objectPosition: "20% 20%", }}
         />
       </div>
@@ -137,14 +138,14 @@ export const TitleSection = ({
   return (
     <div className={clsx(className, "flex gap-x-4 items-end mb-14 ")}>
       {defaultype ? (
-        <Image src="/logo-funinfo-pink.svg" alt="Logo" width={50} height={10} />
+        <Image src="/logo-funinfo-pink.svg" alt="" width={50} height={10} />
       ) : (
-        <Image src="/logo-funinfo-white.svg" alt="Logo" width={50} height={10} />
+        <Image src="/logo-funinfo-white.svg" alt="" width={50} height={10} />
       )}
-      <div className="">
+      <h2 className="">
         <span className={clsx(first.className)}>{first.content} </span>
         <span className={clsx(last.className)}>{last.content} </span>
-      </div>
+      </h2>
     </div>
   );
 };
