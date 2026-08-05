@@ -51,13 +51,13 @@ const Hero = () => {
           sizes="100vw"
           style={{ objectPosition: "0% 40%", objectFit: "cover" }}
         />
-        <div className="w-full relative z-40 h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-30 py-10 justify-between gap-10 lg:gap-0 ">
+        <div className="w-full relative z-40 h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-30 py-6 sm:py-10 justify-between gap-6 sm:gap-10 lg:gap-0 ">
           <div className="space-y-5">
             <Reveal delay={0.2}>
               <div>
                 <Image
                   src="/logo-funinfo.svg"
-                  alt="Logo"
+                  alt="Fune Info Africa"
                   width={280}
                   height={30}
                   className="w-[clamp(11rem,18vw,17.5rem)]"
@@ -69,9 +69,9 @@ const Hero = () => {
                 <div className="text-[clamp(1.5rem,1.36rem_+_0.67vw,1.6875rem)] font-medium leading-[87%]">
                   L’excellence funéraire au service de la dignité humaine.
                 </div>
-                <div className="text-[clamp(2.125rem,1.1rem_+_5.11vw,4.375rem)] leading-[105%] md:leading-[87%] font-bold">
+                <h1 className="text-[clamp(2.125rem,1.1rem_+_5.11vw,4.375rem)] leading-[105%] md:leading-[87%] font-bold">
                   un dernier hommage, <br className="hidden sm:block" /> un accompagnement sincère.
-                </div>
+                </h1>
               </div>
             </Reveal>
           </div>
