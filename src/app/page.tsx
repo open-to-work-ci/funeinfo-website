@@ -35,13 +35,15 @@ export default function page() {
 
 const Hero = () => {
   return (
-    <div className=" mb-20">
-      <div className="relative min-h-150 md:h-225 w-full">
+    <div>
+      <div className="relative h-[clamp(30rem,calc(100svh_-_var(--spacing-header)),56.25rem)] w-full">
         <Image
           src="/hero.jpg"
-          alt="Logo"
+          alt="Cérémonie d'obsèques organisée par Fune Info Africa"
           className="z-10"
           fill
+          preload
+          sizes="100vw"
           style={{ objectPosition: "0% 40%", objectFit: "cover" }}
         />
         <div className="w-full relative z-40 h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-30 py-10 justify-between gap-10 lg:gap-0 ">
@@ -53,17 +55,17 @@ const Hero = () => {
                   alt="Logo"
                   width={280}
                   height={30}
-                  className="w-52 md:w-auto"
+                  className="w-[clamp(11rem,18vw,17.5rem)]"
                 />
               </div>
             </Reveal>
             <Reveal delay={0.35}>
-              <div className="tracking-[5%] font-inter text-white">
-                <div className="text-[24px] md:text-[27px] font-medium leading-[87%]">
+              <div className="tracking-[0.05em] font-inter text-white">
+                <div className="text-[clamp(1.5rem,1.36rem_+_0.67vw,1.6875rem)] font-medium leading-[87%]">
                   L’excellence funéraire au service de la dignité humaine.
                 </div>
-                <div className="text-[34px] sm:text-[46px] lg:text-[70px] leading-[105%] md:leading-[87%] font-bold">
-                  un dernier hommage, <br /> un accompagnement sincère.
+                <div className="text-[clamp(2.125rem,1.1rem_+_5.11vw,4.375rem)] leading-[105%] md:leading-[87%] font-bold">
+                  un dernier hommage, <br className="hidden sm:block" /> un accompagnement sincère.
                 </div>
               </div>
             </Reveal>
@@ -82,7 +84,11 @@ const Hero = () => {
                 </div>
                 <div className="text-white flex">
                   {/* Contact me  */}
-                  <div className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]">
+                  <a
+                    href="tel:9933"
+                    aria-label="Appeler le 9933, 24h/24 et 7j/7"
+                    className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]"
+                  >
                     <div className="">
                       <div className="text-[32px] md:text-[42px] leading-10.5 pl-10">
                         9933
@@ -100,13 +106,13 @@ const Hero = () => {
                         <Phone fill="currentColor" strokeWidth={0} />
                       </span>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </Reveal>
           </div>
         </div>
-        <div className="z-20  absolute top-0 h-full justify-between w-full shadow-[inset_0_300px_300px_-40px_rgba(0,0,0,0.5)]"></div>
+        <div className="z-20 pointer-events-none absolute top-0 h-full w-full shadow-[inset_0_300px_300px_-40px_rgba(0,0,0,0.5)]"></div>
       </div>
     </div>
   );

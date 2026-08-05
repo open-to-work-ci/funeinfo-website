@@ -25,7 +25,7 @@ export default function Header() {
       className="sticky top-0 z-50 bg-brand text-white shadow-lg"
     >
       <div className="container-wide">
-        <div className="flex items-center justify-between p-3">
+        <div className="flex h-header items-center justify-between px-3">
           <Link
             href="/"
             className="lg:hidden font-sans text-lg font-semibold"
@@ -34,9 +34,9 @@ export default function Header() {
             <Image
               src="/logo-header.svg"
               alt="Logo"
-              width={25}
-              className="w-auto h-auto"
-              height={25}
+              width={87}
+              height={53}
+              className="h-[53px] w-auto"
             />
           </Link>
           <nav className="flex-1 hidden lg:block font-inter text-[19px] leading-5">
@@ -46,9 +46,9 @@ export default function Header() {
                   <Image
                     src="/logo-header.svg"
                     alt="Logo"
-                    width={25}
-                    className="w-auto h-auto"
-                    height={25}
+                    width={87}
+                    height={53}
+                    className="h-[53px] w-auto"
                   />
                 </Link>
               </li>
