@@ -39,7 +39,7 @@ export default function Header() {
               height={25}
             />
           </Link>
-          <nav className="flex-1 hidden lg:block font-inter text-[19px] leading-5">
+          <nav className="flex-1 hidden lg:block font-inter text-[17  px] leading-5">
             <ul className="flex justify-center gap-8 xl:gap-10 items-center">
               <li>
                 <Link href="/" className="font-sans text-lg font-semibold">
