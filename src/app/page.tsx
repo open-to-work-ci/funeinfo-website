@@ -13,20 +13,25 @@ export default function page() {
     <div className="">
       <Header />
       <Hero />
-      <div className="relative">
+      <main className="relative">
         <StateContent />
         <Banners />
         <LastPost />
-        <div className="absolute  top-24 lg:-right-1/2  overflow-hidden h-[1300px]   w-full  ">
+        <div
+          className="absolute  top-24 lg:-right-1/2  overflow-hidden h-[1300px]   w-full  pointer-events-none"
+          aria-hidden="true"
+        >
           <Image
             src="/icone.png"
             className="opacity-10"
-            alt="Logo"
+            alt=""
+            aria-hidden="true"
             fill
+            sizes="100vw"
             style={{ objectFit: "cover", objectPosition: "20% -10%" }}
           />
         </div>
-      </div>
+      </main>
       <GroupeSlider />
       <Footer />
     </div>
@@ -35,36 +40,38 @@ export default function page() {
 
 const Hero = () => {
   return (
-    <div className=" mb-20">
-      <div className="relative min-h-150 md:h-225 w-full">
+    <div>
+      <div className="relative h-[clamp(30rem,calc(100svh_-_var(--spacing-header)),56.25rem)] w-full">
         <Image
           src="/hero.jpg"
-          alt="Logo"
+          alt="Cérémonie d'obsèques organisée par Fune Info Africa"
           className="z-10"
           fill
+          preload
+          sizes="100vw"
           style={{ objectPosition: "0% 40%", objectFit: "cover" }}
         />
-        <div className="w-full relative z-40 h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-30 py-10 justify-between gap-10 lg:gap-0 ">
+        <div className="w-full relative z-40 h-full flex flex-col px-5 sm:px-8 md:px-12 lg:px-30 py-6 sm:py-10 justify-between gap-6 sm:gap-10 lg:gap-0 ">
           <div className="space-y-5">
             <Reveal delay={0.2}>
               <div>
                 <Image
                   src="/logo-funinfo.svg"
-                  alt="Logo"
+                  alt="Fune Info Africa"
                   width={280}
                   height={30}
-                  className="w-52 md:w-auto"
+                  className="w-[clamp(11rem,18vw,17.5rem)]"
                 />
               </div>
             </Reveal>
             <Reveal delay={0.35}>
-              <div className="tracking-[5%] font-inter text-white">
-                <div className="text-[24px] md:text-[27px] font-medium leading-[87%]">
+              <div className="tracking-[0.05em] font-inter text-white">
+                <div className="text-[clamp(1.5rem,1.36rem_+_0.67vw,1.6875rem)] font-medium leading-[87%]">
                   L’excellence funéraire au service de la dignité humaine.
                 </div>
-                <div className="text-[34px] sm:text-[46px] lg:text-[70px] leading-[105%] md:leading-[87%] font-bold">
-                  un dernier hommage, <br /> un accompagnement sincère.
-                </div>
+                <h1 className="text-[clamp(2.125rem,1.1rem_+_5.11vw,4.375rem)] leading-[105%] md:leading-[87%] font-bold">
+                  un dernier hommage, <br className="hidden sm:block" /> un accompagnement sincère.
+                </h1>
               </div>
             </Reveal>
           </div>
@@ -82,10 +89,14 @@ const Hero = () => {
                 </div>
                 <div className="text-white flex">
                   {/* Contact me  */}
-                  <div className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]">
+                  <a
+                    href="tel:9930"
+                    aria-label="Appeler le 9930, 24h/24 et 7j/7"
+                    className="flex font-bold relative p-1.5 gap-3 rounded-xl bg-[#652681] shadow-[inset_0_0_0_1px_#ffffff1a]"
+                  >
                     <div className="">
                       <div className="text-[32px] md:text-[42px] leading-10.5 pl-10">
-                        9933
+                        9930
                       </div>
                     </div>
                     <div>
@@ -100,35 +111,36 @@ const Hero = () => {
                         <Phone fill="currentColor" strokeWidth={0} />
                       </span>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </Reveal>
           </div>
         </div>
-        <div className="z-20  absolute top-0 h-full justify-between w-full shadow-[inset_0_300px_300px_-40px_rgba(0,0,0,0.5)]"></div>
+        <div className="z-20 pointer-events-none absolute top-0 h-full w-full shadow-[inset_0_300px_300px_-40px_rgba(0,0,0,0.5)]"></div>
       </div>
     </div>
   );
 };
 const Banners = () => {
   return (
-    <div className="my-10 px-3  space-y-16">
+    <section className="my-10 px-3  space-y-16">
       <Reveal direction="right">
         <div className="container-wide shadow-[40px_40px_0_-20px_#0B273A]">
-          <div className=" h-72 relative p-8">
+          <div className=" min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-obseques.png"
-              alt="Logo"
+              src="/banner-obseques.webp"
+              alt="Cérémonie d’obsèques organisée avec dignité par Fune Info Africa"
               fill
+              sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10 brightness-75"
               style={{ objectPosition: "0% 12%", objectFit: "cover" }}
             />
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
-                <div className="text-white text-[30px] font-bold leading-7.5 uppercase">
-                  Organisation d'OBSEQUE
-                </div>
+                <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
+                  Organisation d’OBSEQUES
+                </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
                   organiser un dernier hommage <br /> Qui reflète la vie et les
                   valeurs <br />
@@ -150,19 +162,20 @@ const Banners = () => {
 
       <Reveal direction="left">
         <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
-          <div className="h-72 relative p-8">
+          <div className="min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-rapatriement.png"
-              alt="Logo"
+              src="/banner-rapatriement.webp"
+              alt="Rapatriement de corps à l’international par Fune Info Africa"
               fill
+              sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10"
               style={{ objectPosition: "center", objectFit: "cover" }}
             />
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
-                <div className="text-white text-[30px] font-bold leading-7.5 uppercase">
+                <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
                   RAPATRIEMENT
-                </div>
+                </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
                   Perdre un proche à l’étranger est déjà douloureux... <br />
                   ne laissez pas la logistique vous accabler.
@@ -183,22 +196,23 @@ const Banners = () => {
 
       <Reveal direction="none">
         <div className="container-wide shadow-[-40px_40px_0_-20px_#0B273A]">
-          <div className="h-72 relative p-8">
+          <div className="min-h-72 relative p-5 md:p-8">
             <Image
-              src="/banner-rapatriement-2.png"
-              alt="Logo"
+              src="/banner-vehicules.webp"
+              alt="Véhicule de la flotte Fune Info Africa"
               fill
+              sizes="(max-width: 1300px) 100vw, 1300px"
               className="z-10 brightness-50"
               style={{ objectPosition: "center", objectFit: "cover" }}
             />
             <div className="z-20 relative flex w-full h-full justify-between flex-col">
               <div className="">
-                <div className="text-white text-[30px] font-bold leading-7.5 uppercase">
-                  RAPATRIEMENT
-                </div>
+                <h2 className="text-white text-[30px] font-bold leading-7.5 uppercase">
+                  +40 véhicules
+                </h2>
                 <div className="text-white text-[20px] font-normal leading-6 uppercase">
-                  Perdre un proche à l’étranger est déjà douloureux... <br />
-                  ne laissez pas la logistique vous accabler.
+                  Une flotte à la hauteur de chaque cérémonie, <br />
+                  mobilisable depuis toutes nos agences.
                 </div>
               </div>
               <div className="text-end">
@@ -213,7 +227,7 @@ const Banners = () => {
           </div>
         </div>
       </Reveal>
-    </div>
+    </section>
   );
 };
 
@@ -227,7 +241,7 @@ const Footer = () => {
               <div>
                 <Image
                   src="/logo-footer.png"
-                  alt="Logo"
+                  alt="Fune Info Africa"
                   width={159}
                   height={50}
                   className=" w-auto h-auto"
@@ -235,14 +249,18 @@ const Footer = () => {
               </div>
               <div className="space-y-4 flex flex-col items-center lg:items-start">
                 <div className="text-[16px] font-bold  leading-4 uppercase">
-                  siège social
+                  nous joindre
                 </div>
                 <div className="text-[13px] font-light  leading-3.25">
-                  6 rue du général audran | 92400 Courbevoir
+                  24h/24 et 7j/7, partout en Côte d’Ivoire
                 </div>
-                <div className="text-gold text-[13px] font-bold  leading-3.25">
-                  01 55 26 54 00
-                </div>
+                <a
+                  href="tel:9930"
+                  aria-label="Appeler le 9930, 24h/24 et 7j/7"
+                  className="text-gold text-[13px] font-bold  leading-3.25"
+                >
+                  9930
+                </a>
               </div>
             </div>
             <VerticalSeparator
@@ -256,7 +274,7 @@ const Footer = () => {
               <div className="">
                 <Image
                   src="/logos/linkedin.svg"
-                  alt="Logo"
+                  alt="LinkedIn"
                   width={25}
                   className="w-auto h-auto"
                   height={25}
@@ -278,7 +296,7 @@ const Footer = () => {
           </div>
         </Reveal>
         <div className="w-full text-[12px] font-light leading-4.5 flex flex-col  items-center  lg:flex-row lg:justify-between gap-10">
-          <div className="">© Copyright 2025 - Groupe OGF</div>
+          <div className="">© Copyright 2025 - Fune Info Africa</div>
           <div className="flex ">
             Mentions légales
             <Dot className="text-gold" />
@@ -292,7 +310,7 @@ const Footer = () => {
 
 const StateContent = () => {
   return (
-    <div className="my-20 p-3">
+    <section className="my-20 p-3">
       <div className="container-wide space-y-4">
         <Reveal>
           <TitleSection
@@ -356,12 +374,12 @@ const StateContent = () => {
             <div className="flex flex-col lg:flex-row space-y-5 lg:space-y-0   flex-1 justify-between items-center">
               <Stat value="+40">Véhicules</Stat>
               <Stat value="+100">
-                Organisations d’Obsèquesde <br />
+                Organisations d’Obsèques <br />
                 de 2023 à Aujourd’hui
               </Stat>
               <Stat value="+100">
                 Rapatriements <br />
-                de corpsde 2023 à Aujourd’hui
+                de corps de 2023 à Aujourd’hui
               </Stat>
               <Stat value="+100">
                 Articles funéraires dans <br />
@@ -371,7 +389,7 @@ const StateContent = () => {
           </div>
         </Reveal>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -6,7 +6,8 @@
   --color-brand: #BB2282;
   --color-gold: #bd9d7b;
   --color-ink: #706b69;
-  --default-text-color: #706b69;
+  /* Hauteur du header sticky : px-3 (12px x 2) + logo 53px */
+  --spacing-header: 4.8125rem; /* 77px */
 }
 
 @theme inline {
@@ -16,7 +17,7 @@
 @utility container-wide {
   max-width: 1300px;
   margin-inline: auto;
-  /* padding : 0 20px;  */
+  padding-inline: 1.25rem;
 }
 
 @utility underline-gold {
