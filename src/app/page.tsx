@@ -240,9 +240,9 @@ const Footer = () => {
             <div className="flex flex-col items-center lg:flex-row gap-8">
               <div>
                 <Image
-                  src="/logo-footer.png"
+                  src="/logo-header.svg"
                   alt="Fune Info Africa"
-                  width={159}
+                  width={9180}
                   height={50}
                   className=" w-auto h-auto"
                 />
