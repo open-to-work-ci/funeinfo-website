@@ -146,8 +146,8 @@ export default function Header() {
           </button>
         </div>
         {open && (
-          <nav className="lg:hidden pb-5 font-inter text-[17px] leading-5">
-            <ul className="flex flex-col gap-4">
+          <nav className="lg:hidden px-3 pt-6 pb-8 font-inter text-[17px] leading-5">
+            <ul className="flex flex-col gap-5">
               {navItems.map((item) => (
                 <li key={item.label}>
                   <a
