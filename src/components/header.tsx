@@ -9,6 +9,7 @@ import { useState } from "react";
 const navItems = [
   {
     label: "Notre groupe",
+    heading: "À propos de Fune Info Africa",
     subtitle: "Notre mission d’opérateur de services funéraires :",
     content:
       "apporter des réponses personnalisées et un service exemplaire à nos clients et à nos partenaires.",
@@ -21,16 +22,18 @@ const navItems = [
   },
   {
     label: "Nos expertises",
-    subtitle: "Une expertise reconnue en Côte d’Ivoire :",
+    heading: "Nos expertises",
+    subtitle: "Acteur référent des services funéraires,",
     content:
-      "une flotte, des agences et des équipes mobilisables partout pour organiser un dernier hommage à la hauteur de chaque famille.",
+      "Fune Info Africa mobilise ses agences, sa flotte et ses équipes partout en Côte d’Ivoire pour organiser un dernier hommage à la hauteur de chaque famille.",
     links: ["Organisation d’obsèques", "Rapatriement de corps"],
   },
   {
     label: "Carrières",
-    subtitle: "Rejoignez nos équipes :",
+    heading: "Rejoindre Fune Info Africa",
+    subtitle: "C’est choisir d’exercer un métier qui a du sens.",
     content:
-      "une équipe engagée au service de la dignité humaine, partout où Fune Info Africa est présente.",
+      "Rejoignez une équipe engagée au service de la dignité humaine, partout où Fune Info Africa est présente.",
     links: ["Nos métiers", "Offres d’emploi", "Candidature spontanée"],
   },
 ];
@@ -108,7 +111,7 @@ export default function Header() {
                               className="absolute left-0 top-0"
                             />
                             <p className="pt-4 mb-[0.4rem] text-[18px] font-bold uppercase leading-[27px] text-[#0B273A]">
-                              {item.label}
+                              {item.heading}
                             </p>
                             <p className="text-[16px] font-medium text-gold">
                               {item.subtitle}
