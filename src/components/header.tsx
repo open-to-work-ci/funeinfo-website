@@ -24,12 +24,7 @@ const navItems = [
     subtitle: "Une expertise reconnue en Côte d’Ivoire :",
     content:
       "une flotte, des agences et des équipes mobilisables partout pour organiser un dernier hommage à la hauteur de chaque famille.",
-    links: [
-      "Organisation d’obsèques",
-      "Rapatriement de corps",
-      "Marbrerie & articles funéraires",
-      "Contrats obsèques",
-    ],
+    links: ["Organisation d’obsèques", "Rapatriement de corps"],
   },
   {
     label: "Carrières",
