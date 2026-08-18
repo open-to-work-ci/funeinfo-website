@@ -116,11 +116,11 @@ export default function Header() {
                             </p>
                           </div>
                           <div className="col-span-2 grid grid-cols-2 gap-x-10">
-                            <ul>
-                              <li className="mb-2">
+                            <ul className="pt-5">
+                              <li>
                                 <a
                                   href="#"
-                                  className="block text-base font-bold uppercase text-[#0B273A] transition-colors duration-150 hover:text-gold"
+                                  className="block py-2 text-base font-bold uppercase text-[#0B273A] transition-colors duration-150 hover:text-gold"
                                 >
                                   {item.label}
                                 </a>
