@@ -46,11 +46,7 @@ export default function Header() {
     >
       <div className="container-wide">
         <div className="flex h-header items-center justify-between px-3">
-          <Link
-            href="/"
-            className="lg:hidden font-sans text-lg font-semibold"
-            aria-label="Accueil"
-          >
+          <Link href="/" aria-label="Accueil">
             <Image
               src="/logo-header.svg"
               alt="Logo"
@@ -59,19 +55,8 @@ export default function Header() {
               className="h-[53px] w-auto"
             />
           </Link>
-          <nav className="flex-1 hidden lg:block h-header font-inter text-[17  px] leading-5">
-            <ul className="flex h-full justify-center gap-8 xl:gap-10 items-stretch">
-              <li className="flex items-center">
-                <Link href="/" className="font-sans text-lg font-semibold">
-                  <Image
-                    src="/logo-header.svg"
-                    alt="Logo"
-                    width={87}
-                    height={53}
-                    className="h-[53px] w-auto"
-                  />
-                </Link>
-              </li>
+          <nav className="hidden lg:block flex-1 ml-8 h-header font-inter text-[17  px] leading-5">
+            <ul className="flex h-full gap-8 xl:gap-10 items-stretch">
               {navItems.map((item, index) => (
                 <li
                   key={item.label}
