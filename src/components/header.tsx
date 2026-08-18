@@ -13,12 +13,7 @@ const navItems = [
     subtitle: "Notre mission d’opérateur de services funéraires :",
     content:
       "apporter des réponses personnalisées et un service exemplaire à nos clients et à nos partenaires.",
-    links: [
-      "Qui sommes-nous",
-      "Nos agences",
-      "Notre histoire",
-      "Notre gouvernance",
-    ],
+    links: ["Missions", "Filiales", "Équipes", "Engagements"],
   },
   {
     label: "Nos expertises",
