@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -36,6 +36,13 @@ const navItems = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  // Rubrique dans laquelle on est descendu sur mobile (null = liste principale)
+  const [mobileIndex, setMobileIndex] = useState<number | null>(null);
+
+  const toggleMenu = () => {
+    setOpen((v) => !v);
+    setMobileIndex(null);
+  };
 
   return (
     <motion.header
@@ -138,7 +145,7 @@ export default function Header() {
           </nav>
           <button
             className="lg:hidden"
-            onClick={() => setOpen((v) => !v)}
+            onClick={toggleMenu}
             aria-label="Menu"
             aria-expanded={open}
           >
@@ -147,21 +154,97 @@ export default function Header() {
         </div>
         {open && (
           <nav className="lg:hidden px-3 pt-6 pb-8 font-inter text-[17px] leading-5">
-            <ul className="flex flex-col gap-5">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <a
-                    href="#"
-                    className="uppercase transition-colors duration-150 hover:text-gold"
+            <ul className="flex flex-col">
+              {navItems.map((item, index) => (
+                <li
+                  key={item.label}
+                  className={index > 0 ? "border-t border-white/25" : ""}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setMobileIndex(index)}
+                    aria-expanded={mobileIndex === index}
+                    className="flex w-full items-center justify-between py-4 text-left uppercase transition-colors duration-150 hover:text-gold"
                   >
                     {item.label}
-                  </a>
+                    <ChevronRight className="size-5 shrink-0" />
+                  </button>
                 </li>
               ))}
             </ul>
           </nav>
         )}
       </div>
+
+      <AnimatePresence>
+        {open && mobileIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "linear" }}
+            className="lg:hidden absolute left-0 top-header w-full h-[calc(100vh-var(--spacing-header))] overflow-y-auto bg-white text-ink"
+          >
+            <button
+              type="button"
+              onClick={() => setMobileIndex(null)}
+              className="flex w-full items-stretch border-b border-[#e1dddd] text-[11px] font-medium uppercase text-[#0B273A]"
+            >
+              <span className="flex w-12 shrink-0 items-center pl-4">
+                <ChevronLeft className="size-4" />
+              </span>
+              <span className="flex flex-1 items-center border-l border-[#e1dddd] py-4 pl-4">
+                Retour
+              </span>
+            </button>
+
+            <div className="px-4 pb-12">
+              <div className="relative pl-[43px] pt-6">
+                <Image
+                  src="/logo-funinfo-pink.svg"
+                  alt=""
+                  width={35}
+                  height={35}
+                  aria-hidden="true"
+                  className="absolute left-0 top-6"
+                />
+                <p className="pt-4 mb-[0.4rem] text-[18px] font-bold uppercase leading-[27px] text-[#0B273A]">
+                  {navItems[mobileIndex].heading}
+                </p>
+                <p className="text-[16px] font-medium text-gold">
+                  {navItems[mobileIndex].subtitle}
+                </p>
+                <p className="text-[13px] leading-5 text-ink">
+                  {navItems[mobileIndex].content}
+                </p>
+              </div>
+
+              <ul className="mt-8">
+                <li>
+                  <a
+                    href="#"
+                    className="flex items-center justify-between border-b border-[#c8ced3] py-4 text-sm font-bold uppercase text-[#0B273A]"
+                  >
+                    {navItems[mobileIndex].label}
+                    <ChevronRight className="size-4 shrink-0 text-gold" />
+                  </a>
+                </li>
+                {navItems[mobileIndex].links.map((link) => (
+                  <li key={link}>
+                    <a
+                      href="#"
+                      className="flex items-center justify-between border-b border-[#c8ced3] py-4 text-sm text-[#0B273A]"
+                    >
+                      {link}
+                      <ChevronRight className="size-4 shrink-0 text-gold" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }
