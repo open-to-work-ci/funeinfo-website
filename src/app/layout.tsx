@@ -3,7 +3,7 @@ import { Inter, Montserrat, Poppins } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import JsonLd from "@/components/json-ld";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL, THEME_COLOR } from "@/lib/site";
+import { IS_INDEXABLE, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL, THEME_COLOR } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} — ${SITE_TAGLINE}`,
     description: SITE_DESCRIPTION,
   },
-  robots: { index: true, follow: true },
+  robots: IS_INDEXABLE ? { index: true, follow: true } : { index: false, follow: false },
   formatDetection: { telephone: false, email: false, address: false },
 };
 

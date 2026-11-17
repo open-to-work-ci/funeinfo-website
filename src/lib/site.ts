@@ -16,3 +16,9 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://fune.info"
 
 /** Couleur de marque (barre d'adresse mobile, manifeste). */
 export const THEME_COLOR = "#bb2282";
+
+/**
+ * Déploiement non-production (aperçus Vercel : `VERCEL_ENV` = preview/development) :
+ * le site est alors entièrement non indexable (robots.txt + balise robots).
+ */
+export const IS_INDEXABLE = !process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production";

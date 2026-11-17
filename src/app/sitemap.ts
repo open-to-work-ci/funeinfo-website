@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { jobs } from "@/content/jobs";
-import { SITE_URL } from "@/lib/site";
+import { IS_INDEXABLE, SITE_URL } from "@/lib/site";
 
 /** Pages statiques + une entrée par offre d'emploi (`src/content/jobs.ts`). */
 export default function sitemap(): MetadataRoute.Sitemap {
+  if (!IS_INDEXABLE) return [];
   const lastModified = new Date();
   const pages = [
     { path: "/", priority: 1 },

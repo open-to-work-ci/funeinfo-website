@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { SITE_URL } from "@/lib/site";
+import { IS_INDEXABLE, SITE_URL } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
+    // Aperçus Vercel : tout interdire, pas de sitemap.
+    rules: IS_INDEXABLE ? { userAgent: "*", allow: "/" } : { userAgent: "*", disallow: "/" },
+    ...(IS_INDEXABLE && { sitemap: `${SITE_URL}/sitemap.xml`, host: SITE_URL }),
   };
 }

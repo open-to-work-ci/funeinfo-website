@@ -17,9 +17,9 @@ export default function JsonLd() {
   const sameAs = SOCIAL_LINKS.map((s) => s.href).filter((href) => new URL(href).pathname.length > 1);
   const hq = countries[0];
 
-  const data = {
-    "@context": "https://schema.org",
+  const organization = {
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
     description: SITE_DESCRIPTION,
     url: SITE_URL,
@@ -42,6 +42,14 @@ export default function JsonLd() {
       email: c.email,
       telephone: c.phones.map(toTel),
     })),
+  };
+
+  const data = {
+    "@context": "https://schema.org",
+    "@graph": [
+      organization,
+      { "@type": "WebSite", "@id": `${SITE_URL}/#website`, name: SITE_NAME, url: SITE_URL, inLanguage: "fr", publisher: { "@id": `${SITE_URL}/#organization` } },
+    ],
   };
 
   return (
