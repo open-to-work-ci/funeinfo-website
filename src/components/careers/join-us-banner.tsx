@@ -26,7 +26,7 @@ export default function JoinUsBanner() {
           Rejoignez-nous
         </h2>
         <p className="font-sans text-body font-medium">Offres d’emplois</p>
-        <Button href={mailtoHr("Candidature spontanée")} variant="white" className="mt-fi-16 normal-case">
+        <Button href={mailtoHr("Candidature spontanée")} variant="white" className="mt-fi-16 !normal-case">
           {HR_EMAIL}
         </Button>
       </div>
