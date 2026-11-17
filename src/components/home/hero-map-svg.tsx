@@ -1,4 +1,4 @@
-import { MAP_LABELS, WORLD_VIEWBOX } from "@/content/world-map";
+import { HERO_VIEWBOX, MAP_LABELS, WORLD_VIEWBOX } from "@/content/world-map";
 import MapCountries from "./map-countries";
 
 /** Noms de pays petits (serrés sur l'Europe et l'Asie) : taille réduite. */
@@ -9,14 +9,15 @@ const labelSize = (text: string) => (text === "Russie" ? 21 : smallLabels.has(te
 
 /**
  * Carte du monde du hero en SVG intégré : chaque pays est un tracé indépendant
- * (voir `MapCountries` et `world-map-styles.ts`). Composant serveur, rendu dans le
- * hero via `HeroMap`.
+ * (voir `MapCountries` et `world-map-styles.ts`). Le hero montre une fenêtre de la carte
+ * (`HERO_VIEWBOX`, jusqu'à 76° N) ; la carte complète va jusqu'à 84° N. Composant serveur,
+ * rendu dans le hero via `HeroMap`.
  */
 export default function HeroMapSvg() {
-  const { width, height } = WORLD_VIEWBOX;
+  const { width } = WORLD_VIEWBOX;
   return (
     <svg
-      viewBox={`0 0 ${width} ${height}`}
+      viewBox={`0 ${HERO_VIEWBOX.y} ${width} ${HERO_VIEWBOX.height}`}
       className="block size-full overflow-visible"
       aria-hidden="true"
       focusable="false"
@@ -26,7 +27,14 @@ export default function HeroMapSvg() {
       </g>
       <g className="fill-map-hero-label font-arial font-bold">
         {MAP_LABELS.map((l) => (
-          <text key={l.text} x={l.x} y={l.y} textAnchor={l.anchor} fontSize={labelSize(l.text)}>
+          <text
+            key={l.text}
+            x={l.x}
+            // « Russie » : dans la fenêtre du hero (le libellé de la carte complète est au-dessus)
+            y={l.text === "Russie" ? HERO_VIEWBOX.y + 16 : l.y}
+            textAnchor={l.anchor}
+            fontSize={labelSize(l.text)}
+          >
             {l.text === "Russie" ? "RUSSIE" : l.text}
           </text>
         ))}
