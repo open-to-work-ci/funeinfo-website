@@ -20,8 +20,14 @@ export const MAP_BASE_STYLES: Record<MapVariant, { land: string; network: string
   light: { land: "fill-map-land", network: "fill-brand" },
 };
 
-/** Surcharges par pays, clé = `id` du pays (chaîne, ex. "250"). Vide par défaut. */
+/** Pays de la base du réseau (Côte d'Ivoire) : bordure plus épaisse sur la carte (maquette). */
+export const BASE_COUNTRY_ID = "384";
+
+/** Surcharges par pays, clé = `id` du pays (chaîne, ex. "250"). */
 export const COUNTRY_STYLES: Record<MapVariant, Record<string, string>> = {
   hero: {},
-  light: {},
+  light: {
+    // Côte d'Ivoire : même fond que le réseau, bordure blanche épaisse (dessinée par-dessus ses voisins)
+    [BASE_COUNTRY_ID]: "fill-brand stroke-surface [stroke-width:1.5] [stroke-linejoin:round]",
+  },
 };

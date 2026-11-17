@@ -1,4 +1,10 @@
-import { MAP_LABELS, MAP_MARKERS, NETWORK_COUNTRIES, WORLD_VIEWBOX } from "@/content/world-map";
+import {
+  COUNTRY_LABELS,
+  MAP_LABELS,
+  MAP_MARKERS,
+  NETWORK_COUNTRIES,
+  WORLD_VIEWBOX,
+} from "@/content/world-map";
 import { Parallax } from "../ui/motion";
 import MapCountries from "./map-countries";
 
@@ -24,6 +30,30 @@ export default function WorldMap() {
         >
           <g className="stroke-surface" strokeWidth={0.4}>
             <MapCountries variant="light" />
+          </g>
+          {/* Noms des pays d'Afrique écrits dans les pays (maquette) ; trop petits sous 1280 px. */}
+          <g className="pointer-events-none hidden font-inter font-semibold xl:block" aria-hidden="true">
+            {COUNTRY_LABELS.map((l) => {
+              const lines = l.id === "178" ? ["Congo", "Brazzaville"] : [l.text];
+              return (
+                <text
+                  key={l.id}
+                  x={l.x}
+                  y={l.y - ((lines.length - 1) * l.size * 0.6) / 2}
+                  textAnchor="middle"
+                  dominantBaseline="central"
+                  fontSize={l.size}
+                  letterSpacing={l.id === "384" ? 0.15 : 0}
+                  className={l.outside ? "fill-brand" : "fill-surface/90"}
+                >
+                  {lines.map((t, i) => (
+                    <tspan key={t} x={l.x} dy={i === 0 ? 0 : l.size * 1.2}>
+                      {t}
+                    </tspan>
+                  ))}
+                </text>
+              );
+            })}
           </g>
           <g className="fill-brand">
             {MAP_MARKERS.map((m) => (
