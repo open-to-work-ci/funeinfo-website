@@ -27,9 +27,9 @@ export const navItems: NavItem[] = [
       body: " vise l’innovation en continu,\nà apporter des prestations de qualité ainsi\nque des solutions adaptées aux besoins des familles",
       linksTitle: "NOTRE GROUPE",
       links: [
-        { label: "Qui sommes nous ?", href: "/groupe" },
+        { label: "Qui sommes-nous ?", href: "/groupe" },
         { label: "Nos engagements", href: "/groupe#engagements" },
-        { label: "Notre Réseaux", href: "/groupe#reseau" },
+        { label: "Notre réseau", href: "/groupe#reseau" },
       ],
     },
   },
@@ -46,12 +46,11 @@ export const navItems: NavItem[] = [
       links: [
         { label: "Rapatriement de corps", href: "/expertises#rapatriement-de-corps" },
         { label: "L’organisation d’obsèques", href: "/expertises#organisation-obseques" },
-        { label: "La Crémation", href: "/expertises#cremation" },
+        { label: "La crémation", href: "/expertises#cremation" },
         {
-          label: "Assistance pour les documents administratif",
+          label: "Assistance pour les documents administratifs",
           href: "/expertises#documents-administratifs",
         },
-        { label: "Exhumations", href: "/expertises" },
         { label: "Logistique - Transport", href: "/expertises#logistique-transport" },
       ],
     },

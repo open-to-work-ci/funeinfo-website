@@ -17,11 +17,10 @@ export type ExpertiseBannerData = Expertise & {
 };
 
 // Les slugs sont ceux des ancres du méga-menu (src/content/nav.ts) : ne pas les changer.
-// « Exhumations » n'est pas dans la maquette de la page : le lien du menu est géré dans nav.ts.
 //
-// TODO(contenu) : les fautes de la maquette sont reproduites telles quelles (« OBSEQUE »,
-// « ASSISTANCE ADMINISTRATIF », « CREMATION », « FUNERAIRE », double espace) ; textes des
-// bannières Crémation et Assistance dupliqués d'autres bannières : à faire valider.
+// Les fautes de la maquette (« OBSEQUE », « ADMINISTRATIF », « CREMATION », « FUNERAIRE », double
+// espace) sont corrigées à la source ; la casse capitale du design est obtenue par le CSS.
+// TODO(contenu) : textes des bannières Crémation et Assistance dupliqués d'autres bannières : à faire valider.
 // TODO(images) : les visuels de public/expertises-*.webp sont recadrés depuis l'export de la
 // maquette (≈ 1220 px de large, texte et bouton effacés) : à remplacer par les originaux.
 export const expertises: ExpertiseBannerData[] = [
@@ -45,7 +44,7 @@ export const expertises: ExpertiseBannerData[] = [
     slug: "organisation-obseques",
     title: "L’organisation d’obsèques",
     summary: "Prise en charge complète de la cérémonie.",
-    bannerTitle: "Organisation d’obseque",
+    bannerTitle: "Organisation d’obsèques",
     label: "l’organisation d’obsèques",
     lines: ["Organiser un dernier hommage", "qui reflète la vie et les valeurs", "de vos proches."],
     image: {
@@ -56,9 +55,9 @@ export const expertises: ExpertiseBannerData[] = [
   },
   {
     slug: "cremation",
-    title: "La Crémation",
+    title: "La crémation",
     summary: "Accompagnement pour la crémation.",
-    bannerTitle: "La cremation",
+    bannerTitle: "La crémation",
     label: "la crémation",
     lines: [
       "Perdre un proche à l’étranger est déjà douloureux…",
@@ -72,9 +71,9 @@ export const expertises: ExpertiseBannerData[] = [
   },
   {
     slug: "documents-administratifs",
-    title: "Assistance pour les documents administratif",
+    title: "Assistance pour les documents administratifs",
     summary: "Aide aux démarches administratives.",
-    bannerTitle: "Assistance administratif",
+    bannerTitle: "Assistance administrative",
     label: "l’assistance administrative",
     lines: ["Organiser un dernier hommage", "qui reflète la vie et les valeurs", "de vos proches."],
     image: {
@@ -89,7 +88,7 @@ export const expertises: ExpertiseBannerData[] = [
     summary: "Transport et logistique funéraire.",
     bannerTitle: "Logistique et transport",
     label: "la logistique et le transport",
-    lines: ["Des véhicules  funeraire pour", "accompagner en toute discrétion."],
+    lines: ["Des véhicules funéraires pour", "accompagner en toute discrétion."],
     image: {
       src: "/expertises-logistique.webp",
       alt: "Deux véhicules funéraires côte à côte : un Mercedes noir et un SUV blanc",

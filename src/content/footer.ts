@@ -17,7 +17,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const FOOTER = {
   socialTitle: "Retrouvez nos actualités sur",
   newsletter: {
-    title: "Abonnez vous à notre Newsletter...",
+    title: "Abonnez-vous à notre newsletter…",
     emailLabel: "Adresse e-mail",
     submit: "S’enregistrer",
     submitting: "Envoi en cours…",
@@ -26,7 +26,7 @@ export const FOOTER = {
     title: "Vous avez une question ?",
     cta: "Contactez-nous",
     // TODO: à confirmer (le footer utilise @fune.info, la page Carrières @fune.africa).
-    email: "Contact@fune.info",
+    email: "contact@fune.info",
   },
   copyright: "FUNE INFO AFRICA",
 } as const;

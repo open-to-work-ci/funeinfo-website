@@ -1,7 +1,7 @@
 import type { Job } from "./types";
 
-// TODO: adresse RH à confirmer (maquette : « Rh@fune.africa », ailleurs : domaine « @fune.info »).
-export const HR_EMAIL = "Rh@fune.africa";
+// TODO: adresse RH à confirmer (maquette : « rh@fune.africa », ailleurs : domaine « @fune.info »).
+export const HR_EMAIL = "rh@fune.africa";
 
 export const mailtoHr = (subject: string) =>
   `mailto:${HR_EMAIL}?subject=${encodeURIComponent(subject)}`;
@@ -25,10 +25,10 @@ export const jobs: Job[] = [
     durationAndLocation: "3 mois, Abidjan - Marcory",
     profile: "Bonne maîtrise d’Excel, rigueur, sens du service, discrétion.",
   },
-  { slug: "assistant-rh", category: "Ressources Humaines", title: "Assistant RH" },
-  { slug: "logisticien", category: "Transport et Logistique", title: "Logisticien" },
-  { slug: "commercial", category: "Commercial", title: "Commercial (e)" },
-  { slug: "electriciens", category: "Electrique", title: "Electriciens" },
+  { slug: "assistant-rh", category: "Ressources humaines", title: "Assistant RH" },
+  { slug: "logisticien", category: "Transport et logistique", title: "Logisticien" },
+  { slug: "commercial", category: "Commercial", title: "Commercial(e)" },
+  { slug: "electriciens", category: "Électrique", title: "Électriciens" },
 ];
 
 export const getJob = (slug: string) => jobs.find((j) => j.slug === slug);

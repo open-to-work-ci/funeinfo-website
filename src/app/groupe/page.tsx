@@ -7,7 +7,7 @@ import Kicker from "@/components/ui/kicker";
 import Reveal from "@/components/ui/reveal";
 
 const description =
-  "FUNE INFO Africa, spécialiste de l'assistance funéraire en Côte d'Ivoire, en France, au Congo et en Guinée : disponibilité, accueil, discrétion et flexibilité, de l'annonce du décès jusqu'à l'inhumation.";
+  "FUNE INFO Africa, spécialiste de l’assistance funéraire en Côte d’Ivoire, en France, au Congo et en Guinée : disponibilité, accueil, discrétion et flexibilité, de l’annonce du décès jusqu’à l’inhumation.";
 
 export const metadata: Metadata = {
   title: "Notre groupe",
