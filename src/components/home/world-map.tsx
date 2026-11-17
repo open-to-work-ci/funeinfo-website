@@ -1,11 +1,6 @@
-import {
-  MAP_LABELS,
-  MAP_MARKERS,
-  NETWORK_COUNTRIES,
-  WORLD_PATHS,
-  WORLD_VIEWBOX,
-} from "@/content/world-map";
+import { MAP_LABELS, MAP_MARKERS, NETWORK_COUNTRIES, WORLD_VIEWBOX } from "@/content/world-map";
 import { Parallax } from "../ui/motion";
+import MapCountries from "./map-countries";
 
 const names = Object.values(NETWORK_COUNTRIES);
 const ariaLabel = `Carte du monde : pays couverts par le réseau Fune Info Africa : ${names.join(", ")}.`;
@@ -28,13 +23,7 @@ export default function WorldMap() {
           className="block h-auto w-full overflow-visible"
         >
           <g className="stroke-surface" strokeWidth={0.4}>
-            {WORLD_PATHS.map((p) => (
-              <path
-                key={p.id}
-                d={p.d}
-                className={NETWORK_COUNTRIES[p.id] ? "fill-brand" : "fill-map-land"}
-              />
-            ))}
+            <MapCountries variant="light" />
           </g>
           <g className="fill-brand">
             {MAP_MARKERS.map((m) => (

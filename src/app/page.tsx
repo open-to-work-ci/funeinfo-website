@@ -1,4 +1,5 @@
 import CtaBanner from "@/components/home/cta-banner";
+import HeroMapSvg from "@/components/home/hero-map-svg";
 import HeroSlider from "@/components/home/hero-slider";
 import Intro from "@/components/home/intro";
 import NewsSection from "@/components/home/news-section";
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <HeroSlider />
+      <HeroSlider map={<HeroMapSvg />} />
       <Intro />
       <Stats />
       <WorldMap />

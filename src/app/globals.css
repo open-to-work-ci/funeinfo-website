@@ -156,6 +156,11 @@
   --text-hero-info: clamp(0.75rem, 0.2rem + 1vw, 1.375rem); /* bloc d'infos des slides pays : ≈ 21 à 1905 */
   --text-hero-info--line-height: 1.55;
   --ease-hero: cubic-bezier(0.22, 1, 0.36, 1); /* décélération de la transition de slide */
+
+  /* Carte du hero (SVG intégré) : un jeton par famille de pays ; un pays isolé se règle dans world-map-styles.ts */
+  --color-map-hero-land: #5c5c5c; /* pays hors réseau */
+  --color-map-hero-network: #50223f; /* pays du réseau */
+  --color-map-hero-label: #6b2f55; /* noms de pays */
 }
 
 /*

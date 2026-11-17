@@ -4,7 +4,7 @@ import { countries } from "@/content/countries";
 import { heroCountries, heroIntro } from "@/content/home";
 import clsx from "clsx";
 import { useReducedMotion } from "motion/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import HeroControls from "./hero-controls";
 import HeroCountryCard from "./hero-country-card";
 import HeroCountryInfo from "./hero-country-info";
@@ -34,7 +34,7 @@ const isEditable = (el: EventTarget | null) =>
  * Desktop (lg) : photo à gauche, panneau à droite, carte à cheval. Mobile / tablette :
  * photo + infos en haut, panneau en bas, carte à cheval sur la jonction.
  */
-export default function HeroSlider() {
+export default function HeroSlider({ map }: { map: ReactNode }) {
   const [active, setActive] = useState(0);
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -95,7 +95,7 @@ export default function HeroSlider() {
         Fune Info Africa : un réseau international au service des familles
       </h1>
 
-      <HeroIntroSlide slide={heroIntro} active={active === 0} label={`1 sur ${total}`} />
+      <HeroIntroSlide slide={heroIntro} active={active === 0} label={`1 sur ${total}`} map={map} />
 
       {/* Zone haute : photo de fond + infos (desktop : calques posés sur tout le hero). */}
       <div className="relative flex-1 pb-[calc(24%+1.5rem)] md:pb-[calc(20%+1.5rem)] lg:contents">
