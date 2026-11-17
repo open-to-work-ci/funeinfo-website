@@ -6,21 +6,30 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
   return (
     <ul
       className={clsx(
-        "flex shrink-0 items-center gap-fi-64 pr-fi-64 motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-fi-40 motion-reduce:pr-0",
+        "flex shrink-0 items-center gap-fi-40 pr-fi-40 motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-fi-24 motion-reduce:pr-0",
         hidden && "motion-reduce:hidden",
       )}
       aria-label={hidden ? undefined : "Nos partenaires"}
       aria-hidden={hidden || undefined}
     >
       {partners.map((p) => (
-        <li key={p.name} className="flex h-14 shrink-0 items-center">
-          <Image
-            src={p.src}
-            alt={hidden ? "" : p.name}
-            width={p.width}
-            height={56}
-            className="h-14 w-auto max-w-none object-contain"
-          />
+        <li key={p.name} className="flex h-[7.2em] shrink-0 items-center">
+          {p.logo ? (
+            <Image
+              src={p.logo.src}
+              alt={hidden ? "" : p.name}
+              width={p.logo.width}
+              height={p.logo.height}
+              sizes="200px"
+              style={{ height: `${p.logo.displayHeight}em` }}
+              className="w-auto max-w-none object-contain"
+            />
+          ) : (
+            // Logo officiel non téléchargeable : nom en texte (aucun logo inventé).
+            <span className="whitespace-nowrap font-poppins text-body font-semibold text-ink-secondary">
+              {p.name}
+            </span>
+          )}
         </li>
       ))}
     </ul>
@@ -34,8 +43,11 @@ function Logos({ hidden = false }: { hidden?: boolean }) {
  */
 export default function PartnersMarquee() {
   return (
-    <section aria-label="Partenaires" className="overflow-hidden bg-surface py-fi-24">
-      <div className="group flex w-max animate-marquee hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:w-auto motion-reduce:animate-none">
+    <section
+      aria-label="Partenaires"
+      className="overflow-hidden bg-surface py-fi-16 text-[clamp(0.55rem,0.35rem+0.65vw,1rem)]"
+    >
+      <div className="group flex w-max animate-marquee pl-[3.5vw] hover:[animation-play-state:paused] focus-within:[animation-play-state:paused] motion-reduce:w-auto motion-reduce:animate-none motion-reduce:pl-0">
         <Logos />
         <Logos hidden />
       </div>

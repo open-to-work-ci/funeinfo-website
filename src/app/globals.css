@@ -106,6 +106,26 @@
   --text-page: 2.5rem; /* 40 */
   --text-page--line-height: 3rem;
 
+  /* Accueil (polish) : couleurs relevées sur la maquette */
+  --color-ink: #0f1415; /* texte courant quasi noir (titres de la maquette) */
+  --color-plum: #8a1e80; /* libellés des chiffres clés, titre du bloc de présentation */
+  --color-sea: #666666; /* fond gris du hero (océans de la carte) */
+  --color-map-land: #e1e1e1; /* pays hors réseau sur la carte claire */
+  /* Accueil (polish) : typographie fluide, calée sur la maquette à 1905 px (≈ mobile 375 → 1905) */
+  --text-hero-title: clamp(2.125rem, 1.42rem + 3.01vw, 5rem); /* 80 à 1905 */
+  --text-hero-sub: clamp(0.875rem, 0.75rem + 0.523vw, 1.375rem); /* 22 */
+  --text-hero-count: clamp(0.875rem, 0.7rem + 0.47vw, 1.5rem);
+  --text-stat-xl: clamp(3.5rem, 2.5rem + 4.5vw, 7.6rem); /* 121 */
+  --text-stat-lg: clamp(3rem, 2.1rem + 3.9vw, 6.5rem); /* 104 : rangée +600 / +100 */
+  --text-stat-label: clamp(0.875rem, 0.77rem + 0.444vw, 1.3rem); /* 20,8 */
+  --text-intro-body: clamp(0.9375rem, 0.8rem + 0.36vw, 1.25rem); /* 20 */
+  --text-intro-title: clamp(1.0625rem, 0.94rem + 0.52vw, 1.5625rem); /* 25 */
+  --text-tagline: clamp(1.5rem, 1.15rem + 1.5vw, 2.95rem); /* 47 */
+  --text-tagline-body: clamp(1.0625rem, 0.93rem + 0.556vw, 1.6rem); /* 25,5 */
+  --text-home-cta-title: clamp(1.5rem, 1.26rem + 1.57vw, 3.15rem); /* 50 */
+  --text-home-cta-sub: clamp(0.8125rem, 0.74rem + 0.31vw, 1.125rem); /* 17,8 */
+  --text-news-title: clamp(1.0625rem, 0.99rem + 0.33vw, 1.4rem); /* 22 */
+
   /* Carrières (maquette 1905 px ; fluide en dessous) */
   --font-arial: Arial, "Liberation Sans", Helvetica, sans-serif;
   --text-banner: clamp(1.75rem, 0.75rem + 2.15vw, 3.25rem); /* titre de bannière ≈ 52 */
