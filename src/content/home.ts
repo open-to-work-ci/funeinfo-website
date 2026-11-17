@@ -1,45 +1,37 @@
 /** Contenu de la page d'accueil (maquette `page-accueil.png`). */
 
-export type HeroSlide = {
+export type HeroIntro = {
   /** Lignes en gras (titre) puis lignes en graisse légère, chacune sur sa propre ligne. */
   strong: string[];
   light: string[];
   subtitle: string;
-  image: { src: string; alt: string };
 };
 
-// TODO: seule la slide 1 est dessinée. Textes et visuels des slides 2 à 5 provisoires, à fournir.
-export const heroSlides: HeroSlide[] = [
-  {
-    strong: ["Un réseau", "international"],
-    light: ["au service", "des familles …"],
-    subtitle: "L'excellence funéraire au service de la dignité humaine.",
-    image: { src: "/hero.webp", alt: "Cérémonie funéraire sous chapiteaux blancs et violets" },
-  },
-  {
-    strong: ["Organisation", "d'obsèques"],
-    light: ["dans le respect", "de chaque famille …"],
-    subtitle: "Un accompagnement discret, de l'annonce du décès à l'inhumation.",
-    image: { src: "/banner-obseques.webp", alt: "Cérémonie d'obsèques organisée par Fune Info Africa" },
-  },
-  {
-    strong: ["Rapatriement", "de corps"],
-    light: ["d'ici vers", "l'ailleurs …"],
-    subtitle: "Un réseau de partenaires mobilisés selon le pays de départ et de destination.",
-    image: { src: "/banner-rapatriement.webp", alt: "Rapatriement de corps à l'international" },
-  },
-  {
-    strong: ["Véhicules", "funéraires"],
-    light: ["une logistique", "maîtrisée …"],
-    subtitle: "Des moyens adaptés pour chaque étape du transport.",
-    image: { src: "/banner-vehicules.webp", alt: "Véhicules funéraires du réseau" },
-  },
-  {
-    strong: ["Une présence", "sur 4 pays"],
-    light: ["pour vous", "accompagner …"],
-    subtitle: "Côte d'Ivoire, France, Congo et Guinée.",
-    image: { src: "/post/post-3.webp", alt: "Salon funéraire aménagé par Fune Info Africa" },
-  },
+/** Slide 1 du hero : carte du monde + titre (maquette `page-accueil.png`). */
+export const heroIntro: HeroIntro = {
+  strong: ["Un réseau", "international"],
+  light: ["au service", "des familles …"],
+  subtitle: "L'excellence funéraire au service de la dignité humaine.",
+};
+
+export type HeroCountrySlide = {
+  /** `id` du pays dans `countries.ts` (téléphones, adresse et photo de la carte viennent de là). */
+  countryId: string;
+  /** Ville affichée avant le pays (« Abidjan , Côte d'Ivoire »). */
+  city: string;
+  /** Classe Tailwind du panneau de couleur unie (tokens `--color-hero-*` de globals.css). */
+  panelClass: string;
+};
+
+// Slides 2 à 5 : les 4 pays, dans l'ordre de la vidéo de la maquette.
+// TODO(assets) : photos de fond des 4 pays à fournir (drapeau + pont d'Abidjan, tour Eiffel,
+// pont de Brazzaville au crépuscule, lettres « Guinée » de Conakry). En attendant, le fond est
+// la photo d'agence agrandie, floutée et assombrie (voir `hero-country-slide.tsx`).
+export const heroCountries: HeroCountrySlide[] = [
+  { countryId: "cote-d-ivoire", city: "Abidjan", panelClass: "bg-hero-abidjan" },
+  { countryId: "france", city: "Paris", panelClass: "bg-hero-paris" },
+  { countryId: "congo", city: "Brazzaville", panelClass: "bg-hero-brazzaville" },
+  { countryId: "guinee", city: "Conakry", panelClass: "bg-hero-conakry" },
 ];
 
 export const intro = {

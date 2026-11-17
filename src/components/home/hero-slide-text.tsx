@@ -1,6 +1,6 @@
 "use client";
 
-import type { HeroSlide } from "@/content/home";
+import type { HeroIntro } from "@/content/home";
 import { TextLines } from "@/components/ui/motion";
 
 /**
@@ -8,7 +8,7 @@ import { TextLines } from "@/components/ui/motion";
  * La slide active monte ligne par ligne (`TextLines`, remonté à chaque activation) ;
  * les slides inactives restent statiques pour que le fondu sortant garde le texte.
  */
-export default function HeroSlideText({ slide, active }: { slide: HeroSlide; active: boolean }) {
+export default function HeroSlideText({ slide, active }: { slide: HeroIntro; active: boolean }) {
   const lines = [
     ...slide.strong.map((l) => (
       <span key={l} className="font-extrabold">
