@@ -161,6 +161,26 @@
   --color-map-hero-land: #5c5c5c; /* pays hors réseau */
   --color-map-hero-network: #50223f; /* pays du réseau */
   --color-map-hero-label: #6b2f55; /* noms de pays */
+
+  /* Carte du réseau : pulsation de la base (Côte d'Ivoire) et bulle d'info au survol */
+  --animate-map-pulse: map-pulse 3s ease-out infinite;
+  --animate-map-card: map-card 0.18s ease-out both;
+  @keyframes map-pulse {
+    0% {
+      transform: scale(0.35);
+      opacity: 0.75;
+    }
+    100% {
+      transform: scale(3.4);
+      opacity: 0;
+    }
+  }
+  @keyframes map-card {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+  }
 }
 
 /*
@@ -214,5 +234,38 @@ html {
       font-size: var(--text-body);
       line-height: var(--text-body--line-height);
     }
+  }
+}
+
+/*
+ * Carte du réseau (section « réseau » de l'accueil).
+ * - Apparition en vague : le script passe `data-wave` à « pending » (pays du réseau en gris) puis
+ *   « run » quand la carte entre dans l'écran ; chaque pays démarre après `--wave-delay`
+ *   (distance à la Côte d'Ivoire). Sans script, la carte reste complète.
+ * - Survol / focus : le pays du réseau change de teinte.
+ */
+@keyframes map-fill {
+  from {
+    fill: var(--color-map-land);
+  }
+}
+[data-wave="pending"] [data-network="true"] {
+  fill: var(--color-map-land);
+}
+[data-wave="run"] [data-network="true"] {
+  animation: map-fill 0.9s ease-out backwards;
+  animation-delay: var(--wave-delay, 0s);
+}
+[data-map-interactive] [data-network="true"] {
+  transition: fill 0.2s ease-out;
+}
+[data-map-interactive] [data-network="true"]:hover,
+[data-map-interactive] [data-network="true"]:focus-visible {
+  fill: var(--color-brand-deep);
+  outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-wave] [data-network="true"] {
+    animation: none;
   }
 }

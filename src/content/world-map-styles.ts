@@ -22,6 +22,17 @@ export const MAP_BASE_STYLES: Record<MapVariant, { land: string; network: string
   light: { land: "fill-map-land", network: "fill-brand [stroke-width:0.03]" },
 };
 
+/**
+ * Pays du réseau qui ont une fiche d'agence (`countries.ts`) : code ISO numérique → `id` du pays.
+ * Ces pays sont focalisables au clavier et leur bulle d'info affiche adresse et téléphones.
+ */
+export const MAP_INFO_SOURCES: Record<string, string> = {
+  "384": "cote-d-ivoire",
+  "250": "france",
+  "178": "congo",
+  "324": "guinee",
+};
+
 /** Pays de la base du réseau (Côte d'Ivoire) : bordure plus épaisse que les autres pays du réseau (maquette : 0,94 px contre 0,06 px). */
 export const BASE_COUNTRY_ID = "384";
 
