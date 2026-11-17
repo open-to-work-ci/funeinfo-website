@@ -41,6 +41,7 @@
   /* Breakpoints : mobile 375 = base, tablette 768, desktop 1280, large 1920 */
   --breakpoint-sm: 375px;
   --breakpoint-md: 768px;
+  --breakpoint-nav: 1024px; /* burger sous 1024 */
   --breakpoint-lg: 1280px;
   --breakpoint-2xl: 1920px;
 
@@ -55,6 +56,8 @@
   --text-kicker--line-height: 1rem;
   --text-section: 1.5625rem; /* 25 */
   --text-section--line-height: 1.875rem; /* 30 */
+  --text-nav: 1.1875rem; /* 19 */
+  --text-nav--line-height: 1.5rem;
   --text-page: 2.5rem; /* 40 */
   --text-page--line-height: 3rem;
 }
@@ -74,6 +77,17 @@
   background-size: 15% 1px;
   background-position: left bottom;
   padding-bottom: 0.45rem;
+}
+
+/* Hauteur réelle du header desktop (maquette : 117 px) */
+@media (width >= 1024px) {
+  :root {
+    --spacing-header: 7.3125rem;
+  }
+}
+
+html {
+  scroll-padding-top: var(--spacing-header);
 }
 
 @layer base {
