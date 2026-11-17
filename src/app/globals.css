@@ -93,6 +93,23 @@
   --text-lead--line-height: 2rem;
   --text-page: 2.5rem; /* 40 */
   --text-page--line-height: 3rem;
+
+  /* Carrières (maquette 1905 px ; fluide en dessous) */
+  --font-arial: Arial, "Liberation Sans", Helvetica, sans-serif;
+  --text-banner: clamp(1.75rem, 0.75rem + 2.15vw, 3.25rem); /* titre de bannière ≈ 52 */
+  --text-banner--line-height: 1;
+  --text-offer: clamp(1.5rem, 0.95rem + 1.19vw, 2.36rem); /* titre d'offre ≈ 37,7 */
+  --text-offer--line-height: 1.25;
+  --text-job-title: clamp(1.25rem, 1.05rem + 0.32vw, 1.4375rem); /* titre de carte ≈ 23 */
+  --text-job-title--line-height: 1.25;
+  --text-job-label: clamp(0.6875rem, 0.55rem + 0.22vw, 0.8rem); /* surtitres ≈ 12,8 */
+  --text-job-label--line-height: 1.25;
+  --text-job-body: clamp(1rem, 0.6rem + 0.83vw, 1.365rem); /* corps du détail ≈ 21,9 */
+  --text-job-body--line-height: 1.145;
+  --text-cta-title: clamp(1.75rem, 0.75rem + 2.2vw, 3rem); /* « REJOIGNEZ-NOUS » ≈ 48 */
+  --text-cta-title--line-height: 1.1;
+  --text-cta-sub: clamp(0.95rem, 0.8rem + 0.2vw, 1.0625rem); /* ≈ 17 */
+  --text-cta-sub--line-height: 1.4;
 }
 
 /*
