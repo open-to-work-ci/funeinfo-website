@@ -1,11 +1,34 @@
 import type { Job } from "./types";
 
+// TODO: adresse RH à confirmer (maquette : « Rh@fune.africa », ailleurs : domaine « @fune.info »).
+export const HR_EMAIL = "Rh@fune.africa";
+
+export const mailtoHr = (subject: string) =>
+  `mailto:${HR_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
+// TODO: contenu (missions, diplôme, durée et lieu, profil) à fournir pour les 4 offres
+// autres que « Informaticien de gestion ». Sections omises = non affichées.
 export const jobs: Job[] = [
-  { slug: "informaticien-de-gestion", department: "Informatique", title: "Informaticien de gestion", description: "Offre à détailler." },
-  { slug: "assistant-rh", department: "Ressources Humaines", title: "Assistant RH", description: "Offre à détailler." },
-  { slug: "logisticien", department: "Transport et Logistique", title: "Logisticien", description: "Offre à détailler." },
-  { slug: "commercial", department: "Commercial", title: "Commercial (e)", description: "Offre à détailler." },
-  { slug: "electriciens", department: "Electrique", title: "Electriciens", description: "Offre à détailler." },
+  {
+    slug: "informaticien-de-gestion",
+    category: "Informatique",
+    title: "Informaticien de gestion",
+    missions: [
+      "Appui à l’inventaire et au suivi du parc informatique (matériel et logiciels)",
+      "Assistance de niveau 1 aux utilisateurs des agences et des régies",
+      "Saisie, fiabilisation et mise à jour des bases de données et tableaux de bord",
+      "Appui à la digitalisation des procédures et fichiers de suivi",
+      "Participation aux sessions de formation informatique du personnel",
+    ],
+    diploma: "BTS, Licence ou Maîtrise en informatique de gestion, obtenu depuis moins de 3 ans.",
+    // TODO: libellé maquetté « 3 mois , abidjan - marcory » corrigé (espace, casse) : à valider.
+    durationAndLocation: "3 mois, Abidjan - Marcory",
+    profile: "Bonne maîtrise d’Excel, rigueur, sens du service, discrétion.",
+  },
+  { slug: "assistant-rh", category: "Ressources Humaines", title: "Assistant RH" },
+  { slug: "logisticien", category: "Transport et Logistique", title: "Logisticien" },
+  { slug: "commercial", category: "Commercial", title: "Commercial (e)" },
+  { slug: "electriciens", category: "Electrique", title: "Electriciens" },
 ];
 
 export const getJob = (slug: string) => jobs.find((j) => j.slug === slug);
