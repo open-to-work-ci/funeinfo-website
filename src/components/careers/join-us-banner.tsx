@@ -14,7 +14,7 @@ import JoinUsPanel from "./join-us-panel";
 export default function JoinUsBanner() {
   return (
     <section aria-labelledby="join-us-title" className="overflow-x-clip">
-      <div className="container-narrow !w-auto">
+      <div className="container-narrow">
         <div className="relative @container md:grid md:grid-cols-[2.1%_47%_1fr]">
           <JoinUsPanel className="absolute -inset-x-4 bottom-0 top-[calc(60cqw_-_3rem)] bg-join md:inset-x-auto md:bottom-[4.5%] md:left-[49.1%] md:right-[calc(50%_-_50vw)] md:top-[4.5%]" />
 

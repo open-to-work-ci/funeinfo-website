@@ -1,9 +1,9 @@
 import Kicker from "@/components/ui/kicker";
 import Reveal from "@/components/ui/reveal";
-import HeroTitle from "./hero-title";
+import { TextLines } from "@/components/ui/motion";
 
 /**
- * Bandeau d'en-tête de /groupe : kicker, titre en lignes qui montent depuis un masque (`HeroTitle`, variante de `TextLines`) et chapeau en trois lignes comme la maquette.
+ * Bandeau d'en-tête de /groupe : kicker, titre en lignes qui montent depuis un masque (`TextLines`) et chapeau en trois lignes comme la maquette.
  * Usage : `<GroupHero />`
  *
  * Contraste (écart documenté) : le kicker magenta `brand` sur bleu nuit fait 2,97:1
@@ -17,10 +17,14 @@ export default function GroupHero() {
         <Reveal>
           <Kicker>Notre groupe</Kicker>
         </Reveal>
-        <HeroTitle
-          lines={["L’assistance funéraire qui soulage …"]}
-          className="pt-1 font-poppins text-title font-bold"
-        />
+        <h1 className="pt-1 font-poppins text-title font-bold">
+          <TextLines
+            lines={["L’assistance funéraire qui soulage …"]}
+            on="mount"
+            delay={0.1}
+            maskClassName="pb-[0.15em] -mb-[0.15em]"
+          />
+        </h1>
         <Reveal delay={0.35}>
           <p className="font-poppins text-lede font-normal">
             <span className="block">

@@ -39,11 +39,6 @@
 
   /* Accueil */
   --color-scrim: rgb(0 0 0 / 0.5); /* calque sombre du hero */
-  --color-intro: #fdf6fb; /* fond très pâle du bloc de présentation */
-  --text-hero: clamp(2.25rem, 1.2rem + 3.6vw, 4.375rem); /* ≈ 70 desktop */
-  --text-hero--line-height: 1.05;
-  --text-stat: clamp(3.5rem, 2rem + 4vw, 6rem);
-  --text-stat--line-height: 1;
   --animate-marquee: marquee 40s linear infinite;
   @keyframes marquee {
     to {
@@ -54,22 +49,7 @@
   /* Rayons */
   --radius-md: 1rem;
   --radius-pill: 9999px;
-  /* Coins de galerie asymétriques (maquette : ~170 px à 1905 px de large) */
-  --radius-blob: clamp(2rem, 9vw, 10.5rem);
-  --radius-blob-sm: clamp(0.75rem, 2.5vw, 2.5rem);
 
-  /* Animations */
-  --animate-fade-in: fade-in 0.35s ease-out both;
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(0.5rem);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
 
   /* Breakpoints : mobile 375 = base, tablette 768, desktop 1280, large 1920 */
   --breakpoint-sm: 375px;
@@ -159,7 +139,6 @@
   --color-ink-muted: #667080; /* texte gris des cartes et du bloc d'infos (4,9:1 sur blanc) */
   --color-line-soft: #e8e8ec; /* bordure des cartes d'engagement */
   --radius-tab: 1.25rem; /* onglets pays : rectangle très arrondi, pas une pilule */
-  --radius-blob-md: clamp(1.5rem, 6vw, 7rem);
   --text-heading: clamp(1.5625rem, 1.3rem + 0.8vw, 1.875rem); /* 25 → 30 */
   --text-heading--line-height: 1.2;
   --text-title: clamp(1.75rem, 1.2rem + 1.7vw, 2.625rem); /* 28 → 42 : h1 de la page */
