@@ -43,11 +43,8 @@ export default async function Page({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <CareersBanner />
-      {/* min-h en vw : la maquette laisse ≈ 945 px (à 1905 px) entre la bannière et le pied de page. */}
-      <div className="lg:min-h-[49.6vw]">
-        <div className="container-narrow pb-fi-64 pt-8 md:pt-[2.9rem]">
-          <JobDetail job={job} />
-        </div>
+      <div className="container-narrow pb-fi-64 pt-8 md:pt-[2.9rem]">
+        <JobDetail job={job} />
       </div>
     </>
   );
