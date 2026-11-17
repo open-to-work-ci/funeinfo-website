@@ -97,7 +97,7 @@ export default function Header() {
                               aria-hidden="true"
                               className="absolute left-0 top-0"
                             />
-                            <p className="pt-4 mb-[0.4rem] text-[18px] font-bold uppercase leading-[27px] text-[#0B273A]">
+                            <p className="pt-4 mb-[0.4rem] text-[18px] font-bold uppercase leading-[27px] text-navy-alt">
                               {item.heading}
                             </p>
                             <p className="text-[16px] font-medium text-gold">
@@ -112,7 +112,7 @@ export default function Header() {
                               <li>
                                 <a
                                   href="#"
-                                  className="block py-2 text-base font-bold uppercase text-[#0B273A] transition-colors duration-150 hover:text-gold"
+                                  className="block py-2 text-base font-bold uppercase text-navy-alt transition-colors duration-150 hover:text-gold"
                                 >
                                   {item.label}
                                 </a>
@@ -121,7 +121,7 @@ export default function Header() {
                                 <li key={link}>
                                   <a
                                     href="#"
-                                    className="group relative flex items-center py-2 text-sm font-normal text-[#0B273A] transition-colors duration-150 hover:text-gold"
+                                    className="group relative flex items-center py-2 text-sm font-normal text-navy-alt transition-colors duration-150 hover:text-gold"
                                   >
                                     <span
                                       aria-hidden="true"
@@ -188,12 +188,12 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileIndex(null)}
-              className="flex w-full items-stretch border-b border-[#e1dddd] text-[11px] font-medium uppercase text-[#0B273A]"
+              className="flex w-full items-stretch border-b border-line text-[11px] font-medium uppercase text-navy-alt"
             >
               <span className="flex w-12 shrink-0 items-center pl-4">
                 <ChevronLeft className="size-4" />
               </span>
-              <span className="flex flex-1 items-center border-l border-[#e1dddd] py-4 pl-4">
+              <span className="flex flex-1 items-center border-l border-line py-4 pl-4">
                 Retour
               </span>
             </button>
@@ -208,7 +208,7 @@ export default function Header() {
                   aria-hidden="true"
                   className="absolute left-0 top-6"
                 />
-                <p className="pt-4 mb-[0.4rem] text-[18px] font-bold uppercase leading-[27px] text-[#0B273A]">
+                <p className="pt-4 mb-[0.4rem] text-[18px] font-bold uppercase leading-[27px] text-navy-alt">
                   {navItems[mobileIndex].heading}
                 </p>
                 <p className="text-[16px] font-medium text-gold">
@@ -223,7 +223,7 @@ export default function Header() {
                 <li>
                   <a
                     href="#"
-                    className="flex items-center justify-between border-b border-[#c8ced3] py-4 text-sm font-bold uppercase text-[#0B273A]"
+                    className="flex items-center justify-between border-b border-line-strong py-4 text-sm font-bold uppercase text-navy-alt"
                   >
                     {navItems[mobileIndex].label}
                     <ChevronRight className="size-4 shrink-0 text-gold" />
@@ -233,7 +233,7 @@ export default function Header() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="flex items-center justify-between border-b border-[#c8ced3] py-4 text-sm text-[#0B273A]"
+                      className="flex items-center justify-between border-b border-line-strong py-4 text-sm text-navy-alt"
                     >
                       {link}
                       <ChevronRight className="size-4 shrink-0 text-gold" />
