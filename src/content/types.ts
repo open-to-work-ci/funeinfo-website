@@ -19,4 +19,12 @@ export type Job = {
   profile?: string;
 };
 
-export type NewsItem = { slug: string; title: string; date: string; href: string };
+export type NewsItem = {
+  slug: string;
+  tag: string;
+  title: string;
+  excerpt: string;
+  image: { src: string; alt: string };
+  /** Page détail : absent tant que la page Actualités n'existe pas (carte non cliquable). */
+  href?: string;
+};

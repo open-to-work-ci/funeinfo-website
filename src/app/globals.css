@@ -33,6 +33,20 @@
   /* Hauteur du header sticky : px-3 (12px x 2) + logo 53px */
   --spacing-header: 4.8125rem; /* 77px */
 
+  /* Accueil */
+  --color-scrim: rgb(0 0 0 / 0.5); /* calque sombre du hero */
+  --color-intro: #fdf6fb; /* fond très pâle du bloc de présentation */
+  --text-hero: clamp(2.25rem, 1.2rem + 3.6vw, 4.375rem); /* ≈ 70 desktop */
+  --text-hero--line-height: 1.05;
+  --text-stat: clamp(3.5rem, 2rem + 4vw, 6rem);
+  --text-stat--line-height: 1;
+  --animate-marquee: marquee 40s linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   /* Rayons */
   --radius-md: 1rem;
   --radius-pill: 9999px;

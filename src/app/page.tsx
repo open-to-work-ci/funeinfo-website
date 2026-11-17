@@ -1,16 +1,24 @@
-import Button from "@/components/ui/button";
-import PageHero from "@/components/ui/page-hero";
-import Section from "@/components/ui/section";
+import CtaBanner from "@/components/home/cta-banner";
+import HeroSlider from "@/components/home/hero-slider";
+import Intro from "@/components/home/intro";
+import NewsSection from "@/components/home/news-section";
+import PartnersMarquee from "@/components/home/partners-marquee";
+import Stats from "@/components/home/stats";
+import Tagline from "@/components/home/tagline";
+import WorldMap from "@/components/home/world-map";
+import { cta } from "@/content/home";
 
 export default function Home() {
   return (
     <>
-      <PageHero kicker="Fune Info Africa" title="L’assistance funéraire qui soulage …">
-        <p>Accompagner les familles, de l’annonce du décès jusqu’à l’inhumation.</p>
-      </PageHero>
-      <Section>
-        <Button href="/groupe">Notre groupe</Button>
-      </Section>
+      <HeroSlider />
+      <Intro />
+      <Stats />
+      <WorldMap />
+      <Tagline />
+      <CtaBanner {...cta} />
+      <NewsSection />
+      <PartnersMarquee />
     </>
   );
 }
