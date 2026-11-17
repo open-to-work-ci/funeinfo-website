@@ -8,14 +8,14 @@ const smallLabels = new Set(["Suisse", "Italie", "Thaïlande", "Belgique", "Port
 
 /**
  * Carte du monde SVG (Mercator) : pays du réseau en magenta, autres en gris clair.
- * Léger parallaxe au scroll. Les étiquettes sont masquées sous 1280 px au profit d'une
+ * Pleine largeur de l'écran (de bord à bord), léger parallaxe au scroll. Les étiquettes sont masquées sous 1280 px au profit d'une
  * liste de pays.
  */
 export default function WorldMap() {
   const { width, height } = WORLD_VIEWBOX;
   return (
-    <section className="bg-surface px-4 pb-fi-24 md:px-6 md:pb-0" aria-label="Pays couverts par le réseau">
-      <Parallax className="mx-auto w-full max-w-[88rem]" distance={22}>
+    <section className="bg-surface pb-fi-24 md:pb-0" aria-label="Pays couverts par le réseau">
+      <Parallax className="w-full" distance={22}>
         <svg
           role="img"
           aria-label={ariaLabel}
@@ -45,7 +45,7 @@ export default function WorldMap() {
           </g>
         </svg>
       </Parallax>
-      <ul className="mt-fi-24 flex flex-wrap justify-center gap-x-4 gap-y-1 font-poppins text-small font-bold text-brand lg:sr-only">
+      <ul className="mt-fi-24 flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 font-poppins text-small font-bold text-brand lg:sr-only">
         {names.map((n) => (
           <li key={n}>{n}</li>
         ))}
