@@ -6,55 +6,16 @@
  * Mobile : burger + panneau plein écran à deux niveaux (fermeture à `Échap`
  * ou à la navigation, scroll du body bloqué).
  */
+import MegaPanel from "@/components/mega-menu";
 import { ETERNITY_URL, FIAT_IFTA_URL } from "@/content/links";
+import { navItems, type NavItem } from "@/content/nav";
 import clsx from "clsx";
 import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-
-type MegaMenu = {
-  heading: string;
-  subtitle: string;
-  content: string;
-  links: { label: string; href: string }[];
-};
-
-type NavItem = { label: string; href: string; mega?: MegaMenu };
-
-const navItems: NavItem[] = [
-  {
-    label: "Notre groupe",
-    href: "/groupe",
-    mega: {
-      heading: "À propos de Fune Info Africa",
-      subtitle: "Notre mission d’opérateur de services funéraires :",
-      content:
-        "apporter des réponses personnalisées et un service exemplaire à nos clients et à nos partenaires.",
-      links: [
-        { label: "Missions", href: "/groupe" },
-        { label: "Engagements", href: "/groupe" },
-      ],
-    },
-  },
-  {
-    label: "Nos expertises",
-    href: "/expertises",
-    mega: {
-      heading: "Nos expertises",
-      subtitle: "Acteur référent des services funéraires,",
-      content:
-        "Fune Info Africa mobilise ses agences, sa flotte et ses équipes partout en Côte d’Ivoire pour organiser un dernier hommage à la hauteur de chaque famille.",
-      links: [
-        { label: "Organisation d’obsèques", href: "/expertises" },
-        { label: "Rapatriement de corps", href: "/expertises" },
-      ],
-    },
-  },
-  { label: "Carrières", href: "/carrieres" },
-];
+import { useEffect, useRef, useState } from "react";
 
 const linkStyle =
   "font-poppins text-nav font-bold uppercase whitespace-nowrap transition-colors duration-150 " +
@@ -67,19 +28,38 @@ export default function Header() {
   // Rubrique dans laquelle on est descendu sur mobile (null = liste principale)
   const [mobileIndex, setMobileIndex] = useState<number | null>(null);
 
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
   const close = () => {
     setOpen(false);
     setMobileIndex(null);
     setActiveIndex(null);
   };
+  const openMenu = (index: number) => {
+    if (timer.current) clearTimeout(timer.current);
+    setActiveIndex(index);
+  };
+  // Léger délai à la sortie de la souris pour éviter le clignotement
+  const scheduleClose = () => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setActiveIndex(null), 150);
+  };
 
-  // Échap ferme les menus
+  // Échap ferme les menus ; un clic extérieur ferme le panneau desktop
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
     };
+    const onPointer = (e: PointerEvent) => {
+      if (!headerRef.current?.contains(e.target as Node)) setActiveIndex(null);
+    };
     document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
   }, []);
 
   // Bloque le scroll du body quand le menu mobile est ouvert
@@ -95,6 +75,7 @@ export default function Header() {
 
   return (
     <motion.header
+      ref={headerRef}
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -125,91 +106,52 @@ export default function Header() {
             {navItems.map((item, index) => (
               <li
                 key={item.label}
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
-                onFocus={() => setActiveIndex(index)}
+                onMouseEnter={() => item.mega && openMenu(index)}
+                onMouseLeave={scheduleClose}
                 onBlur={(e) => {
                   if (!e.currentTarget.contains(e.relatedTarget as Node | null))
                     setActiveIndex(null);
                 }}
                 className="flex items-stretch"
               >
-                <Link
-                  href={item.href}
-                  aria-current={isActive(item.href) ? "page" : undefined}
-                  aria-haspopup={item.mega ? "true" : undefined}
-                  aria-expanded={item.mega ? activeIndex === index : undefined}
-                  className={clsx(
-                    linkStyle,
-                    "relative flex items-center text-brand hover:text-brand-deep",
-                    isActive(item.href) &&
-                      "after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:bg-brand",
-                  )}
-                >
-                  {item.label}
-                </Link>
+                {item.mega ? (
+                  <button
+                    type="button"
+                    aria-expanded={activeIndex === index}
+                    aria-controls={`mega-${item.mega.id}`}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    onClick={() =>
+                      activeIndex === index ? setActiveIndex(null) : openMenu(index)
+                    }
+                    className={clsx(
+                      linkStyle,
+                      "relative flex items-center text-brand hover:text-brand-deep",
+                      isActive(item.href) &&
+                        "after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:bg-brand",
+                    )}
+                  >
+                    {item.label}
+                  </button>
+                ) : (
+                  <Link
+                    href={item.href}
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className={clsx(
+                      linkStyle,
+                      "relative flex items-center text-brand hover:text-brand-deep",
+                      isActive(item.href) &&
+                        "after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:bg-brand",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                )}
 
                 <AnimatePresence>
                   {item.mega && activeIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "linear" }}
-                      className="absolute left-0 top-full w-full bg-surface text-ink shadow-xl"
-                    >
-                      <div className="container-wide grid grid-cols-3 gap-10 py-10">
-                        <div className="relative col-span-1 pl-[43px]">
-                          <Image
-                            src="/logo-funinfo-pink.svg"
-                            alt=""
-                            width={35}
-                            height={35}
-                            aria-hidden="true"
-                            className="absolute left-0 top-0"
-                          />
-                          <p className="mb-[0.4rem] pt-4 text-[18px] font-bold uppercase leading-[27px] text-navy-alt">
-                            {item.mega.heading}
-                          </p>
-                          <p className="text-[16px] font-medium text-gold">
-                            {item.mega.subtitle}
-                          </p>
-                          <p className="text-[13px] leading-5 text-ink">
-                            {item.mega.content}
-                          </p>
-                        </div>
-                        <div className="col-span-2 grid grid-cols-2 gap-x-10">
-                          <ul className="pt-5">
-                            <li>
-                              <Link
-                                href={item.href}
-                                onClick={close}
-                                className="block py-2 text-base font-bold uppercase text-navy-alt transition-colors duration-150 hover:text-gold"
-                              >
-                                {item.label}
-                              </Link>
-                            </li>
-                            {item.mega.links.map((link) => (
-                              <li key={link.label}>
-                                <Link
-                                  href={link.href}
-                                  onClick={close}
-                                  className="group relative flex items-center py-2 text-sm font-normal text-navy-alt transition-colors duration-150 hover:text-gold"
-                                >
-                                  <span
-                                    aria-hidden="true"
-                                    className="absolute left-0 top-1/2 h-px w-0 -translate-y-1/2 bg-gold transition-[width] duration-[400ms] ease-out group-hover:w-[15px]"
-                                  />
-                                  <span className="inline-block transition-transform duration-[400ms] ease-out group-hover:translate-x-[15px]">
-                                    {link.label}
-                                  </span>
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </motion.div>
+                    <div onMouseEnter={() => openMenu(index)}>
+                      <MegaPanel menu={item.mega} onNavigate={close} />
+                    </div>
                   )}
                 </AnimatePresence>
               </li>
@@ -336,7 +278,7 @@ export default function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, ease: "linear" }}
-                className="absolute inset-0 overflow-y-auto bg-surface text-ink"
+                className="absolute inset-0 overflow-y-auto bg-surface text-navy"
               >
                 <button
                   type="button"
@@ -379,30 +321,30 @@ function MobileSub({
           aria-hidden="true"
           className="absolute left-0 top-6"
         />
-        <p className="mb-[0.4rem] pt-4 text-[18px] font-bold uppercase leading-[27px] text-navy-alt">
+        <p className="mb-[0.4rem] pt-4 font-poppins text-body font-bold uppercase text-brand">
           {mega.heading}
         </p>
-        <p className="text-[16px] font-medium text-gold">{mega.subtitle}</p>
-        <p className="text-[13px] leading-5 text-ink">{mega.content}</p>
+        <p className="text-small text-navy">
+          <strong className="font-poppins font-bold">{mega.lead}</strong>
+          {mega.body}
+        </p>
       </div>
-      <ul className="mt-8">
-        {[{ label: item.label, href: item.href }, ...mega.links].map(
-          (link, i) => (
-            <li key={`${link.label}-${i}`}>
-              <Link
-                href={link.href}
-                onClick={onNavigate}
-                className={clsx(
-                  "flex items-center justify-between border-b border-line-strong py-4 text-sm text-navy-alt",
-                  i === 0 && "font-bold uppercase",
-                )}
-              >
-                {link.label}
-                <ChevronRight className="size-4 shrink-0 text-gold" />
-              </Link>
-            </li>
-          ),
-        )}
+      <p className="mt-8 font-poppins text-body font-bold uppercase text-brand">
+        {mega.linksTitle}
+      </p>
+      <ul className="mt-2">
+        {mega.links.map((link) => (
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              onClick={onNavigate}
+              className="flex items-center justify-between border-b border-line-strong py-4 font-poppins text-small font-semibold text-navy"
+            >
+              {link.label}
+              <ChevronRight className="size-4 shrink-0 text-brand" />
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );

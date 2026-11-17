@@ -18,14 +18,16 @@ export default function Section({
   tone = "canvas",
   className,
   reveal = true,
+  id,
 }: {
   children: ReactNode;
   tone?: keyof typeof tones;
   className?: string;
   reveal?: boolean;
+  id?: string;
 }) {
   return (
-    <section className={clsx("py-fi-40 md:py-fi-64", tones[tone], className)}>
+    <section id={id} className={clsx("py-fi-40 md:py-fi-64", tones[tone], className)}>
       <div className="container-wide">
         {reveal ? <Reveal>{children}</Reveal> : children}
       </div>
