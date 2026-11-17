@@ -3,21 +3,69 @@
 @theme {
   --font-sans: var(--font-montserrat), sans-serif;
   --font-poppins: var(--font-poppins), sans-serif;
-  --color-brand: #BB2282;
+  --font-inter: var(--font-inter), sans-serif;
+
+  /* Couleurs (tokens Figma `--fi-*`) */
+  --color-brand: #bb2282;
+  --color-brand-deep: #8e165f;
+  --color-navy: #071e2e;
+  --color-navy-alt: #0b273a;
+  --color-ink-secondary: #3e4e5a;
+  --color-canvas: #fffdfe;
+  --color-surface: #ffffff;
+  /* Relevés sur la maquette (non exposés en variable Figma) */
+  --color-eternity: #1084be;
+  --color-news: #efddeb;
+  --color-join: #652681;
+  --color-card: #e4e4e7;
+  --color-brand-soft: #c075ae;
+  --color-line: #e1dddd;
+  --color-line-strong: #c8ced3;
+
+  /* À supprimer avec l'issue header (absents de la maquette) */
   --color-gold: #bd9d7b;
   --color-ink: #706b69;
+
+  /* Espacements Figma 16 / 24 / 40 / 64 */
+  --spacing-fi-16: 1rem;
+  --spacing-fi-24: 1.5rem;
+  --spacing-fi-40: 2.5rem;
+  --spacing-fi-64: 4rem;
   /* Hauteur du header sticky : px-3 (12px x 2) + logo 53px */
   --spacing-header: 4.8125rem; /* 77px */
-}
 
-@theme inline {
-  --font-inter: var(--font-inter);
+  /* Rayons */
+  --radius-md: 1rem;
+  --radius-pill: 9999px;
+
+  /* Breakpoints : mobile 375 = base, tablette 768, desktop 1280, large 1920 */
+  --breakpoint-sm: 375px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1280px;
+  --breakpoint-2xl: 1920px;
+
+  /* Échelle typographique */
+  --text-caption: 0.6875rem; /* 11 */
+  --text-caption--line-height: 1rem;
+  --text-small: 0.8125rem; /* 13 */
+  --text-small--line-height: 1.25rem;
+  --text-body: 1.125rem; /* 18 */
+  --text-body--line-height: 1.6875rem; /* 27 */
+  --text-kicker: 0.75rem; /* 12 */
+  --text-kicker--line-height: 1rem;
+  --text-section: 1.5625rem; /* 25 */
+  --text-section--line-height: 1.875rem; /* 30 */
+  --text-page: 2.5rem; /* 40 */
+  --text-page--line-height: 3rem;
 }
 
 @utility container-wide {
-  max-width: 1300px;
+  max-width: 1320px;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1rem;
+  @media (width >= 768px) {
+    padding-inline: 1.5rem;
+  }
 }
 
 @utility underline-gold {
@@ -28,3 +76,16 @@
   padding-bottom: 0.45rem;
 }
 
+@layer base {
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-navy);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    @media (width >= 1280px) {
+      font-size: var(--text-body);
+      line-height: var(--text-body--line-height);
+    }
+  }
+}
