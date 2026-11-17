@@ -33,7 +33,7 @@ export default function JoinUsBanner() {
             <h2 id="join-us-title" className="font-arial text-cta-title font-bold uppercase tracking-[0.04em] [-webkit-text-stroke:0.02em]">
               Rejoignez-nous
             </h2>
-            <p className="mt-[0.2rem] font-arial text-cta-sub font-bold">Offres d’emplois</p>
+            <p className="mt-[0.2rem] font-arial text-cta-sub font-bold">Offres d’emploi</p>
             <Button
               href={mailtoHr("Candidature spontanée")}
               variant="white"
