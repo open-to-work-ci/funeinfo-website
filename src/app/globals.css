@@ -147,6 +147,15 @@
   --text-lede--line-height: 1.5;
   --text-meta: 0.75rem; /* 12 : infos de contact */
   --text-meta--line-height: 1.15rem;
+
+  /* Hero d'accueil : slides pays (couleurs de panneau relevées sur la vidéo de la maquette) */
+  --color-hero-abidjan: #f4a896;
+  --color-hero-paris: #3fd6c3;
+  --color-hero-brazzaville: #f98167;
+  --color-hero-conakry: #9aa1b6;
+  --text-hero-info: clamp(0.75rem, 0.2rem + 1vw, 1.375rem); /* bloc d'infos des slides pays : ≈ 21 à 1905 */
+  --text-hero-info--line-height: 1.55;
+  --ease-hero: cubic-bezier(0.22, 1, 0.36, 1); /* décélération de la transition de slide */
 }
 
 /*
