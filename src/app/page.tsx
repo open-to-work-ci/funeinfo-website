@@ -12,8 +12,8 @@ import type { Metadata } from "next";
 const description =
   "Fune Info Africa accompagne les familles avec excellence funéraire : organisation d’obsèques, rapatriement de corps à l’international et soutien discret dans les moments difficiles.";
 
+// Pas de `title` : la page racine hérite du `title.default` du layout (le template ne s'applique pas au même segment).
 export const metadata: Metadata = {
-  title: "Accueil",
   description,
 };
 
