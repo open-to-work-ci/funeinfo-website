@@ -93,6 +93,18 @@
   --text-lead--line-height: 2rem;
   --text-page: 2.5rem; /* 40 */
   --text-page--line-height: 3rem;
+
+  /* Page Expertises (relevés sur la maquette, ×1905/1803) */
+  --text-expertises-title: clamp(1.75rem, 0.7rem + 1.6vw, 2.625rem); /* ≈ 42 à 1905 */
+  --text-expertises-title--line-height: 1.2;
+  --text-expertises-lead: clamp(1rem, 0.6rem + 0.75vw, 1.25rem); /* 20 */
+  --text-expertises-lead--line-height: 1.375;
+  --text-banner-title: clamp(1.25rem, 0.5rem + 1.3vw, 1.875rem); /* 30 */
+  --text-banner-title--line-height: 1.2;
+  --text-banner-lead: clamp(0.875rem, 0.4rem + 0.8vw, 1.25rem); /* 20 */
+  --text-banner-lead--line-height: 1.2;
+  /* Marge intérieure des bannières (texte et bouton) : ≈ 30 à 1905 */
+  --spacing-banner: clamp(1rem, 1.6vw, 1.9rem);
 }
 
 /*
