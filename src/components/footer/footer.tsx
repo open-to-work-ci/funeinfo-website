@@ -8,6 +8,7 @@ import { Stagger, StaggerItem } from "@/components/ui/motion";
 import { FOOTER } from "@/content/footer";
 import FooterBrand from "./footer-brand";
 import FooterContact from "./footer-contact";
+import FooterLegal from "./footer-legal";
 import FooterNewsletter from "./footer-newsletter";
 
 const blockRule = "border-t border-ink-secondary pt-fi-24 lg:border-t-0 lg:pt-0";
@@ -34,9 +35,12 @@ export default function Footer() {
         </div>
 
         <StaggerItem>
-          <p className="mt-fi-40 text-footer-copy font-light lg:mt-[2rem] lg:pl-[0.45rem]">
-            © Copyright {year} - {FOOTER.copyright}
-          </p>
+          <div className="mt-fi-40 flex flex-col gap-3 text-footer-copy font-light md:flex-row md:flex-wrap md:items-center md:justify-between md:gap-x-8 lg:mt-[2rem] lg:pl-[0.45rem]">
+            <p>
+              © Copyright {year} - {FOOTER.copyright}
+            </p>
+            <FooterLegal />
+          </div>
         </StaggerItem>
       </Stagger>
     </footer>
