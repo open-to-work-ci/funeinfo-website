@@ -1,8 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="68" viewBox="0 0 130 68" role="img" aria-label="FIAT-IFTA">
-  <rect x="1" y="1" width="128" height="52" fill="#0f5a93"/>
-  <text x="10" y="26" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" fill="#ffffff">FIAT</text>
-  <text x="10" y="48" font-family="Georgia, 'Times New Roman', serif" font-size="25" font-weight="700" fill="#ffffff">IFTA</text>
-  <circle cx="98" cy="27" r="19" fill="none" stroke="#ffffff" stroke-width="1.5"/>
-  <circle cx="98" cy="27" r="12" fill="none" stroke="#ffffff" stroke-width="1"/>
-  <text x="0" y="64" font-family="Georgia, 'Times New Roman', serif" font-size="6.2" fill="#0f5a93">The World Organisation of Funeral Operatives</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="127" height="62" viewBox="0 0 127 62" role="img" aria-label="FIAT-IFTA">
+  <!-- Approximation du logo FIAT-IFTA (maquette). TODO: remplacer par le fichier officiel fourni par la fédération. -->
+  <path d="M0 0H126V28C126 44 111 51.500 97 51.500H0Z" fill="#054b78"/>
+  <g font-family="Georgia, 'Times New Roman', serif" font-weight="700" fill="#ffffff">
+    <text x="3" y="23.500" font-size="23" textLength="64" lengthAdjust="spacingAndGlyphs">FIAT</text>
+    <text x="3" y="47.500" font-size="23" textLength="64" lengthAdjust="spacingAndGlyphs">IFTA</text>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-width="1">
+    <circle cx="94" cy="25.500" r="21" stroke-width="2" stroke-dasharray="2.200 1.100"/>
+    <circle cx="94" cy="25.500" r="17.500"/>
+    <path d="M94 8V43M77 25.500H111" stroke-width="0.600"/>
+    <ellipse cx="103" cy="17.500" rx="3" ry="4.200"/>
+    <path d="M103 21.700V37M98 26H108" stroke-width="1.600"/>
+  </g>
+  <text x="1" y="60" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="5.600" fill="#054b78" textLength="124" lengthAdjust="spacingAndGlyphs">The World Organization of Funeral Operatives</text>
 </svg>
