@@ -12,7 +12,7 @@ import type { ReactNode } from "react";
  *   d'un bas de carte rogné, remplacer `md:inset-y-[1%]` par `md:inset-y-[-6%]`.
  */
 const MAP_BOX =
-  "absolute bottom-[8%] left-1/2 aspect-[1000/526] w-[190%] -translate-x-1/2 md:inset-x-0 md:inset-y-[1%] md:aspect-auto md:w-auto md:translate-x-0";
+  "absolute bottom-[8%] left-1/2 aspect-[1000/551] w-[190%] -translate-x-1/2 md:inset-x-0 md:inset-y-[1%] md:aspect-auto md:w-auto md:translate-x-0";
 
 /**
  * Fond du hero : conteneur de la carte du monde (le SVG, rendu côté serveur par
