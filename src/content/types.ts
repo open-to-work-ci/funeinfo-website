@@ -10,9 +10,13 @@ export type Expertise = { slug: string; title: string; summary: string };
 
 export type Job = {
   slug: string;
-  department: string;
+  category: string;
   title: string;
-  description: string;
+  /** Sections optionnelles : une section absente n'est pas affichée. */
+  missions?: string[];
+  diploma?: string;
+  durationAndLocation?: string;
+  profile?: string;
 };
 
 export type NewsItem = { slug: string; title: string; date: string; href: string };
