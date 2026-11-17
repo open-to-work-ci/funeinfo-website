@@ -28,7 +28,7 @@ export default function HeroSlider() {
     <section
       aria-roledescription="carrousel"
       aria-label="Présentation du réseau Fune Info Africa"
-      className="relative min-h-[max(28rem,calc(100svh-var(--spacing-header)))] overflow-hidden bg-sea text-surface md:mx-[1.15vw]"
+      className="relative min-h-[max(28rem,calc(100svh-var(--spacing-header)))] overflow-hidden bg-sea text-surface"
       onFocus={() => swiperRef.current?.autoplay?.pause()}
       onBlur={() => {
         if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
