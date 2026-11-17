@@ -39,9 +39,9 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${inter.variable} ${montserrat.variable} ${poppins.variable} h-full antialiased overflow-x-hidden`}
+      className={`${inter.variable} ${montserrat.variable} ${poppins.variable} h-full antialiased overflow-x-clip`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden">
+      <body className="min-h-full flex flex-col overflow-x-clip">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:bg-surface focus:p-4 focus:text-brand"
