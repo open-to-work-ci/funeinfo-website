@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Variables d'environnement
+
+| Variable | Rôle | Valeur par défaut |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | URL publique du site (sans slash final) : `metadataBase`, canonical, sitemap, JSON-LD | `https://fune.info` (provisoire, à remplacer par le domaine de production) |
+| `NEXT_PUBLIC_ETERNITY_URL` | Lien externe « ETERNITY » du header | `https://example.com` (à fournir) |
+
+Les déploiements Vercel hors production (`VERCEL_ENV` ≠ `production`) renvoient un `robots.txt` qui interdit tout et une balise `noindex`.

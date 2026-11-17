@@ -30,7 +30,7 @@ export default function NewsletterForm() {
   const invalid = state.status === "error";
 
   return (
-    <form action={action} noValidate className="flex flex-col items-start gap-3">
+    <form action={action} noValidate className="relative flex flex-col items-start gap-[0.5rem]">
       <label htmlFor="newsletter-email" className="sr-only">
         {newsletter.emailLabel}
       </label>
@@ -43,7 +43,7 @@ export default function NewsletterForm() {
         defaultValue={state.email}
         aria-invalid={invalid}
         aria-describedby="newsletter-status"
-        className="h-10 w-full max-w-[13.5rem] rounded-sm border border-brand bg-surface px-3 text-small text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+        className="h-[1.6rem] w-full max-w-[13.5rem] rounded-sm border border-brand bg-surface px-2 text-small text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
       />
       {/* Champ piège anti-spam : masqué, hors tabulation, ignoré des lecteurs d'écran. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
@@ -55,14 +55,15 @@ export default function NewsletterForm() {
         variant="white"
         disabled={pending}
         aria-busy={pending}
-        className="px-5 py-2.5 text-kicker normal-case! focus-visible:ring-offset-navy"
+        size="sm"
+        className="focus-visible:ring-offset-navy"
       >
         {pending ? newsletter.submitting : newsletter.submit}
       </Button>
       <p
         id="newsletter-status"
         aria-live="polite"
-        className={`min-h-4 text-kicker ${invalid ? "text-danger-soft" : "text-surface"}`}
+        className={`min-h-4 text-kicker lg:absolute lg:left-0 lg:top-full lg:mt-1 lg:w-max lg:max-w-[16rem] ${invalid ? "text-danger-soft" : "text-surface"}`}
       >
         {state.message}
       </p>
