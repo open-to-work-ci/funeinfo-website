@@ -1,6 +1,5 @@
 import {
   COUNTRY_LABELS,
-  MAP_LABELS,
   MAP_MARKERS,
   NETWORK_COUNTRIES,
   WORLD_VIEWBOX,
@@ -28,7 +27,6 @@ const base = COUNTRY_LABELS.find((l) => l.id === BASE_COUNTRY_ID);
 
 /** Échelle des noms de pays écrits dans les pays d'Afrique (1 = taille calculée ; 0,85 = −15 %). */
 const COUNTRY_LABEL_SCALE = 0.85;
-const smallLabels = new Set(["Suisse", "Italie", "Thaïlande", "Belgique", "Portugal", "Angleterre"]);
 
 /**
  * Carte du monde SVG (Mercator) : pays du réseau en magenta, autres en gris clair.
@@ -96,19 +94,6 @@ export default function WorldMap() {
           <g className="fill-brand">
             {MAP_MARKERS.map((m) => (
               <circle key={m.id} cx={m.x} cy={m.y} r={2.2} />
-            ))}
-          </g>
-          <g className="hidden fill-brand font-inter font-bold lg:block">
-            {MAP_LABELS.map((l) => (
-              <text
-                key={l.text}
-                x={l.x}
-                y={l.y}
-                textAnchor={l.anchor}
-                fontSize={l.text === "Russie" ? 18 : smallLabels.has(l.text) ? 11 : 15}
-              >
-                {l.text === "Russie" ? "RUSSIE" : l.text}
-              </text>
             ))}
           </g>
         </svg>
