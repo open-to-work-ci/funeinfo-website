@@ -1,25 +1,50 @@
 import { stats } from "@/content/home";
+import clsx from "clsx";
+import { Fragment } from "react";
+import { Stagger, StaggerItem } from "../ui/motion";
 import CountUp from "./count-up";
-import Reveal from "../ui/reveal";
 
-/** Chiffres clés : 4 + 3 en desktop, 2 colonnes en tablette, 1 en mobile. */
+/** Nombre d'agences : première rangée de la maquette (4 + 3). */
+const AGENCIES = 4;
+
+/**
+ * Chiffres clés : 4 agences puis 3 réalisations, centrés (retour à la ligne naturel
+ * du conteneur) ; en cascade à l'entrée dans l'écran, compteurs animés de 0 à la valeur.
+ */
 export default function Stats() {
   return (
-    <div className="container-wide pb-fi-40 md:pb-fi-64">
-      <Reveal>
-        <ul className="mx-auto flex max-w-[1100px] flex-wrap justify-center gap-y-fi-40">
-          {stats.map((s) => (
-            <li key={s.label} className="w-full px-3 text-center md:w-1/2 lg:w-1/4">
-              <p className="font-poppins text-stat font-bold text-brand-soft">
+    <section
+      className="bg-surface px-4 pb-fi-40 pt-fi-16 md:px-6 md:pb-[5.3vw] md:pt-0"
+      aria-label="Chiffres clés"
+    >
+      <Stagger
+        as="ul"
+        className="mx-auto flex max-w-[62rem] flex-wrap justify-center gap-x-[3vw] gap-y-fi-24 md:gap-y-1"
+      >
+        {stats.map((s, i) => (
+          <Fragment key={s.label}>
+            {i === AGENCIES && (
+              <li
+                aria-hidden="true"
+                className="hidden h-0 basis-full md:block"
+              />
+            )}
+            <StaggerItem as="li" className="basis-[44%] text-center md:basis-auto">
+              <p
+                className={clsx(
+                  "font-sans font-bold leading-none text-brand-soft",
+                  s.prefix ? "text-stat-lg" : "text-stat-xl",
+                )}
+              >
                 <CountUp value={s.value} prefix={s.prefix} digits={s.digits} />
               </p>
-              <p className="mx-auto mt-2 max-w-[16rem] font-poppins text-small font-bold text-brand-soft">
+              <p className="mt-1 whitespace-pre-line font-sans text-stat-label font-medium leading-[1.3] text-plum md:mt-2">
                 {s.label}
               </p>
-            </li>
-          ))}
-        </ul>
-      </Reveal>
-    </div>
+            </StaggerItem>
+          </Fragment>
+        ))}
+      </Stagger>
+    </section>
   );
 }
