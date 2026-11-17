@@ -24,10 +24,10 @@ export default function CtaBanner({
     <section className="bg-navy text-surface">
       <div className="container-wide w-auto! grid md:grid-cols-[3fr_2fr]">
         <Reveal className="order-2 flex flex-col items-stretch justify-center gap-fi-16 py-fi-40 md:order-1 md:items-start md:py-fi-64">
-          <h2 className="max-w-[40rem] font-sans text-cta-title font-bold leading-[1.05]">
+          <h2 className="max-w-[40rem] font-sans text-home-cta-title font-bold leading-[1.05]">
             {title}
           </h2>
-          <p className="mt-1 text-cta-sub text-line-strong md:mt-3">
+          <p className="mt-1 text-home-cta-sub text-line-strong md:mt-3">
             {subtitle}
           </p>
           <Button
