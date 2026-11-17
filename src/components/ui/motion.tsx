@@ -160,23 +160,45 @@ export function TextLines({
   lines,
   className,
   lineClassName,
+  maskClassName,
+  delay = 0,
+  on = "view",
 }: {
   lines: ReactNode[];
   className?: string;
+  /** Classes de la ligne qui monte. */
   lineClassName?: string;
+  /** Classes du masque (ex. marge basse pour ne pas rogner les jambages). */
+  maskClassName?: string;
+  /** Délai de départ (s) ; chaque ligne s'ajoute 0,12 s. */
+  delay?: number;
+  /** `view` : à l'entrée dans l'écran (défaut) ; `mount` : au montage (hero, toujours visible). */
+  on?: "view" | "mount";
 }) {
   const reduce = useReducedMotion();
+  if (reduce) {
+    return (
+      <span className={className}>
+        {lines.map((line, i) => (
+          <span key={i} className={`block ${maskClassName ?? ""}`}>
+            <span className={`block ${lineClassName ?? ""}`}>{line}</span>
+          </span>
+        ))}
+      </span>
+    );
+  }
   return (
     <span className={className}>
       {lines.map((line, i) => (
-        // L'observateur de visibilité doit porter sur le masque (non translaté) :
+        // En mode `view`, l'observateur doit porter sur le masque (non translaté) :
         // une ligne translatée hors d'un `overflow-hidden` est vue « hors écran ».
         <motion.span
           key={i}
-          className="block overflow-hidden"
-          initial={reduce ? false : "hidden"}
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
+          className={`block overflow-hidden ${maskClassName ?? ""}`}
+          initial="hidden"
+          {...(on === "mount"
+            ? { animate: "show" }
+            : { whileInView: "show", viewport: { once: true, amount: 0.1 } })}
         >
           <motion.span
             className={`block ${lineClassName ?? ""}`}
@@ -184,7 +206,7 @@ export function TextLines({
               hidden: { y: "110%" },
               show: {
                 y: 0,
-                transition: { duration: 0.8, ease, delay: i * 0.12 },
+                transition: { duration: 0.8, ease, delay: delay + i * 0.12 },
               },
             }}
           >

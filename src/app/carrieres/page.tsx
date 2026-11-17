@@ -16,7 +16,7 @@ export default function Page() {
   return (
     <>
       <CareersBanner asHeading />
-      <div className="container-narrow !w-auto pb-[4.4rem] pt-8 md:pt-[2.9rem]">
+      <div className="container-narrow pb-[4.4rem] pt-8 md:pt-[2.9rem]">
         <Reveal>
           <OfferHeading>
             Rejoignez <span className="text-brand">Fune Info Africa</span>&nbsp;…

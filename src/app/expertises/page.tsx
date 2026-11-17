@@ -17,7 +17,7 @@ export default function Page() {
     <>
       <ExpertisesHero />
       <section className="overflow-x-clip bg-canvas pb-[clamp(2.5rem,4.1vw,4.9rem)] pt-[clamp(1.5rem,2.2vw,2.6rem)]">
-        <div className="container-wide w-auto!">
+        <div className="container-wide">
           {/* Décalage de la maquette (composition ≈ 25 px à droite du centre) sur grand écran. */}
           <div className="mx-auto flex max-w-[1313px] flex-col gap-[clamp(1rem,1.5vw,1.8rem)] min-[1600px]:relative min-[1600px]:left-[1.3vw]">
             {expertises.map((e, i) => (

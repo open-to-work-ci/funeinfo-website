@@ -1,11 +1,11 @@
 "use client";
 
 import type { HeroSlide } from "@/content/home";
-import HeroLines from "./hero-lines";
+import { TextLines } from "@/components/ui/motion";
 
 /**
  * Texte d'une slide : titre en 4 lignes (2 en gras, 2 en léger) + sous-titre.
- * La slide active monte ligne par ligne (`HeroLines`, remonté à chaque activation) ;
+ * La slide active monte ligne par ligne (`TextLines`, remonté à chaque activation) ;
  * les slides inactives restent statiques pour que le fondu sortant garde le texte.
  */
 export default function HeroSlideText({ slide, active }: { slide: HeroSlide; active: boolean }) {
@@ -32,10 +32,10 @@ export default function HeroSlideText({ slide, active }: { slide: HeroSlide; act
     return (
       <>
         <p className="font-poppins text-hero-title uppercase leading-[0.97]">
-          <HeroLines lines={lines} />
+          <TextLines lines={lines} on="mount" />
         </p>
         <p className={sub}>
-          <HeroLines lines={[slide.subtitle]} delay={0.5} />
+          <TextLines lines={[slide.subtitle]} on="mount" delay={0.5} />
         </p>
       </>
     );

@@ -7,7 +7,7 @@ import NewsCard from "./news-card";
 export default function NewsSection() {
   return (
     <section className="bg-news pb-fi-40 pt-fi-40 md:pb-14" aria-labelledby="actualites">
-      <div className="container-narrow w-auto!">
+      <div className="container-narrow">
         <Reveal>
           <h2 id="actualites" className="font-sans text-section font-bold text-navy md:text-page">
             Actualités

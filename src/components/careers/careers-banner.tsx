@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Parallax } from "@/components/ui/motion";
-import BannerTitle from "./banner-title";
+import { TextLines } from "@/components/ui/motion";
 
 /**
  * Bannière photo « CARRIÈRES » (maquette : ≈ 1903 × 380 px, soit 5:1, titre Arial blanc à gauche).
  * Hauteur pilotée par `aspect-ratio` : plus haute sur mobile/tablette pour garder le titre lisible.
- * Photo en parallaxe légère, titre qui monte depuis un masque (`BannerTitle`).
+ * Photo en parallaxe légère, titre qui monte depuis un masque (`TextLines`).
  * `asHeading` : titre en <h1> (page liste) ; sinon <p> décoratif (page détail, dont le <h1> est le poste).
  */
 export default function CareersBanner({ asHeading = false }: { asHeading?: boolean }) {
@@ -29,7 +29,7 @@ export default function CareersBanner({ asHeading = false }: { asHeading?: boole
       </Parallax>
       <div className="absolute inset-0 bg-linear-to-r from-navy/20 to-transparent to-45%" aria-hidden />
       <Title className="absolute left-[clamp(1rem,1.7vw,2.5rem)] top-[calc(clamp(1rem,3.15vw,3.75rem)_-_0.2em)] font-arial text-banner font-bold uppercase text-surface">
-        <BannerTitle>Carrières</BannerTitle>
+        <TextLines lines={["Carrières"]} on="mount" delay={0.1} lineClassName="pt-[0.2em]" />
       </Title>
     </div>
   );
