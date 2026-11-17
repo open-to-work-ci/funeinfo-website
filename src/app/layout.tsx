@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat, Poppins } from "next/font/google";
-import Footer from "@/components/footer";
-import Header from "@/components/header";
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
+import JsonLd from "@/components/json-ld";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL, THEME_COLOR } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -26,9 +28,36 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Fune Info Africa — Organisation d’obsèques et rapatriement de corps",
-  description:
-    "Fune Info Africa accompagne les familles avec excellence funéraire : organisation d’obsèques, rapatriement de corps à l’international et soutien discret dans les moments difficiles, avec plus de 30 agences en Côte d’Ivoire ainsi qu’à Paris et Brazzaville.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  // "./" : canonique relative à la page courante (surchargeable par page).
+  alternates: { canonical: "./" },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "fr_FR",
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    // L'image vient de `opengraph-image.png` (convention de fichier).
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
+  formatDetection: { telephone: false, email: false, address: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: THEME_COLOR,
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -48,6 +77,7 @@ export default function RootLayout({
         >
           Aller au contenu
         </a>
+        <JsonLd />
         <Header />
         <main id="main" className="flex-1">
           {children}
