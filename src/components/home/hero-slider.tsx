@@ -104,7 +104,7 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
         ))}
         <span
           className={clsx(
-            "pointer-events-none absolute inset-y-0 left-[11.5%] hidden w-[0.0625rem] bg-surface/30 transition-opacity duration-700 motion-reduce:transition-none lg:block",
+            "pointer-events-none absolute inset-y-0 left-[11.5%] hidden w-[0.0625rem] bg-[#a3a3a3] transition-opacity duration-700 motion-reduce:transition-none lg:block",
             active > 0 ? "opacity-100" : "opacity-0",
           )}
           aria-hidden="true"
