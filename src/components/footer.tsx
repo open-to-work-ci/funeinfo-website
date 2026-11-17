@@ -1,81 +1,80 @@
-import { Dot } from "lucide-react";
 import Image from "next/image";
+import NewsletterForm from "@/components/newsletter-form";
 import Reveal from "@/components/ui/reveal";
+import SocialIcon from "@/components/ui/social-icon";
 import VerticalSeparator from "@/components/vertical-separator";
+import { FOOTER, SOCIAL_LINKS } from "@/content/footer";
 
-/** Pied de page global (contenu provisoire, refonte dans l'issue footer). */
+const LINE = "var(--color-ink-secondary)";
+
+/** Pied de page global : logo + réseaux, newsletter, contact, copyright. */
 export default function Footer() {
+  const year = new Date().getFullYear();
+  const { newsletter, contact } = FOOTER;
+
   return (
-    <footer className="bg-navy text-white bg-contain bg-center">
-      <div className=" bg-no-repeat lg:bg-[url(/footer-fond.png)] container-wide space-y-14 py-10 md:py-14 ">
+    <footer className="bg-navy font-poppins text-surface">
+      <div className="container-wide py-fi-40 md:py-fi-64">
         <Reveal direction="up">
-          <div className="flex flex-col items-center lg:flex-row gap-10 lg:gap-0">
-            <div className="flex flex-col items-center lg:flex-row gap-8">
-              <div>
-                <Image
-                  src="/logo-header.svg"
-                  alt="Fune Info Africa"
-                  width={9180}
-                  height={50}
-                  className=" w-auto h-auto"
-                />
-              </div>
-              <div className="space-y-4 flex flex-col items-center lg:items-start">
-                <div className="text-[16px] font-bold  leading-4 uppercase">
-                  nous joindre
-                </div>
-                <div className="text-[13px] font-light  leading-3.25">
-                  24h/24 et 7j/7, partout en Côte d’Ivoire
-                </div>
-                <a
-                  href="tel:9930"
-                  aria-label="Appeler le 9930, 24h/24 et 7j/7"
-                  className="text-gold text-[13px] font-bold  leading-3.25"
-                >
-                  9930
-                </a>
-              </div>
-            </div>
-            <VerticalSeparator
-              className="mx-12 hidden lg:block"
-              color="var(--color-ink-secondary)"
-            />
-            <div className="space-y-4 flex flex-col items-center lg:items-start">
-              <div className="text-[14px] font-medium  leading-3.5">
-                Retrouvez nos actualités sur
-              </div>
-              <div className="">
-                <Image
-                  src="/logos/linkedin.svg"
-                  alt="LinkedIn"
-                  width={25}
-                  className="w-auto h-auto"
-                  height={25}
-                />
+          <div className="grid grid-cols-1 gap-fi-24 md:grid-cols-[1fr_auto_1fr] md:gap-x-fi-40 md:gap-y-fi-40 lg:grid-cols-[auto_auto_auto_auto_auto] lg:justify-start lg:gap-x-12">
+            {/* 1. Logo + réseaux sociaux */}
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:gap-8 md:col-span-3 lg:col-span-1">
+              <Image
+                src="/logo-header.svg"
+                alt="Fune Info Africa"
+                width={87}
+                height={53}
+                className="h-[4.5rem] w-auto shrink-0"
+              />
+              <div className="flex flex-col gap-4">
+                <p className="text-label font-medium">{FOOTER.socialTitle}</p>
+                <ul className="flex items-center gap-2">
+                  {SOCIAL_LINKS.map((s) => (
+                    <li key={s.id}>
+                      <a
+                        href={s.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={s.label}
+                        className="block rounded-sm transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                      >
+                        <SocialIcon id={s.id} className="size-7" />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <VerticalSeparator
-              className="mx-12 hidden lg:block"
-              color="var(--color-ink-secondary)"
-            />
-            <div className="space-y-4.5 flex flex-col items-center lg:items-start">
-              <div className="text-[18px] font-medium leading-6.75">
-                Vous avez une question ?
-              </div>
-              <div className="text-[11px] font-medium leading-4 uppercase  underline-offset-8 underline-black underline-gold">
-                CONTACTER-NOUS
-              </div>
+
+            <VerticalSeparator orientation="horizontal" color={LINE} className="md:hidden" />
+            <VerticalSeparator color={LINE} className="hidden lg:block" />
+
+            {/* 2. Newsletter */}
+            <div className="flex flex-col gap-3">
+              <p className="text-label font-medium">{newsletter.title}</p>
+              <NewsletterForm />
+            </div>
+
+            <VerticalSeparator orientation="horizontal" color={LINE} className="md:hidden" />
+            <VerticalSeparator color={LINE} className="hidden md:block" />
+
+            {/* 3. Contact */}
+            <div className="flex flex-col gap-2">
+              <p className="text-body font-medium">{contact.title}</p>
+              <p className="text-caption font-medium uppercase">{contact.cta}</p>
+              <a
+                href={`mailto:${contact.email}`}
+                className="w-fit rounded-sm text-caption font-light underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-surface focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              >
+                {contact.email}
+              </a>
             </div>
           </div>
         </Reveal>
-        <div className="w-full text-kicker font-light leading-4.5 flex flex-col  items-center  lg:flex-row lg:justify-between gap-10">
-          <div className="">© Copyright 2025 - Fune Info Africa</div>
-          <div className="flex ">
-            Mentions légales
-            <Dot className="text-gold" />
-            Accessibilité : non conforme
-          </div>
-        </div>
+
+        <p className="mt-fi-40 text-label font-light md:mt-fi-64">
+          © Copyright {year} - {FOOTER.copyright}
+        </p>
       </div>
     </footer>
   );

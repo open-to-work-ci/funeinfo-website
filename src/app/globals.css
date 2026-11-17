@@ -22,8 +22,8 @@
   --color-line: #e1dddd;
   --color-line-strong: #c8ced3;
 
-  /* À supprimer avec l’issue footer (absent de la maquette) */
-  --color-gold: #bd9d7b;
+  /* Message d'erreur lisible sur fond bleu nuit (footer) */
+  --color-danger-soft: #ff9aa5;
 
   /* Espacements Figma 16 / 24 / 40 / 64 */
   --spacing-fi-16: 1rem;
@@ -51,6 +51,8 @@
   --text-small--line-height: 1.25rem;
   --text-body: 1.125rem; /* 18 */
   --text-body--line-height: 1.6875rem; /* 27 */
+  --text-label: 0.875rem; /* 14 */
+  --text-label--line-height: 1.25rem;
   --text-kicker: 0.75rem; /* 12 */
   --text-kicker--line-height: 1rem;
   --text-section: 1.5625rem; /* 25 */
@@ -68,14 +70,6 @@
   @media (width >= 768px) {
     padding-inline: 1.5rem;
   }
-}
-
-@utility underline-gold {
-  background-image: linear-gradient(to right, var(--color-gold), var(--color-gold));
-  background-repeat: no-repeat;
-  background-size: 15% 1px;
-  background-position: left bottom;
-  padding-bottom: 0.45rem;
 }
 
 /* Hauteur réelle du header desktop (maquette : 117 px) */
