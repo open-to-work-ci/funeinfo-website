@@ -93,6 +93,20 @@
   --text-lead--line-height: 2rem;
   --text-page: 2.5rem; /* 40 */
   --text-page--line-height: 3rem;
+
+  /* Page Notre groupe */
+  --color-ink-muted: #667080; /* texte gris des cartes et du bloc d'infos (4,9:1 sur blanc) */
+  --color-line-soft: #e8e8ec; /* bordure des cartes d'engagement */
+  --radius-tab: 1.25rem; /* onglets pays : rectangle très arrondi, pas une pilule */
+  --radius-blob-md: clamp(1.5rem, 6vw, 7rem);
+  --text-heading: clamp(1.5625rem, 1.3rem + 0.8vw, 1.875rem); /* 25 → 30 */
+  --text-heading--line-height: 1.2;
+  --text-title: clamp(1.75rem, 1.2rem + 1.7vw, 2.625rem); /* 28 → 42 : h1 de la page */
+  --text-title--line-height: 1.2;
+  --text-lede: clamp(0.9375rem, 0.7rem + 0.7vw, 1.2rem); /* chapeau du hero : ≈ 19 desktop */
+  --text-lede--line-height: 1.5;
+  --text-meta: 0.75rem; /* 12 : infos de contact */
+  --text-meta--line-height: 1.15rem;
 }
 
 /*
@@ -102,7 +116,7 @@
 @utility container-wide {
   --gutter: 1rem;
   box-sizing: content-box;
-  width: 100%;
+  width: auto; /* 100 % + gouttière débordait du viewport sous 1320/1170 px */
   max-width: 1320px;
   margin-inline: auto;
   padding-inline: var(--gutter);
@@ -114,7 +128,7 @@
 @utility container-narrow {
   --gutter: 1rem;
   box-sizing: content-box;
-  width: 100%;
+  width: auto; /* 100 % + gouttière débordait du viewport sous 1320/1170 px */
   max-width: 1170px;
   margin-inline: auto;
   padding-inline: var(--gutter);
