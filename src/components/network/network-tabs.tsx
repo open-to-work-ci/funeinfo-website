@@ -83,7 +83,7 @@ function Tabs({ activeId }: { activeId: string }) {
               tabIndex={selected ? 0 : -1}
               onClick={() => select(c.id)}
               onKeyDown={(e: KeyboardEvent) => onKeyDown(e, i)}
-              className="shrink-0 normal-case"
+              className="shrink-0 !normal-case"
             >
               {c.label}
             </Button>

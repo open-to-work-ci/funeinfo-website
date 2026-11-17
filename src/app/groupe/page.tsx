@@ -39,7 +39,7 @@ export default function Page() {
       {/* Ancres : html a déjà scroll-padding-top = hauteur du header */}
       <Section id="engagements">
         <h2 className="font-poppins text-kicker font-bold uppercase text-brand">Nos engagements</h2>
-        <ul className="mt-fi-24 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-fi-24 grid gap-4 min-[640px]:grid-cols-2 min-[1024px]:grid-cols-4">
           {engagements.map((e, i) => (
             <li key={e.title}>
               <Reveal delay={i * 0.08} className="h-full">
