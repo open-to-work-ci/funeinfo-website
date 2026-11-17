@@ -1,18 +1,18 @@
 import type { ReactNode } from "react";
 
-/** Section de détail d'offre : intitulé magenta en petites capitales (h2) + contenu. */
+/** Section de détail d'offre : intitulé magenta en petites capitales (h2) + contenu (Poppins, noir). */
 export default function JobSection({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="space-y-fi-16">
-      <h2 className="font-sans text-kicker font-bold uppercase tracking-[0.2em] text-brand">{title}</h2>
-      <div className="max-w-[75ch] text-body md:text-lead">{children}</div>
+    <section>
+      <h2 className="font-sans text-job-label font-semibold uppercase tracking-[0.095em] text-brand">{title}</h2>
+      <div className="mt-[0.875rem] font-poppins text-job-body font-normal text-black">{children}</div>
     </section>
   );
 }
 
 export function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="list-disc space-y-1 pl-6 marker:text-navy">
+    <ul className="list-disc pl-8 marker:text-[0.75em] marker:text-black">
       {items.map((item) => (
         <li key={item}>{item}</li>
       ))}
