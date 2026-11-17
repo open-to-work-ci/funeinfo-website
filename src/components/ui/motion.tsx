@@ -169,17 +169,28 @@ export function TextLines({
   return (
     <span className={className}>
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden">
+        // L'observateur de visibilité doit porter sur le masque (non translaté) :
+        // une ligne translatée hors d'un `overflow-hidden` est vue « hors écran ».
+        <motion.span
+          key={i}
+          className="block overflow-hidden"
+          initial={reduce ? false : "hidden"}
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           <motion.span
             className={`block ${lineClassName ?? ""}`}
-            initial={reduce ? false : { y: "110%" }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease, delay: i * 0.12 }}
+            variants={{
+              hidden: { y: "110%" },
+              show: {
+                y: 0,
+                transition: { duration: 0.8, ease, delay: i * 0.12 },
+              },
+            }}
           >
             {line}
           </motion.span>
-        </span>
+        </motion.span>
       ))}
     </span>
   );
