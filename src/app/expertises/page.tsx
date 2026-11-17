@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 // TODO(destination) : pages de détail non maquettées, lien provisoire vers le contact.
-const DETAIL_HREF = "mailto:Contact@fune.info";
+const DETAIL_HREF = "mailto:contact@fune.info";
 
 export default function Page() {
   return (
