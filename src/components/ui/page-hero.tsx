@@ -10,10 +10,13 @@ export default function PageHero({
   kicker,
   title,
   children,
+  wide = false,
 }: {
   kicker?: string;
   title: string;
   children?: ReactNode;
+  /** Élargit le paragraphe (≈ 1150 px au lieu de 768 px). */
+  wide?: boolean;
 }) {
   return (
     <div className="bg-navy py-fi-40 text-surface md:py-fi-64">
@@ -22,7 +25,7 @@ export default function PageHero({
         <h1 className="font-poppins text-section font-bold md:text-page md:leading-[3rem]">
           {title}
         </h1>
-        {children && <div className="max-w-3xl">{children}</div>}
+        {children && <div className={wide ? "max-w-6xl" : "max-w-3xl"}>{children}</div>}
       </Reveal>
     </div>
   );
