@@ -14,7 +14,7 @@ import type { ComponentProps, ReactNode } from "react";
 type Variant = "primary" | "outline" | "white" | "soft";
 
 const base =
-  "inline-flex items-center justify-center rounded-pill px-6 py-3 font-poppins text-small font-bold uppercase transition-colors duration-150 " +
+  "inline-flex items-center justify-center px-6 py-3 font-poppins text-small font-bold uppercase transition-colors duration-150 " +
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-navy " +
   "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50";
 
@@ -26,8 +26,13 @@ const variants: Record<Variant, string> = {
   soft: "bg-brand-soft text-navy hover:bg-brand hover:text-surface",
 };
 
+/** Forme : pilule (défaut) ou rectangle aux coins peu arrondis (maquette : « EN SAVOIR PLUS », e-mail RH). */
+type Shape = "pill" | "rect";
+const shapes: Record<Shape, string> = { pill: "rounded-pill", rect: "rounded-sm" };
+
 type Props = {
   variant?: Variant;
+  shape?: Shape;
   active?: boolean;
   children: ReactNode;
   className?: string;
@@ -38,12 +43,13 @@ type Props = {
 
 export default function Button({
   variant = "primary",
+  shape = "pill",
   active,
   children,
   className,
   ...rest
 }: Props) {
-  const classes = clsx(base, variants[variant], className);
+  const classes = clsx(base, shapes[shape], variants[variant], className);
   if ("href" in rest && rest.href !== undefined) {
     return (
       <Link className={classes} data-active={active} {...rest}>

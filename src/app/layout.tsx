@@ -6,21 +6,21 @@ import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
-  weight: ["700"],
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
 });
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
-  weight: ["500", "800"],
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
 
 const poppins = Poppins({
   variable: "--font-poppins",
-  weight: ["300", "500", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
