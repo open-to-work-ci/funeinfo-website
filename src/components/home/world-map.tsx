@@ -10,6 +10,8 @@ import MapCountries from "./map-countries";
 
 const names = Object.values(NETWORK_COUNTRIES);
 const ariaLabel = `Carte du monde : pays couverts par le réseau Fune Info Africa : ${names.join(", ")}.`;
+/** Échelle des noms de pays écrits dans les pays d'Afrique (1 = taille calculée ; 0,85 = −15 %). */
+const COUNTRY_LABEL_SCALE = 0.85;
 const smallLabels = new Set(["Suisse", "Italie", "Thaïlande", "Belgique", "Portugal", "Angleterre"]);
 
 /**
@@ -39,15 +41,15 @@ export default function WorldMap() {
                 <text
                   key={l.id}
                   x={l.x}
-                  y={l.y - ((lines.length - 1) * l.size * 0.6) / 2}
+                  y={l.y - ((lines.length - 1) * l.size * COUNTRY_LABEL_SCALE * 0.6) / 2}
                   textAnchor="middle"
                   dominantBaseline="central"
-                  fontSize={l.size}
+                  fontSize={l.size * COUNTRY_LABEL_SCALE}
                   letterSpacing={l.id === "384" ? 0.15 : 0}
                   className={l.outside ? "fill-brand" : "fill-surface/90"}
                 >
                   {lines.map((t, i) => (
-                    <tspan key={t} x={l.x} dy={i === 0 ? 0 : l.size * 1.2}>
+                    <tspan key={t} x={l.x} dy={i === 0 ? 0 : l.size * COUNTRY_LABEL_SCALE * 1.2}>
                       {t}
                     </tspan>
                   ))}

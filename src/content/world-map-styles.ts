@@ -17,17 +17,19 @@ export type MapVariant = "hero" | "light";
 /** Classes par défaut : pays du réseau (`network`) et autres (`land`). */
 export const MAP_BASE_STYLES: Record<MapVariant, { land: string; network: string }> = {
   hero: { land: "fill-map-hero-land", network: "fill-map-hero-network" },
-  light: { land: "fill-map-land", network: "fill-brand" },
+  // Épaisseurs en unités de la carte (1 unité = 1,9 px à 1905 px de large) : 0,03 ≈ 0,06 px — simple filet
+  // entre les pays du réseau (maquette) ; les pays gris gardent leur trait blanc (0,4 dans `WorldMap`).
+  light: { land: "fill-map-land", network: "fill-brand [stroke-width:0.03]" },
 };
 
-/** Pays de la base du réseau (Côte d'Ivoire) : bordure plus épaisse sur la carte (maquette). */
+/** Pays de la base du réseau (Côte d'Ivoire) : bordure plus épaisse que les autres pays du réseau (maquette : 0,94 px contre 0,06 px). */
 export const BASE_COUNTRY_ID = "384";
 
 /** Surcharges par pays, clé = `id` du pays (chaîne, ex. "250"). */
 export const COUNTRY_STYLES: Record<MapVariant, Record<string, string>> = {
   hero: {},
   light: {
-    // Côte d'Ivoire : même fond que le réseau, bordure blanche épaisse (dessinée par-dessus ses voisins)
-    [BASE_COUNTRY_ID]: "fill-brand stroke-surface [stroke-width:1.5] [stroke-linejoin:round]",
+    // Côte d'Ivoire : bordure blanche de 0,94 px à 1905 px (≈ 0,49 unité), dessinée par-dessus ses voisins
+    [BASE_COUNTRY_ID]: "fill-brand stroke-surface [stroke-width:0.49] [stroke-linejoin:round]",
   },
 };
