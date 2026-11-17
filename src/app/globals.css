@@ -95,12 +95,31 @@
   --text-page--line-height: 3rem;
 }
 
+/*
+ * Conteneurs : la largeur de contenu est celle de la maquette (1320 px, ou
+ * 1170 px pour les pages éditoriales) ; la gouttière s'ajoute à l'extérieur.
+ */
 @utility container-wide {
+  --gutter: 1rem;
+  box-sizing: content-box;
+  width: 100%;
   max-width: 1320px;
   margin-inline: auto;
-  padding-inline: 1rem;
+  padding-inline: var(--gutter);
   @media (width >= 768px) {
-    padding-inline: 1.5rem;
+    --gutter: 1.5rem;
+  }
+}
+
+@utility container-narrow {
+  --gutter: 1rem;
+  box-sizing: content-box;
+  width: 100%;
+  max-width: 1170px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  @media (width >= 768px) {
+    --gutter: 1.5rem;
   }
 }
 
