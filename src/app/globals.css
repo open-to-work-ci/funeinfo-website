@@ -223,6 +223,13 @@ html {
   scroll-padding-top: var(--spacing-header);
 }
 
+/* Défilement fluide (ancres, « Aller au contenu », retour en haut), sauf si l'utilisateur réduit les animations. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 @layer base {
   body {
     background-color: var(--color-canvas);
