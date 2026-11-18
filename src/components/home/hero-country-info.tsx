@@ -13,11 +13,14 @@ export default function HeroCountryInfo({
   country,
   city,
   active,
+  enter,
   label,
 }: {
   country: Country;
   city: string;
   active: boolean;
+  /** Sens d'entrée du texte, calé sur le balayage du fond. */
+  enter: "up" | "down";
   /** Libellé accessible de la slide (« 2 sur 5 »). */
   label: string;
 }) {
@@ -28,8 +31,10 @@ export default function HeroCountryInfo({
       aria-label={label}
       inert={!active}
       className={clsx(
-        "col-start-1 row-start-1 font-inter text-hero-info font-normal transition-[opacity,transform] ease-hero motion-reduce:transition-none",
-        active ? "translate-y-0 opacity-100 delay-300 duration-700" : "translate-y-4 opacity-0 duration-300",
+        "col-start-1 row-start-1 font-inter text-hero-info font-normal",
+        active
+          ? clsx("opacity-100 motion-reduce:animate-none", enter === "up" ? "animate-hero-info-up" : "animate-hero-info-down")
+          : "opacity-0 transition-opacity duration-150 motion-reduce:transition-none",
       )}
     >
       <h2 className="flex items-center gap-[0.6em] font-medium">

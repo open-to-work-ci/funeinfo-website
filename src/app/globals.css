@@ -165,6 +165,40 @@
   /* Carte du réseau : pulsation de la base (Côte d'Ivoire) et bulle d'info au survol */
   --animate-map-pulse: map-pulse 3s ease-out infinite;
   --animate-map-card: map-card 0.18s ease-out both;
+  /* Hero : la nouvelle slide balaie le volet gauche à la verticale (up = entre par le bas,
+     down = entre par le haut, au retour) ; les infos suivent le balayage ; les filets se redessinent. */
+  --animate-hero-wipe-up: hero-wipe-up 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-wipe-down: hero-wipe-down 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-info-up: hero-info-up 600ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+  --animate-hero-info-down: hero-info-down 600ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both;
+  --animate-hero-line: hero-line 700ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+  @keyframes hero-wipe-up {
+    from {
+      transform: translateY(100%);
+    }
+  }
+  @keyframes hero-wipe-down {
+    from {
+      transform: translateY(-100%);
+    }
+  }
+  @keyframes hero-info-up {
+    from {
+      opacity: 0;
+      transform: translateY(40svh);
+    }
+  }
+  @keyframes hero-info-down {
+    from {
+      opacity: 0;
+      transform: translateY(-40svh);
+    }
+  }
+  @keyframes hero-line {
+    from {
+      transform: scaleY(0);
+    }
+  }
   @keyframes map-pulse {
     0% {
       transform: scale(0.35);
