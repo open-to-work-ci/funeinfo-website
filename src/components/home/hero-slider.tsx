@@ -9,6 +9,7 @@ import HeroControls from "./hero-controls";
 import HeroCountryCard from "./hero-country-card";
 import HeroCountryInfo from "./hero-country-info";
 import HeroCountrySlide from "./hero-country-slide";
+import HeroGuideLine from "./hero-guide-line";
 import HeroIntroSlide from "./hero-intro-slide";
 import HeroPanel from "./hero-panel";
 
@@ -19,9 +20,9 @@ const slides = heroCountries.flatMap((s) => {
 });
 const total = slides.length + 1;
 
-/** Durées mesurées sur la vidéo de la maquette (voir PR) : tenue 2 s + transition 0,7 s. */
+/** Durées mesurées sur la vidéo de la maquette : tenue 2 s + transition ≈ 0,45 s. */
 const HOLD_MS = 2000;
-const TRANSITION_MS = 700;
+const TRANSITION_MS = 450;
 
 const isEditable = (el: EventTarget | null) =>
   el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
@@ -43,8 +44,18 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
   const reduce = useReducedMotion();
   const paused = hovered || focused;
 
-  const next = useCallback(() => setActive((a) => (a + 1) % total), []);
-  const prev = useCallback(() => setActive((a) => (a - 1 + total) % total), []);
+  // Sens du dernier changement (1 : suivant, -1 : précédent) et compteur de changements :
+  // les balayages entrent par le bas en avant, par le haut en arrière ; seq = 0 : rien n'a bougé.
+  const [nav, setNav] = useState({ dir: 1, seq: 0 });
+  const next = useCallback(() => {
+    setNav((n) => ({ dir: 1, seq: n.seq + 1 }));
+    setActive((a) => (a + 1) % total);
+  }, []);
+  const prev = useCallback(() => {
+    setNav((n) => ({ dir: -1, seq: n.seq + 1 }));
+    setActive((a) => (a - 1 + total) % total);
+  }, []);
+  const enter = nav.dir === 1 ? "up" : "down";
 
   // Autoplay : s'arrête sur la dernière slide (comme la vidéo) ; après un changement,
   // la tenue démarre à la fin de la transition.
@@ -95,20 +106,20 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
         Fune Info Africa : un réseau international au service des familles
       </h1>
 
-      <HeroIntroSlide slide={heroIntro} active={active === 0} label={`1 sur ${total}`} map={map} />
+      <HeroIntroSlide
+        slide={heroIntro}
+        active={active === 0}
+        label={`1 sur ${total}`}
+        map={map}
+        enter={nav.seq > 0 ? enter : undefined}
+      />
 
       {/* Zone haute : photo de fond + infos (desktop : calques posés sur tout le hero). */}
       <div className="relative flex-1 pb-[calc(24%+1.5rem)] md:pb-[calc(20%+1.5rem)] lg:contents">
         {slides.map((s, i) => (
-          <HeroCountrySlide key={s.countryId} country={s.country} active={i === activeCountry} />
+          <HeroCountrySlide key={s.countryId} country={s.country} active={i === activeCountry} enter={enter} />
         ))}
-        <span
-          className={clsx(
-            "pointer-events-none absolute inset-y-0 left-[11.5%] hidden w-[0.0625rem] bg-[#a3a3a3] transition-opacity duration-700 motion-reduce:transition-none lg:block",
-            active > 0 ? "opacity-100" : "opacity-0",
-          )}
-          aria-hidden="true"
-        />
+        <HeroGuideLine visible={active > 0} seq={nav.seq} />
         <div
           aria-live={paused ? "polite" : "off"}
           className="relative z-10 grid px-[8%] pt-10 lg:absolute lg:inset-y-0 lg:left-[10.6%] lg:w-[40%] lg:content-center lg:p-0"
@@ -119,6 +130,7 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
               country={s.country}
               city={s.city}
               active={i === activeCountry}
+              enter={enter}
               label={`${i + 2} sur ${total}`}
             />
           ))}

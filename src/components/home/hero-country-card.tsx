@@ -23,14 +23,14 @@ export default function HeroCountryCard({
     <div
       aria-hidden={offset !== 0}
       className={clsx(
-        "absolute inset-0 transition-[transform,opacity] duration-700 ease-hero motion-reduce:transition-none",
+        "absolute inset-0 transition-[transform,opacity] duration-[450ms] ease-hero motion-reduce:transition-none",
         shown ? "opacity-100" : "opacity-0",
       )}
       style={{ transform: `translateX(${offset * STEP}%)` }}
     >
       <div className="relative size-full overflow-hidden rounded-[clamp(0.75rem,1.4vw,1.75rem)] bg-navy shadow-2xl">
         <div
-          className="absolute inset-y-0 -inset-x-[10%] transition-transform duration-700 ease-hero motion-reduce:transition-none"
+          className="absolute inset-y-0 -inset-x-[10%] transition-transform duration-[450ms] ease-hero motion-reduce:transition-none"
           style={{ transform: `translateX(${offset * -7}%)` }}
         >
           <Image
