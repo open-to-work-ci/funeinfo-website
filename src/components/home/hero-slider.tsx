@@ -141,7 +141,7 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
       <div className="relative h-0 lg:contents">
         <div
           className={clsx(
-            "pointer-events-none absolute left-[8%] top-0 z-30 aspect-[1.3] w-[62%] -translate-y-1/2 transition-opacity duration-700 motion-reduce:transition-none md:w-[52%] lg:left-[70.35%] lg:top-[27%] lg:w-[min(34%,calc((100svh-var(--spacing-header))*0.61))] lg:-translate-x-1/2 lg:translate-y-0",
+            "pointer-events-none absolute left-[8%] top-0 z-30 aspect-[1.3] w-[62%] [--card-exit:calc(10vw+100%)] lg:[--card-exit:calc(72vw+50%)] -translate-y-1/2 transition-opacity duration-700 motion-reduce:transition-none md:w-[52%] lg:left-[70.35%] lg:top-[27%] lg:w-[min(34%,calc((100svh-var(--spacing-header))*0.61))] lg:-translate-x-1/2 lg:translate-y-0",
             active === 0 && "max-lg:opacity-0",
           )}
         >

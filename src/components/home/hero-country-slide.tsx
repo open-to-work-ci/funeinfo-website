@@ -10,7 +10,7 @@ import Image from "next/image";
  *
  * TODO(assets) : photos de fond des 4 pays à fournir (drapeau + pont d'Abidjan, tour
  * Eiffel, pont de Brazzaville, lettres « Guinée »). Provisoire : photo d'agence
- * agrandie, floutée et très assombrie.
+ * nette, assombrie (voile 45 %) pour garder le texte lisible.
  */
 export default function HeroCountrySlide({
   country,
@@ -43,11 +43,11 @@ export default function HeroCountrySlide({
           src={image.src}
           alt=""
           fill
-          sizes="(min-width: 1024px) 30vw, 50vw"
-          className="scale-125 object-cover blur-2xl"
+          sizes="(min-width: 1024px) 65vw, 100vw"
+          className="object-cover"
         />
       </div>
-      <div className="absolute inset-0 bg-black/65" />
+      <div className="absolute inset-0 bg-black/45" />
     </div>
   );
 }
