@@ -24,7 +24,9 @@ const total = slides.length + 1;
 const HOLD_MS = 3500;
 const TRANSITION_MS = 900;
 /** Glissement horizontal minimal (px) pour changer de slide au doigt (mobile : pas de flèches). */
-const SWIPE_PX = 48;
+const SWIPE_PX = 40;
+/** Déplacement maximal (px) du contenu qui suit le doigt. */
+const SWIPE_MAX_PX = 80;
 
 const isEditable = (el: EventTarget | null) =>
   el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
@@ -88,28 +90,45 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
 
   const activeCountry = active - 1;
 
-  // Glissement au doigt (les flèches sont masquées sur mobile).
-  const touchX = useRef<number | null>(null);
-  const onTouchStart = (e: React.TouchEvent) => {
-    touchX.current = e.touches[0].clientX;
+  // Glissement au doigt (flèches masquées sur mobile) : événements pointeur + `touch-action: pan-y`
+  // (le navigateur garde le défilement vertical et nous laisse le geste horizontal). Pendant le
+  // geste, textes et cartes suivent le doigt ; au relâchement, au-delà du seuil on change de slide.
+  const gesture = useRef<{ x: number; y: number; horizontal: boolean | null } | null>(null);
+  const [dragX, setDragX] = useState(0);
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== "touch") return;
+    gesture.current = { x: e.clientX, y: e.clientY, horizontal: null };
   };
-  const onTouchEnd = (e: React.TouchEvent) => {
-    if (touchX.current === null) return;
-    const dx = e.changedTouches[0].clientX - touchX.current;
-    touchX.current = null;
+  const onPointerMove = (e: React.PointerEvent) => {
+    const g = gesture.current;
+    if (!g) return;
+    const dx = e.clientX - g.x;
+    const dy = e.clientY - g.y;
+    if (g.horizontal === null && Math.hypot(dx, dy) > 8) g.horizontal = Math.abs(dx) > Math.abs(dy);
+    if (g.horizontal) setDragX(Math.max(-SWIPE_MAX_PX, Math.min(SWIPE_MAX_PX, dx * 0.5)));
+  };
+  const endGesture = (e: React.PointerEvent, cancelled = false) => {
+    const g = gesture.current;
+    gesture.current = null;
+    setDragX(0);
+    if (!g || cancelled || !g.horizontal) return;
+    const dx = e.clientX - g.x;
     if (Math.abs(dx) < SWIPE_PX) return;
     if (dx < 0) next();
     else prev();
   };
+  const dragStyle = dragX ? { transform: `translateX(${dragX}px)`, transition: "none" } : undefined;
 
   return (
     <section
       ref={rootRef}
       aria-roledescription="carrousel"
       aria-label="Présentation du réseau Fune Info Africa"
-      className="relative flex min-h-[max(28rem,calc(100svh-var(--spacing-header)))] flex-col overflow-hidden bg-sea text-surface lg:block"
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      className="relative flex min-h-[max(28rem,calc(100svh-var(--spacing-header)))] touch-pan-y flex-col overflow-hidden bg-sea text-surface lg:block"
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={(e) => endGesture(e)}
+      onPointerCancel={(e) => endGesture(e, true)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={(e) => {
@@ -138,6 +157,7 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
         ))}
         <HeroGuideLine visible={active > 0} seq={nav.seq} />
         <div
+          style={dragStyle}
           aria-live={paused ? "polite" : "off"}
           className="relative z-10 grid px-[8%] pt-10 lg:absolute lg:inset-y-0 lg:left-[10.6%] lg:w-[40%] lg:content-center lg:p-0"
         >
@@ -157,6 +177,7 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
       {/* Cartes : défilé latéral, à cheval sur la jonction photo / panneau. */}
       <div className="relative h-0 lg:contents">
         <div
+          style={dragStyle}
           className={clsx(
             "pointer-events-none absolute left-[8%] top-0 z-30 aspect-[1.3] w-[62%] [--card-exit:calc(10vw+100%)] lg:[--card-exit:calc(72vw+50%)] -translate-y-1/2 transition-opacity duration-700 motion-reduce:transition-none md:w-[52%] lg:left-[70.35%] lg:top-[27%] lg:w-[min(34%,calc((100svh-var(--spacing-header))*0.61))] lg:-translate-x-1/2 lg:translate-y-0",
             active === 0 && "max-lg:opacity-0",
