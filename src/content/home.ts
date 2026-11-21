@@ -64,12 +64,11 @@ export const tagline = {
 
 // TODO: photo « deux mains qui se tiennent » recadrée depuis la maquette (263 px de large, basse
 // résolution) : à remplacer par l’export d’origine.
-// TODO(à valider) : destination du bouton. `/contact` n’existe pas encore : mailto en attendant.
 export const cta = {
   title: "Une question, une urgence, ou besoin d’information ?",
   subtitle: "Parlons-en simplement, à votre rythme.",
   label: "Échanger avec nous",
-  href: "mailto:contact@fune.info",
+  href: "/contact",
   image: { src: "/accueil/mains.webp", alt: "Deux mains qui se tiennent" },
 };
 
