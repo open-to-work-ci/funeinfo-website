@@ -30,7 +30,7 @@ export default function HeroCountrySlide({
         "absolute inset-y-0 left-0 w-full overflow-hidden bg-navy lg:w-[65%]",
         active
           ? clsx("z-[2] opacity-100 motion-reduce:animate-none", enter === "up" ? "animate-hero-wipe-up" : "animate-hero-wipe-down")
-          : "z-0 opacity-0 transition-opacity delay-[450ms] duration-[1ms] motion-reduce:delay-0",
+          : "z-0 opacity-0 transition-opacity delay-[900ms] duration-[1ms] motion-reduce:delay-0",
       )}
     >
       <div

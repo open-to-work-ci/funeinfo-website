@@ -25,6 +25,10 @@ export type NewsItem = {
   title: string;
   excerpt: string;
   image: { src: string; alt: string };
-  /** Page détail : absent tant que la page Actualités n'existe pas (carte non cliquable). */
+  /** Date de publication (ISO « 2025-09-29 »), affichée si connue : ne jamais en inventer. */
+  date?: string;
+  /** Paragraphes de l'article (page détail). Absent : l'extrait sert de texte provisoire. */
+  body?: string[];
+  /** Page détail : dérivée du slug (`/actualites/<slug>`) par `news.ts`. */
   href?: string;
 };

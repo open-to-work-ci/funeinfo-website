@@ -32,7 +32,7 @@ export default function CountUp({
   useEffect(() => {
     if (!inView || reduce) return;
     const controls = animate(0, value, {
-      duration: 1.6,
+      duration: 3.4,
       ease: "easeOut",
       onUpdate: setCurrent,
     });
