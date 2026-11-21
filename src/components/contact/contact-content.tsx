@@ -6,11 +6,10 @@ import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
 import { MotionConfig } from "motion/react";
 import CountryTab from "@/components/network/country-tab";
 import { countries, DEFAULT_COUNTRY_ID } from "@/content/countries";
-import { heroCountries } from "@/content/home";
+import { CONTACT_MAP, mapEmbedUrl, mapOpenUrl } from "@/content/contact";
 import ContactForm from "./contact-form";
 
 const tel = (phone: string) => `tel:+${phone.replace(/\D/g, "")}`;
-const cityOf = (id: string) => heroCountries.find((c) => c.countryId === id)?.city ?? "";
 
 const card = "rounded-lg bg-surface p-6 shadow-sm md:p-8";
 const accent = "mb-4 block h-1 w-12 rounded-pill bg-brand";
@@ -18,15 +17,16 @@ const accent = "mb-4 block h-1 w-12 rounded-pill bg-brand";
 /**
  * Corps de la page Contact : onglets pays (Côte d'Ivoire par défaut), formulaire, carte
  * « Nos coordonnées » du pays choisi et carte « Localisation » (lien Google Maps).
- * TODO(assets) : carte (image) de la localisation et photo du siège à fournir ; en attendant,
- * photo d'agence du pays et lien Google Maps.
+ * Tout change avec le pays : coordonnées, téléphones, e-mail, texte et carte Google Maps
+ * intégrée (un point sur la ville de l'agence, voir `content/contact.ts`).
+ * TODO(assets) : photo du siège à fournir ; en attendant, photo d'agence du pays.
  */
 export default function ContactContent() {
   const [activeId, setActiveId] = useState(DEFAULT_COUNTRY_ID);
   const refs = useRef<Record<string, HTMLButtonElement | null>>({});
   const active = countries.find((c) => c.id === activeId) ?? countries[0];
-  const city = cityOf(active.id);
-  const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${city} ${active.address}`)}`;
+  const point = CONTACT_MAP[active.id];
+  const city = point.city;
 
   function onKeyDown(e: KeyboardEvent, index: number) {
     const last = countries.length - 1;
@@ -138,30 +138,38 @@ export default function ContactContent() {
         </aside>
       </div>
 
-      <section
-        className={`${card} mt-6 flex flex-col items-start justify-between gap-5 md:flex-row md:items-center`}
-        aria-labelledby="contact-location-title"
-      >
-        <div>
-          <span className={accent} aria-hidden="true" />
-          <h2 id="contact-location-title" className="flex items-center gap-2 font-sans text-news-title font-bold text-navy">
-            <MapPin className="size-6 text-brand" aria-hidden="true" />
-            Fune Info {active.label}
-          </h2>
-          <p className="mt-2 text-body text-ink-secondary">
-            {city} — {active.address}
-          </p>
+      <section className={`${card} mt-6 overflow-hidden p-0 md:p-0`} aria-labelledby="contact-location-title">
+        <div className="flex flex-col items-start justify-between gap-5 p-6 md:flex-row md:items-center md:p-8">
+          <div>
+            <span className={accent} aria-hidden="true" />
+            <h2 id="contact-location-title" className="flex items-center gap-2 font-sans text-news-title font-bold text-navy">
+              <MapPin className="size-6 text-brand" aria-hidden="true" />
+              Fune Info {active.label}
+            </h2>
+            <p className="mt-2 text-body text-ink-secondary">
+              {city} — {active.address}
+            </p>
+          </div>
+          <a
+            href={mapOpenUrl(point)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-pill bg-brand px-6 py-3 font-poppins text-small font-bold uppercase text-surface transition-colors hover:bg-brand-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2"
+          >
+            Ouvrir dans Google Maps
+            <ExternalLink className="size-4" aria-hidden="true" />
+            <span className="sr-only">(nouvel onglet)</span>
+          </a>
         </div>
-        <a
-          href={mapsHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-pill bg-brand px-6 py-3 font-poppins text-small font-bold uppercase text-surface transition-colors hover:bg-brand-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2"
-        >
-          Ouvrir dans Google Maps
-          <ExternalLink className="size-4" aria-hidden="true" />
-          <span className="sr-only">(nouvel onglet)</span>
-        </a>
+        {/* key : recharge la carte à chaque changement de pays. */}
+        <iframe
+          key={active.id}
+          title={`Carte : ${city}, ${active.label}`}
+          src={mapEmbedUrl(point)}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="block aspect-[4/3] w-full border-0 md:aspect-[16/6]"
+        />
       </section>
     </MotionConfig>
   );
