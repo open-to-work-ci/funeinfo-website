@@ -20,9 +20,11 @@ const slides = heroCountries.flatMap((s) => {
 });
 const total = slides.length + 1;
 
-/** Durées mesurées sur la vidéo de la maquette : tenue 2 s + transition ≈ 0,45 s. */
-const HOLD_MS = 2000;
-const TRANSITION_MS = 450;
+/** Tenue d'une slide et durée de la transition (ralentie à la demande du client : 0,9 s). */
+const HOLD_MS = 3500;
+const TRANSITION_MS = 900;
+/** Glissement horizontal minimal (px) pour changer de slide au doigt (mobile : pas de flèches). */
+const SWIPE_PX = 48;
 
 const isEditable = (el: EventTarget | null) =>
   el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
@@ -57,10 +59,9 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
   }, []);
   const enter = nav.dir === 1 ? "up" : "down";
 
-  // Autoplay : s'arrête sur la dernière slide (comme la vidéo) ; après un changement,
-  // la tenue démarre à la fin de la transition.
+  // Autoplay en boucle ; après un changement, la tenue démarre à la fin de la transition.
   useEffect(() => {
-    if (reduce || paused || active === total - 1) return;
+    if (reduce || paused) return;
     const id = window.setTimeout(next, HOLD_MS + (active > 0 ? TRANSITION_MS : 0));
     return () => window.clearTimeout(id);
   }, [active, paused, reduce, next]);
@@ -87,12 +88,28 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
 
   const activeCountry = active - 1;
 
+  // Glissement au doigt (les flèches sont masquées sur mobile).
+  const touchX = useRef<number | null>(null);
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (touchX.current === null) return;
+    const dx = e.changedTouches[0].clientX - touchX.current;
+    touchX.current = null;
+    if (Math.abs(dx) < SWIPE_PX) return;
+    if (dx < 0) next();
+    else prev();
+  };
+
   return (
     <section
       ref={rootRef}
       aria-roledescription="carrousel"
       aria-label="Présentation du réseau Fune Info Africa"
       className="relative flex min-h-[max(28rem,calc(100svh-var(--spacing-header)))] flex-col overflow-hidden bg-sea text-surface lg:block"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocus={(e) => {
@@ -155,8 +172,6 @@ export default function HeroSlider({ map }: { map: ReactNode }) {
       <div className="relative pb-8 pt-[calc(24%+1.5rem)] md:pt-[calc(20%+1.5rem)] lg:contents">
         <HeroPanel slides={heroCountries} active={activeCountry} />
         <HeroControls
-          active={active}
-          total={total}
           onPrev={prev}
           onNext={next}
           className="relative px-[8%] lg:absolute lg:bottom-[clamp(1.5rem,17.3%,14rem)] lg:left-[55%] lg:p-0"

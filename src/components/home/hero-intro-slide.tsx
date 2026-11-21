@@ -39,7 +39,7 @@ export default function HeroIntroSlide({
               enter === "up" && "animate-hero-wipe-up",
               enter === "down" && "animate-hero-wipe-down",
             )
-          : "pointer-events-none z-0 opacity-0 transition-opacity delay-[450ms] duration-[1ms] motion-reduce:delay-0",
+          : "pointer-events-none z-0 opacity-0 transition-opacity delay-[900ms] duration-[1ms] motion-reduce:delay-0",
       )}
     >
       <HeroMap zoomed={!active}>{map}</HeroMap>
