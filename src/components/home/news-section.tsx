@@ -1,5 +1,6 @@
 import { news } from "@/content/news";
 import { Stagger, StaggerItem } from "../ui/motion";
+import Button from "../ui/button";
 import Reveal from "../ui/reveal";
 import NewsCard from "./news-card";
 
@@ -23,6 +24,9 @@ export default function NewsSection() {
             </StaggerItem>
           ))}
         </Stagger>
+        <Reveal className="mt-fi-24 flex justify-center md:mt-fi-40">
+          <Button href="/actualites">Toutes les actualités</Button>
+        </Reveal>
       </div>
     </section>
   );

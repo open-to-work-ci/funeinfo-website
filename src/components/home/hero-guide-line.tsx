@@ -13,7 +13,7 @@ export default function HeroGuideLine({ visible, seq }: { visible: boolean; seq:
       aria-hidden="true"
       className={clsx(
         "pointer-events-none absolute inset-y-0 left-[11.5%] z-[3] hidden w-[0.0625rem] [--gap:min(30vw,62svh,36rem)] lg:block",
-        "transition-opacity duration-[450ms] motion-reduce:transition-none",
+        "transition-opacity duration-[900ms] motion-reduce:transition-none",
         visible ? "opacity-100" : "opacity-0",
       )}
     >

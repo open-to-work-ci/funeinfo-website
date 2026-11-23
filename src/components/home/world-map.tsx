@@ -99,7 +99,7 @@ export default function WorldMap() {
         </svg>
         </MapInteractive>
       </Parallax>
-      <ul className="mt-fi-24 flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 font-poppins text-small font-bold text-brand lg:sr-only">
+      <ul className="mt-fi-24 flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 font-poppins text-small font-bold text-brand sr-only">
         {names.map((n) => (
           <li key={n}>{n}</li>
         ))}

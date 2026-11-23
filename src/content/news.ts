@@ -1,9 +1,11 @@
 import type { NewsItem } from "./types";
 
-// TODO: extraits à compléter (version longue à fournir) ; photos recadrées depuis la maquette (≈ 190 px
-// de large, basse résolution) : à remplacer par les originaux. `href` à renseigner quand la page
-// Actualités existera : tant qu’il est absent, la carte n’est pas cliquable.
-export const news: NewsItem[] = [
+export const NEWS_PATH = "/actualites";
+
+// TODO(content) : textes complets (`body`) et dates (`date`, ISO) des articles à fournir ; en attendant,
+// la page détail affiche l’extrait. Photos recadrées depuis la maquette (≈ 190 px de large, basse
+// résolution) : à remplacer par les originaux (zip annoncé par le client).
+const items: NewsItem[] = [
   {
     slug: "rencontre-ogf",
     tag: "Rencontre OGF - France",
@@ -26,3 +28,14 @@ export const news: NewsItem[] = [
     image: { src: "/accueil/actualite-atelier.webp", alt: "Équipe Fune Info Africa réunie devant un bâtiment lors d’un atelier" },
   },
 ];
+
+/** Actualités, de la plus récente à la plus ancienne (ordre du tableau) ; `href` dérivé du slug. */
+export const news: NewsItem[] = items.map((n) => ({ ...n, href: `${NEWS_PATH}/${n.slug}` }));
+
+export const getNews = (slug: string) => news.find((n) => n.slug === slug);
+
+/** « 2025-09-29 » → « 29/09/2025 » (même format que le site de référence). */
+export function formatNewsDate(iso: string): string {
+  const [y, m, d] = iso.split("-");
+  return `${d}/${m}/${y}`;
+}

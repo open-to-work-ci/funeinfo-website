@@ -17,7 +17,7 @@ export default function HeroPanel({
     <div
       aria-hidden="true"
       className={clsx(
-        "absolute inset-0 transition-[transform,opacity] duration-[450ms] ease-hero motion-reduce:transition-none lg:inset-y-0 lg:left-auto lg:right-0 lg:w-[35%]",
+        "absolute inset-0 transition-[transform,opacity] duration-[900ms] ease-hero motion-reduce:transition-none lg:inset-y-0 lg:left-auto lg:right-0 lg:w-[35%]",
         active >= 0 ? "translate-x-0 opacity-100" : "opacity-0 lg:translate-x-[60%]",
       )}
     >
@@ -25,7 +25,7 @@ export default function HeroPanel({
         <div
           key={s.countryId}
           className={clsx(
-            "absolute inset-0 transition-opacity duration-[450ms] ease-hero motion-reduce:transition-none",
+            "absolute inset-0 transition-opacity duration-[900ms] ease-hero motion-reduce:transition-none",
             s.panelClass,
             i === active ? "opacity-100" : "opacity-0",
           )}
