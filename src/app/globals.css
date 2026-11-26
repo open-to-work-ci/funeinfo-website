@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-montserrat), sans-serif;
+  /* Une seule famille sur tout le site : Poppins. Les utilitaires `font-sans`, `font-inter` et
+     `font-arial` (historiques, issus de la maquette) pointent tous vers elle. */
   --font-poppins: var(--font-poppins), sans-serif;
-  --font-inter: var(--font-inter), sans-serif;
+  --font-sans: var(--font-poppins), sans-serif;
+  --font-inter: var(--font-poppins), sans-serif;
 
   /* Couleurs (tokens Figma `--fi-*`) */
   --color-brand: #bb2282;
@@ -107,7 +109,7 @@
   --text-news-title: clamp(1.0625rem, 0.99rem + 0.33vw, 1.4rem); /* 22 */
 
   /* Carrières (maquette 1905 px ; fluide en dessous) */
-  --font-arial: Arial, "Liberation Sans", Helvetica, sans-serif;
+  --font-arial: var(--font-poppins), sans-serif;
   --text-banner: clamp(1.75rem, 0.75rem + 2.15vw, 3.25rem); /* titre de bannière ≈ 52 */
   --text-banner--line-height: 1;
   --text-offer: clamp(1.5rem, 0.95rem + 1.19vw, 2.36rem); /* titre d'offre ≈ 37,7 */
