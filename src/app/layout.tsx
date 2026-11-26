@@ -1,24 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Montserrat, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import JsonLd from "@/components/json-ld";
 import { IS_INDEXABLE, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL, THEME_COLOR } from "@/lib/site";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  weight: ["400", "500", "600", "700", "800"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -69,7 +55,7 @@ export default function RootLayout({
     <html
       lang="fr"
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${montserrat.variable} ${poppins.variable} h-full antialiased overflow-x-clip`}
+      className={`${poppins.variable} h-full antialiased overflow-x-clip`}
     >
       <body className="min-h-full flex flex-col overflow-x-clip">
         <a
